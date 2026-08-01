@@ -266,6 +266,31 @@ button{
     color:#6b7280;
 }
 
+
+.answer-btn{
+    margin-top:12px;
+    border:1px solid #0f3d66;
+    background:#eef6fc;
+    color:#0f3d66;
+    padding:9px 13px;
+    border-radius:7px;
+    font-weight:bold;
+}
+.answer-box{
+    display:none;
+    margin-top:12px;
+    padding:15px;
+    background:#f9fafb;
+    border-left:4px solid #0f3d66;
+    border-radius:7px;
+}
+.important-star{
+    display:inline-block;
+    margin-left:8px;
+    color:#b45309;
+    font-weight:bold;
+}
+
 footer{
     text-align:center;
     color:#6b7280;
@@ -495,6 +520,48 @@ onclick="startQuiz(2)">
 </div>
 
 </div>
+`;
+
+}else if(code==="CE2104"){
+
+html+=`
+
+<div class="topic">
+
+<span class="code">FLUID MECHANICS — WEEK 01</span>
+
+<h3>Introduction & Properties of Fluids</h3>
+
+<p>
+Fundamentals of Fluid Mechanics and fluid properties from the current Week 01 class notes.
+</p>
+
+<div class="topic-buttons">
+
+<button class="main-btn"
+onclick="openFMLearn()">
+📖 Learn Topic
+</button>
+
+<button class="secondary-btn"
+onclick="openFMQuestions()">
+📝 Topic Questions
+</button>
+
+<button class="secondary-btn"
+onclick="openFMPYQ()">
+🎓 PYQs
+</button>
+
+<button class="secondary-btn"
+onclick="startFMQuiz()">
+✅ Practice MCQs
+</button>
+
+</div>
+
+</div>
+
 `;
 
 }else{
@@ -1179,7 +1246,501 @@ They can be expanded when you upload the next week's notes.
 `;
 
 }
+/* ===============================
+FLUID MECHANICS — WEEK 01
+LEARNING MATERIAL
+================================ */
 
+function openFMLearn(){
+
+currentSubject="CE2104";
+
+hideAll();
+document.getElementById("learnPage").style.display="block";
+
+document.getElementById("learnContent").innerHTML=`
+
+<h2>CE2104 — Fluid Mechanics</h2>
+<h1>Week 01 — Introduction & Properties of Fluids</h1>
+
+<div class="lesson-box">
+
+<h3>1. Fluid Mechanics</h3>
+
+<div class="definition">
+<strong>Fluid Mechanics</strong> is the branch of science which deals with the behaviour of fluids at rest and in motion.
+</div>
+
+<p>The subject is broadly divided into:</p>
+
+<div class="flow">
+<span>Fluid Mechanics</span>
+<span>→</span>
+<span>Fluid Statics</span>
+<span>+</span>
+<span>Fluid Kinematics</span>
+<span>+</span>
+<span>Fluid Dynamics</span>
+</div>
+
+<p><strong>Fluid Statics:</strong> Study of fluids at rest.</p>
+
+<p><strong>Fluid Kinematics:</strong> Study of fluids in motion without considering the forces causing the motion.</p>
+
+<p><strong>Fluid Dynamics:</strong> Study of fluids in motion considering the forces responsible for the motion.</p>
+
+</div>
+
+
+<div class="lesson-box">
+
+<h3>2. Load, Stress and Pressure</h3>
+
+<div class="definition">
+<strong>Load:</strong> An external force acting on a body.
+</div>
+
+<div class="definition">
+<strong>Stress:</strong> Internal resisting force developed per unit area of a body.
+</div>
+
+<p><strong>Formula:</strong></p>
+
+<div class="diagram">
+σ = F / A
+</div>
+
+<p>
+σ = Stress<br>
+F = Force<br>
+A = Area
+</p>
+
+<p><strong>SI Unit:</strong> N/m² or Pascal (Pa)</p>
+
+<div class="definition">
+<strong>Pressure:</strong> Normal force acting per unit area of a fluid.
+</div>
+
+<div class="diagram">
+P = F / A
+</div>
+
+<p><strong>SI Unit:</strong> Pascal (Pa) or N/m²</p>
+
+</div>
+
+
+<div class="lesson-box">
+
+<h3>3. Solid and Fluid</h3>
+
+<p>
+A solid can resist shear stress without continuously deforming.
+</p>
+
+<p>
+A fluid continuously deforms when subjected to shear stress.
+</p>
+
+<div class="important">
+Liquids and gases are treated as fluids because they cannot permanently resist shear stress.
+</div>
+
+</div>
+
+
+<div class="lesson-box">
+
+<h3>4. Density</h3>
+
+<div class="definition">
+<strong>Density (ρ)</strong> is the mass of fluid per unit volume.
+</div>
+
+<div class="diagram">
+ρ = m / V
+</div>
+
+<p>
+ρ = Density<br>
+m = Mass<br>
+V = Volume
+</p>
+
+<p><strong>SI Unit:</strong> kg/m³</p>
+
+<div class="important">
+For water, the commonly used density is approximately <strong>1000 kg/m³</strong>.
+</div>
+
+</div>
+
+
+<div class="lesson-box">
+
+<h3>5. Specific Volume</h3>
+
+<div class="definition">
+<strong>Specific Volume</strong> is the volume occupied by unit mass of a fluid.
+</div>
+
+<div class="diagram">
+v = V / m = 1 / ρ
+</div>
+
+<p><strong>SI Unit:</strong> m³/kg</p>
+
+<p>
+Specific volume is the reciprocal of density.
+</p>
+
+</div>
+
+
+<div class="lesson-box">
+
+<h3>6. Specific Weight</h3>
+
+<div class="definition">
+<strong>Specific Weight (γ)</strong> is the weight of fluid per unit volume.
+</div>
+
+<div class="diagram">
+γ = W / V
+<br><br>
+γ = ρg
+</div>
+
+<p>
+γ = Specific weight<br>
+ρ = Density<br>
+g = Acceleration due to gravity
+</p>
+
+<p><strong>SI Unit:</strong> N/m³</p>
+
+<div class="important">
+For water:
+<br>
+γ ≈ 9810 N/m³
+<br>
+or
+<br>
+9.81 kN/m³
+</div>
+
+</div>
+
+
+<div class="lesson-box">
+
+<h3>7. Specific Gravity</h3>
+
+<div class="definition">
+<strong>Specific Gravity (S.G.)</strong> is the ratio of the density of a fluid to the density of a standard fluid.
+</div>
+
+<p>For liquids, water is normally taken as the standard fluid.</p>
+
+<div class="diagram">
+S.G. = Density of liquid / Density of water
+</div>
+
+<p>Therefore:</p>
+
+<div class="diagram">
+S.G. = ρ / 1000
+</div>
+
+<p>
+Specific gravity has <strong>no unit</strong> because it is a ratio.
+</p>
+
+</div>
+
+
+<div class="lesson-box">
+
+<h3>8. Useful Unit Conversions</h3>
+
+<table style="width:100%;border-collapse:collapse">
+
+<tr>
+<th style="border:1px solid #ddd;padding:10px">Conversion</th>
+<th style="border:1px solid #ddd;padding:10px">Value</th>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px">1 kN</td>
+<td style="border:1px solid #ddd;padding:10px">1000 N</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px">1 kPa</td>
+<td style="border:1px solid #ddd;padding:10px">1000 Pa</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px">1 MPa</td>
+<td style="border:1px solid #ddd;padding:10px">10⁶ Pa</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px">1 litre</td>
+<td style="border:1px solid #ddd;padding:10px">10⁻³ m³</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ddd;padding:10px">1 cm³</td>
+<td style="border:1px solid #ddd;padding:10px">10⁻⁶ m³</td>
+</tr>
+
+</table>
+
+</div>
+
+
+<div class="lesson-box">
+
+<h3>9. Viscosity</h3>
+
+<div class="definition">
+<strong>Viscosity</strong> is the property of a fluid by virtue of which it offers resistance to the relative motion between adjacent layers of the fluid.
+</div>
+
+<p>
+Viscosity represents the internal resistance or internal friction of a fluid.
+</p>
+
+<div class="diagram">
+
+<strong>Concept of Fluid Layers</strong>
+
+<div class="flow">
+<span>Slow-moving layer</span>
+<span>↔</span>
+<span>Intermediate layer</span>
+<span>↔</span>
+<span>Fast-moving layer</span>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="lesson-box">
+
+<h3>10. Newton's Law of Viscosity</h3>
+
+<p>
+According to Newton's law of viscosity, shear stress is directly proportional to the velocity gradient.
+</p>
+
+<div class="diagram">
+τ ∝ du/dy
+<br><br>
+τ = μ (du/dy)
+</div>
+
+<p>
+τ = Shear stress<br>
+μ = Dynamic viscosity<br>
+du/dy = Velocity gradient
+</p>
+
+</div>
+
+
+<div class="lesson-box">
+
+<h3>11. Dynamic Viscosity</h3>
+
+<div class="definition">
+<strong>Dynamic Viscosity (μ)</strong> represents the resistance offered by a fluid to shear deformation.
+</div>
+
+<div class="diagram">
+μ = τ / (du/dy)
+</div>
+
+<p><strong>SI Unit:</strong> Pa·s or N·s/m²</p>
+
+</div>
+
+
+<div class="lesson-box">
+
+<h3>12. Kinematic Viscosity</h3>
+
+<div class="definition">
+<strong>Kinematic Viscosity (ν)</strong> is the ratio of dynamic viscosity to density.
+</div>
+
+<div class="diagram">
+ν = μ / ρ
+</div>
+
+<p>
+ν = Kinematic viscosity<br>
+μ = Dynamic viscosity<br>
+ρ = Density
+</p>
+
+<p><strong>SI Unit:</strong> m²/s</p>
+
+</div>
+
+
+<div class="lesson-box">
+
+<h3>13. Velocity Gradient</h3>
+
+<div class="definition">
+The rate of change of velocity with respect to distance perpendicular to the direction of flow is called the <strong>velocity gradient</strong>.
+</div>
+
+<div class="diagram">
+Velocity Gradient = du/dy
+</div>
+
+</div>
+
+
+<div class="lesson-box">
+
+<h3>14. Surface Tension</h3>
+
+<div class="definition">
+<strong>Surface Tension (σ)</strong> is the tensile force acting on the surface of a liquid per unit length.
+</div>
+
+<div class="diagram">
+σ = Force / Length
+</div>
+
+<p><strong>SI Unit:</strong> N/m</p>
+
+<p>
+Surface tension occurs because molecules at the free surface experience an unbalanced molecular attraction.
+</p>
+
+</div>
+
+
+<div class="lesson-box">
+
+<h3>15. Pressure Inside a Liquid Droplet</h3>
+
+<div class="diagram">
+ΔP = 4σ / d
+</div>
+
+<p>
+ΔP = Excess pressure<br>
+σ = Surface tension<br>
+d = Diameter of droplet
+</p>
+
+</div>
+
+
+<div class="lesson-box">
+
+<h3>16. Pressure Inside a Soap Bubble</h3>
+
+<p>
+A soap bubble has two liquid surfaces.
+</p>
+
+<div class="diagram">
+ΔP = 8σ / d
+</div>
+
+</div>
+
+
+<div class="lesson-box">
+
+<h3>17. Capillarity</h3>
+
+<div class="definition">
+<strong>Capillarity</strong> is the phenomenon of rise or fall of a liquid in a small-diameter tube due to surface tension.
+</div>
+
+<p>
+Water generally shows <strong>capillary rise</strong>, while mercury generally shows <strong>capillary depression</strong>.
+</p>
+
+<div class="diagram">
+
+<strong>Capillary Action</strong>
+
+<div class="flow">
+<span>Small Tube</span>
+<span>→</span>
+<span>Surface Tension</span>
+<span>→</span>
+<span>Rise / Fall of Liquid</span>
+</div>
+
+</div>
+
+<div class="diagram">
+h = 4σ cosθ / (ρgd)
+</div>
+
+<p>
+h = Capillary rise or fall<br>
+σ = Surface tension<br>
+θ = Angle of contact<br>
+ρ = Density of liquid<br>
+g = Acceleration due to gravity<br>
+d = Diameter of tube
+</p>
+
+</div>
+
+
+<div class="lesson-box">
+
+<h3>Formula Revision</h3>
+
+<p><strong>Density:</strong> ρ = m/V</p>
+
+<p><strong>Specific Volume:</strong> v = 1/ρ</p>
+
+<p><strong>Specific Weight:</strong> γ = ρg</p>
+
+<p><strong>Specific Gravity:</strong> S.G. = ρ/ρwater</p>
+
+<p><strong>Newton's Law of Viscosity:</strong> τ = μ(du/dy)</p>
+
+<p><strong>Kinematic Viscosity:</strong> ν = μ/ρ</p>
+
+<p><strong>Liquid Droplet:</strong> ΔP = 4σ/d</p>
+
+<p><strong>Soap Bubble:</strong> ΔP = 8σ/d</p>
+
+<p><strong>Capillary Rise/Fall:</strong> h = 4σcosθ/(ρgd)</p>
+
+</div>
+
+
+<div class="important">
+
+<strong>Week 01 Boundary:</strong>
+
+This page represents the current Fluid Mechanics material. Future weekly notes will be appended after this material without replacing Week 01.
+
+</div>
+
+`;
+
+window.scrollTo(0,0);
+
+}
 
 /* ===============================
 TOPIC QUESTIONS
@@ -1228,45 +1789,268 @@ const topic2Questions=[
 
 ];
 
+    /* ===============================
+FLUID MECHANICS — WEEK 01
+TOPIC QUESTIONS
+================================ */
 
-function openQuestions(topic){
+const fmWeek1Questions=[
 
-currentTopic=topic;
+"Define Fluid Mechanics.",
+"Classify Fluid Mechanics into its main branches.",
+"Define Fluid Statics.",
+"Define Fluid Kinematics.",
+"Define Fluid Dynamics.",
+"Differentiate between Fluid Kinematics and Fluid Dynamics.",
+
+"Define load.",
+"Define stress.",
+"Write the expression for stress and mention its SI unit.",
+"Define pressure.",
+"Write the expression for pressure and mention its SI unit.",
+"Differentiate between stress and pressure.",
+
+"Explain the difference between a solid and a fluid.",
+"Why do fluids continuously deform under shear stress?",
+
+"Define density.",
+"Write the formula and SI unit of density.",
+"Define specific volume.",
+"Show the relationship between specific volume and density.",
+"Define specific weight.",
+"Derive the relation γ = ρg.",
+"Define specific gravity.",
+"Why does specific gravity have no unit?",
+"Write the relationship between specific gravity and density.",
+
+"Define viscosity.",
+"Explain the physical significance of viscosity.",
+"State Newton's law of viscosity.",
+"Write and explain τ = μ(du/dy).",
+"Define dynamic viscosity.",
+"Write the SI unit of dynamic viscosity.",
+"Define kinematic viscosity.",
+"Write the relation between dynamic viscosity and kinematic viscosity.",
+"Write the SI unit of kinematic viscosity.",
+"Define velocity gradient.",
+
+"Define surface tension.",
+"Write the SI unit of surface tension.",
+"Explain the cause of surface tension.",
+"Write the expression for excess pressure inside a liquid droplet.",
+"Write the expression for excess pressure inside a soap bubble.",
+"Why is the excess pressure in a soap bubble different from that in a liquid droplet?",
+
+"Define capillarity.",
+"Explain capillary rise.",
+"Explain capillary depression.",
+"Write the expression for capillary rise or fall.",
+"Explain the terms in h = 4σcosθ/(ρgd).",
+"Why does water rise in a capillary tube?",
+"Why does mercury show capillary depression?",
+
+"Convert 1 kN into N.",
+"Convert 1 kPa into Pa.",
+"Convert 1 MPa into Pa.",
+"Convert 1 litre into cubic metres.",
+"Convert 1 cm³ into cubic metres.",
+
+"Write all important formulas from the current Fluid Mechanics Week 01 notes."
+
+];
+
+    /* ===============================
+FLUID MECHANICS — WEEK 01
+OPEN TOPIC QUESTIONS
+================================ */
+
+
+
+/* ===============================
+TOPIC QUESTION ANSWERS
+================================ */
+const topic1QA=[
+{q:"Define Physical Geology.",a:"Physical Geology deals with the different physical features of the Earth and the changes occurring on the Earth"s surface. It includes features such as mountains, rivers, lakes, glaciers and volcanoes, and processes such as landslides, earthquakes and weathering.",important:false},
+{q:"Write a short note on Mineralogy.",a:"Mineralogy deals with the study of minerals, including their mode of formation, composition, occurrence, types, associated properties and uses.",important:false},
+{q:"Define Petrology and state what it deals with.",a:"Petrology is the study of rocks. It deals with their formation, structure, texture, composition, occurrence and types.",important:true},
+{q:"Explain Structural Geology.",a:"Structural Geology deals with deformation and disturbance of rocks under tectonic forces. Such deformation produces structures such as folds, faults, joints and unconformities.",important:false},
+{q:"What are folds, faults, joints and unconformities?",a:"The current uploaded material lists folds, faults, joints and unconformities as structures studied in Structural Geology, but it does not yet give separate detailed definitions for each.",important:false},
+{q:"Write a short note on Historical Geology.",a:"Historical Geology deals with the history of the Earth through geological records. Sedimentary rocks can reveal the chronological sequence of rock formation, evolution and migration of plants and animals during different periods.",important:false},
+{q:"Define Palaeontology. What are fossils?",a:"Palaeontology deals with fossils and ancient life. Fossils are naturally preserved remains of ancient plants and animals that became embedded in sediments under favourable conditions.",important:false},
+{q:"Explain Economic Geology.",a:"Economic Geology deals with economically valuable geological and mineral deposits. The notes mention oil deposits of Gulf countries as an example of economically important deposits.",important:true},
+{q:"Define Engineering Geology.",a:"Engineering Geology is the application of geological knowledge in Civil Engineering to help execute safe, stable and economical works such as dams, bridges and tunnels.",important:false},
+{q:"Explain the role of Mining Geology.",a:"Mining Geology applies geological knowledge to mining. A mining engineer should understand the occurrence and properties of ores, including depth, direction or strike, inclination or dip, thickness and ore bodies.",important:false},
+{q:"Write a short note on Geophysics.",a:"Geophysics deals with physical properties of the Earth, such as density and magnetism. The notes divide it into Pure Geophysics and Exploration Geophysics.",important:false},
+{q:"Define Geohydrology / Hydrogeology.",a:"Geohydrology or Hydrogeology deals with the occurrence, movement, nature, quality and quantity of groundwater. Groundwater behaviour is related to porosity, permeability, structure, texture and composition.",important:false},
+{q:"Explain Geochemistry.",a:"Geochemistry deals with the chemical composition of minerals and rocks and with the occurrence, distribution, abundance and mobility of chemical constituents.",important:true},
+{q:"Explain the importance of geology in Civil Engineering.",a:"Geology is important in Civil Engineering for site selection and foundation stability; knowledge of construction materials and rocks; tunnelling and roads; foundations of dams, bridges and buildings; groundwater; erosion, transportation and deposition; geological maps and sections; treatment of faults, folds and joints; and preliminary geological surveys.",important:true},
+{q:"Why is geology important for site selection and foundations?",a:"Before construction, proper site selection is required from the viewpoint of foundation stability. Foundation problems of dams, bridges and buildings are directly related to the geology of the area.",important:true},
+{q:"How is geology useful in tunnelling and road construction?",a:"Knowledge of the nature of rocks is useful in tunnelling and road construction.",important:true},
+{q:"Why is groundwater knowledge important in Civil Engineering?",a:"Groundwater knowledge is necessary for excavation works, water supply, irrigation and other purposes.",important:true},
+{q:"How are geological maps and sections useful in engineering projects?",a:"Geological maps and sections help considerably in planning engineering projects.",important:true},
+{q:"Why should faults, folds and joints be considered in engineering works?",a:"Faults, folds and joints should be suitably treated to maintain the stability of rock structures.",important:true},
+{q:"What is the importance of a preliminary geological survey?",a:"A preliminary geological survey of the concerned area can reduce unnecessary planning costs.",important:true}
+];
+const topic2QA=[
+{q:"Define geological agents.",a:"Natural forces responsible for visible changes on the Earth"s surface are called geological agents.",important:true},
+{q:"Classify geological agents based on their origin.",a:"Based on origin, geological agents are classified into Exogenous Geological Agents and Endogenous Geological Agents.",important:true},
+{q:"Explain exogenous geological agents.",a:"Exogenous geological agents originate on the Earth"s surface and generally work slowly and steadily. They act on topographical irregularities through processes such as erosion, transportation and deposition.",important:true},
+{q:"Explain endogenous geological agents.",a:"Endogenous geological agents originate below the Earth"s surface. They may act suddenly and create topographical irregularities. The notes list volcanoes, earthquakes, tectonic forces and tsunamis.",important:true},
+{q:"Write the sequence of geological work performed by exogenous agents.",a:"Erosion → Transportation → Deposition.",important:true},
+{q:"Explain erosion, transportation and deposition.",a:"Erosion causes destruction or wearing away of land masses. The eroded material is transported and later deposited, helping to fill or reduce depressions such as pits, lakes and valleys.",important:false},
+{q:"Give examples of endogenous geological agents.",a:"Examples listed in the notes are volcanoes, earthquakes, tectonic forces and tsunamis.",important:false},
+{q:"Define weathering of rocks.",a:"Weathering is the process by which rocks are broken down and decomposed by external agencies such as wind, rivers, rain, temperature changes and other natural actions.",important:true},
+{q:"Classify weathering.",a:"Weathering is classified into Mechanical Weathering, Chemical Weathering and Biological Weathering.",important:true},
+{q:"Define mechanical weathering.",a:"Mechanical weathering is the breakdown of rocks into smaller pieces due to natural forces.",important:false},
+{q:"List the types of mechanical weathering given in the notes.",a:"The current notes list Frost Wedging, Expansion and Contraction, and Effect of Vegetation.",important:false},
+{q:"Explain frost wedging with a neat diagram.",a:"Frost wedging occurs when water enters cracks in rocks and freezes. Freezing increases the water volume, which exerts pressure on the crack walls. Repeated action widens the crack and ultimately contributes to rock breakdown. Process: Water enters crack → freezes → volume increases → pressure develops → crack widens → rock breaks.",important:true}
+];
+const fmWeek1QA=[
+{q:"Define Fluid Mechanics.",a:"Fluid Mechanics is the branch of science which deals with the behaviour of fluids at rest and in motion.",important:true},
+{q:"Classify Fluid Mechanics into its main branches.",a:"Fluid Mechanics is broadly divided into Fluid Statics, Fluid Kinematics and Fluid Dynamics.",important:true},
+{q:"Define Fluid Statics.",a:"Fluid Statics is the study of fluids at rest.",important:false},
+{q:"Define Fluid Kinematics.",a:"Fluid Kinematics is the study of fluids in motion without considering the forces causing the motion.",important:false},
+{q:"Define Fluid Dynamics.",a:"Fluid Dynamics is the study of fluids in motion while considering the forces responsible for the motion.",important:false},
+{q:"Differentiate between Fluid Kinematics and Fluid Dynamics.",a:"Fluid Kinematics studies motion without considering the forces causing it, whereas Fluid Dynamics studies motion while considering those forces.",important:true},
+{q:"Define load.",a:"Load is an external force acting on a body.",important:false},
+{q:"Define stress.",a:"Stress is the internal resisting force developed per unit area of a body.",important:false},
+{q:"Write the expression for stress and mention its SI unit.",a:"σ = F/A, where F is force and A is area. SI unit: N/m² or Pascal (Pa).",important:true},
+{q:"Define pressure.",a:"Pressure is the normal force acting per unit area of a fluid.",important:false},
+{q:"Write the expression for pressure and mention its SI unit.",a:"P = F/A. SI unit: Pascal (Pa) or N/m².",important:false},
+{q:"Differentiate between stress and pressure.",a:"Stress is an internal resisting force per unit area of a body, while pressure is normal force per unit area of a fluid.",important:true},
+{q:"Explain the difference between a solid and a fluid.",a:"A solid can resist shear stress without continuously deforming, whereas a fluid continuously deforms when subjected to shear stress.",important:true},
+{q:"Why do fluids continuously deform under shear stress?",a:"Fluids cannot permanently resist shear stress; therefore, when shear stress acts, they continue to deform.",important:false},
+{q:"Define density.",a:"Density (ρ) is the mass of fluid per unit volume.",important:false},
+{q:"Write the formula and SI unit of density.",a:"ρ = m/V. SI unit: kg/m³.",important:true},
+{q:"Define specific volume.",a:"Specific volume is the volume occupied by unit mass of a fluid.",important:false},
+{q:"Show the relationship between specific volume and density.",a:"v = V/m = 1/ρ. Thus specific volume is the reciprocal of density.",important:true},
+{q:"Define specific weight.",a:"Specific weight (γ) is the weight of fluid per unit volume.",important:false},
+{q:"Derive the relation γ = ρg.",a:"γ = W/V. Since W = mg and ρ = m/V, γ = mg/V = ρg.",important:true},
+{q:"Define specific gravity.",a:"Specific Gravity is the ratio of the density of a fluid to the density of a standard fluid. For liquids, water is normally the standard.",important:false},
+{q:"Why does specific gravity have no unit?",a:"Specific gravity has no unit because it is a ratio of two quantities having the same unit.",important:false},
+{q:"Write the relationship between specific gravity and density.",a:"S.G. = ρ/ρwater. For liquids with water as standard, S.G. = ρ/1000 when density is in kg/m³.",important:true},
+{q:"Define viscosity.",a:"Viscosity is the property of a fluid by which it offers resistance to relative motion between adjacent layers.",important:true},
+{q:"Explain the physical significance of viscosity.",a:"Viscosity represents the internal resistance or internal friction of a fluid.",important:false},
+{q:"State Newton"s law of viscosity.",a:"According to Newton"s law of viscosity, shear stress is directly proportional to velocity gradient: τ ∝ du/dy.",important:true},
+{q:"Write and explain τ = μ(du/dy).",a:"τ = μ(du/dy), where τ is shear stress, μ is dynamic viscosity and du/dy is velocity gradient.",important:true},
+{q:"Define dynamic viscosity.",a:"Dynamic viscosity (μ) represents the resistance offered by a fluid to shear deformation.",important:false},
+{q:"Write the SI unit of dynamic viscosity.",a:"SI unit of dynamic viscosity: Pa·s or N·s/m².",important:false},
+{q:"Define kinematic viscosity.",a:"Kinematic viscosity (ν) is the ratio of dynamic viscosity to density.",important:true},
+{q:"Write the relation between dynamic viscosity and kinematic viscosity.",a:"ν = μ/ρ.",important:true},
+{q:"Write the SI unit of kinematic viscosity.",a:"SI unit of kinematic viscosity: m²/s.",important:false},
+{q:"Define velocity gradient.",a:"Velocity gradient is the rate of change of velocity with respect to distance perpendicular to the direction of flow; it is represented by du/dy.",important:true},
+{q:"Define surface tension.",a:"Surface tension (σ) is the tensile force acting on the surface of a liquid per unit length.",important:true},
+{q:"Write the SI unit of surface tension.",a:"SI unit of surface tension: N/m.",important:false},
+{q:"Explain the cause of surface tension.",a:"Surface tension occurs because molecules at the free surface experience unbalanced molecular attraction.",important:false},
+{q:"Write the expression for excess pressure inside a liquid droplet.",a:"For a liquid droplet: ΔP = 4σ/d.",important:true},
+{q:"Write the expression for excess pressure inside a soap bubble.",a:"For a soap bubble: ΔP = 8σ/d.",important:true},
+{q:"Why is the excess pressure in a soap bubble different from that in a liquid droplet?",a:"A soap bubble has two liquid surfaces, so its excess-pressure expression is ΔP = 8σ/d, compared with ΔP = 4σ/d for a liquid droplet.",important:true},
+{q:"Define capillarity.",a:"Capillarity is the rise or fall of a liquid in a small-diameter tube due to surface tension.",important:true},
+{q:"Explain capillary rise.",a:"The current material states that water generally shows capillary rise in a small-diameter tube due to surface tension.",important:false},
+{q:"Explain capillary depression.",a:"The current material states that mercury generally shows capillary depression in a small-diameter tube due to surface tension.",important:false},
+{q:"Write the expression for capillary rise or fall.",a:"h = 4σcosθ/(ρgd).",important:true},
+{q:"Explain the terms in h = 4σcosθ/(ρgd).",a:"In h = 4σcosθ/(ρgd): h is capillary rise/fall, σ surface tension, θ angle of contact, ρ liquid density, g acceleration due to gravity and d tube diameter.",important:true},
+{q:"Why does water rise in a capillary tube?",a:"The current material states that water generally shows capillary rise due to capillary action/surface tension; it does not provide a more detailed explanation.",important:false},
+{q:"Why does mercury show capillary depression?",a:"The current material states that mercury generally shows capillary depression due to capillary action/surface tension; it does not provide a more detailed explanation.",important:false},
+{q:"Convert 1 kN into N.",a:"1 kN = 1000 N.",important:false},
+{q:"Convert 1 kPa into Pa.",a:"1 kPa = 1000 Pa.",important:false},
+{q:"Convert 1 MPa into Pa.",a:"1 MPa = 10⁶ Pa.",important:false},
+{q:"Convert 1 litre into cubic metres.",a:"1 litre = 10⁻³ m³.",important:false},
+{q:"Convert 1 cm³ into cubic metres.",a:"1 cm³ = 10⁻⁶ m³.",important:false},
+{q:"Write all important formulas from the current Fluid Mechanics Week 01 notes.",a:"Density: ρ=m/V; Specific Volume: v=1/ρ; Specific Weight: γ=ρg; Specific Gravity: S.G.=ρ/ρwater; Newton"s Law of Viscosity: τ=μ(du/dy); Kinematic Viscosity: ν=μ/ρ; Liquid Droplet: ΔP=4σ/d; Soap Bubble: ΔP=8σ/d; Capillary Rise/Fall: h=4σcosθ/(ρgd).",important:true}
+];
+
+function toggleAnswer(id,btn){
+const box=document.getElementById(id);
+if(box.style.display==="block"){
+    box.style.display="none";
+    btn.innerText="Show Answer";
+}else{
+    box.style.display="block";
+    btn.innerText="Hide Answer";
+}
+}
+
+function renderQA(arr,prefix){
+let html="";
+arr.forEach((item,i)=>{
+html+=`
+<div class="question">
+<strong>Q${i+1}.</strong> ${item.q}
+${item.important ? '<span class="important-star">⭐ Important</span>' : ''}
+<br>
+<button class="answer-btn" onclick="toggleAnswer('${prefix}${i}',this)">Show Answer</button>
+<div class="answer-box" id="${prefix}${i}">
+<strong>Answer:</strong><br>${item.a}
+</div>
+</div>`;
+});
+return html;
+}
+
+function openFMQuestions(){
+currentSubject="CE2104";
+hideAll();
+document.getElementById("questionsPage").style.display="block";
+document.getElementById("questionsContent").innerHTML=`
+<h2>CE2104 — Fluid Mechanics</h2>
+<h1>Week 01 — Topic Questions & Answers</h1>
+<p>⭐ marks important questions. Click <strong>Show Answer</strong> to study the answer.</p>
+${renderQA(fmWeek1QA,"fmqa")}
+`;
+window.scrollTo(0,0);
+}
+
+/* ===============================
+FLUID MECHANICS — WEEK 01
+PYQs
+================================ */
+
+function openFMPYQ(){
+
+currentSubject="CE2104";
 
 hideAll();
 
 document.getElementById("questionsPage").style.display="block";
 
-const arr=topic===1 ? topic1Questions : topic2Questions;
+document.getElementById("questionsContent").innerHTML=`
 
-let html=`
+<h2>CE2104 — Fluid Mechanics</h2>
+<h1>Week 01 — Previous Year Questions (PYQs)</h1>
 
-<h2>Topic ${String(topic).padStart(2,"0")} — Topic Questions</h2>
+<div class="lesson-box">
+
+<h3>🎓 PYQs</h3>
 
 <p>
-These questions are prepared from your current class-note material.
+Fluid Mechanics previous year questions have not been uploaded yet.
 </p>
 
-`;
-
-arr.forEach((q,i)=>{
-
-html+=`
-
-<div class="question">
-
-<strong>Q${i+1}.</strong> ${q}
+<div class="important">
+When PYQs are provided, questions related to the topics covered up to this week will be added here.
+</div>
 
 </div>
 
 `;
 
-});
-
-document.getElementById("questionsContent").innerHTML=html;
-
 window.scrollTo(0,0);
 
+}
+
+
+function openQuestions(topic){
+currentTopic=topic;
+hideAll();
+document.getElementById("questionsPage").style.display="block";
+const arr=topic===1 ? topic1QA : topic2QA;
+document.getElementById("questionsContent").innerHTML=`
+<h2>Topic ${String(topic).padStart(2,"0")} — Topic Questions & Answers</h2>
+<p>⭐ marks important questions. Click <strong>Show Answer</strong> to study the answer.</p>
+${renderQA(arr,"eg"+topic+"qa")}
+`;
+window.scrollTo(0,0);
 }
 
 
@@ -1515,6 +2299,63 @@ e:"Repeated freezing and expansion widens cracks and contributes to breakdown of
 ];
 
 
+/* ===============================
+FLUID MECHANICS — WEEK 01 MCQs
+================================ */
+const fmWeek1MCQ=[
+{q:"Fluid Mechanics deals with:",o:["Solids only","Fluids at rest and in motion","Rocks only","Concrete only"],a:1,e:"Fluid Mechanics deals with fluids at rest and in motion."},
+{q:"The study of fluids at rest is called:",o:["Fluid Statics","Fluid Kinematics","Fluid Dynamics","Hydrology"],a:0,e:"Fluid Statics is the study of fluids at rest."},
+{q:"Fluid Kinematics studies fluid motion:",o:["Without considering the forces causing motion","Only at rest","Considering only temperature","Considering only pressure"],a:0,e:"Fluid Kinematics studies motion without considering the forces causing it."},
+{q:"Fluid Dynamics studies fluid motion:",o:["Without forces","Considering the forces responsible for motion","Only at rest","Without velocity"],a:1,e:"Fluid Dynamics considers the forces responsible for fluid motion."},
+{q:"Stress is given by:",o:["σ=A/F","σ=F/A","σ=F×A","σ=V/m"],a:1,e:"Stress is force per unit area: σ=F/A."},
+{q:"The SI unit of pressure is:",o:["kg","m³","Pascal","N·m"],a:2,e:"Pressure is measured in Pascal (Pa), equal to N/m²."},
+{q:"A fluid subjected to shear stress:",o:["Never deforms","Continuously deforms","Becomes solid immediately","Has zero mass"],a:1,e:"A fluid continuously deforms under shear stress."},
+{q:"Density is:",o:["Volume per unit mass","Mass per unit volume","Weight per unit mass","Force per unit length"],a:1,e:"Density is mass per unit volume: ρ=m/V."},
+{q:"The SI unit of density is:",o:["kg/m³","N/m³","m³/kg","N/m"],a:0,e:"Density is measured in kg/m³."},
+{q:"Specific volume is:",o:["ρg","1/ρ","ρ/1000","F/A"],a:1,e:"Specific volume is the reciprocal of density: v=1/ρ."},
+{q:"Specific weight is:",o:["γ=ρg","γ=ρ/g","γ=g/ρ","γ=m/V"],a:0,e:"Specific weight is γ=ρg."},
+{q:"Specific gravity has:",o:["Unit N/m³","Unit kg/m³","No unit","Unit Pa"],a:2,e:"Specific gravity is a ratio and therefore dimensionless."},
+{q:"For density 800 kg/m³, specific gravity is:",o:["0.8","8","80","800"],a:0,e:"S.G.=800/1000=0.8."},
+{q:"Viscosity is resistance to:",o:["Relative motion between adjacent fluid layers","Gravity only","Mass only","Volume only"],a:0,e:"Viscosity is internal resistance to relative motion between adjacent layers."},
+{q:"Newton's law of viscosity is:",o:["τ=μ(du/dy)","τ=ρg","τ=F/A only","τ=μρ"],a:0,e:"Newton's law of viscosity is τ=μ(du/dy)."},
+{q:"The SI unit of dynamic viscosity is:",o:["m²/s","Pa·s","kg/m³","N/m"],a:1,e:"Dynamic viscosity is measured in Pa·s or N·s/m²."},
+{q:"Kinematic viscosity is:",o:["ν=μρ","ν=μ/ρ","ν=ρ/μ","ν=ρg"],a:1,e:"Kinematic viscosity is ν=μ/ρ."},
+{q:"The SI unit of kinematic viscosity is:",o:["Pa·s","m²/s","N/m","kg/m³"],a:1,e:"Kinematic viscosity is measured in m²/s."},
+{q:"Velocity gradient is represented by:",o:["du/dy","ρg","F/A","m/V"],a:0,e:"Velocity gradient is du/dy."},
+{q:"Surface tension is force per unit:",o:["Area","Volume","Length","Mass"],a:2,e:"Surface tension is force per unit length."},
+{q:"The SI unit of surface tension is:",o:["N/m","N/m²","kg/m³","m²/s"],a:0,e:"Surface tension is measured in N/m."},
+{q:"Excess pressure inside a liquid droplet is:",o:["2σ/d","4σ/d","8σ/d","σd"],a:1,e:"For a liquid droplet, ΔP=4σ/d."},
+{q:"Excess pressure inside a soap bubble is:",o:["2σ/d","4σ/d","8σ/d","16σ/d"],a:2,e:"For a soap bubble, ΔP=8σ/d."},
+{q:"Capillarity is rise or fall of liquid in:",o:["A small-diameter tube","A solid bar","A vacuum only","A concrete cube"],a:0,e:"Capillarity occurs in a small-diameter tube due to surface tension."},
+{q:"Water generally shows:",o:["Capillary depression","Capillary rise","No surface tension","Zero density"],a:1,e:"Water generally shows capillary rise."},
+{q:"Mercury generally shows:",o:["Capillary rise","Capillary depression","Zero viscosity","Zero pressure"],a:1,e:"Mercury generally shows capillary depression."},
+{q:"1 kN equals:",o:["10 N","100 N","1000 N","10000 N"],a:2,e:"1 kN=1000 N."},
+{q:"1 MPa equals:",o:["10³ Pa","10⁴ Pa","10⁵ Pa","10⁶ Pa"],a:3,e:"1 MPa=10⁶ Pa."},
+{q:"1 litre equals:",o:["10⁻¹ m³","10⁻² m³","10⁻³ m³","10⁻⁶ m³"],a:2,e:"1 litre=10⁻³ m³."},
+{q:"1 cm³ equals:",o:["10⁻³ m³","10⁻⁴ m³","10⁻⁵ m³","10⁻⁶ m³"],a:3,e:"1 cm³=10⁻⁶ m³."}
+];
+
+let quizMode="geology";
+
+function startFMQuiz(){
+currentSubject="CE2104";
+quizMode="fluid";
+quizQuestions=fmWeek1MCQ;
+quizIndex=0;
+selected=null;
+correct=0;
+answered=false;
+hideAll();
+document.getElementById("quizPage").style.display="block";
+showQuestion();
+window.scrollTo(0,0);
+}
+
+function restartCurrentQuiz(){
+if(quizMode==="fluid"){startFMQuiz();}
+else{startQuiz(currentTopic);}
+}
+
 let quizQuestions=[];
 let quizIndex=0;
 let selected=null;
@@ -1525,6 +2366,7 @@ let answered=false;
 function startQuiz(topic){
 
 currentTopic=topic;
+quizMode="geology";
 
 quizQuestions=topic===1 ? topic1MCQ : topic2MCQ;
 
@@ -1728,7 +2570,7 @@ ${correct} / ${total}
 
 <button
 class="action"
-onclick="startQuiz(${currentTopic})">
+onclick="restartCurrentQuiz()">
 
 Try Again
 
