@@ -3,172 +3,355 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Civil Engineering MCQ Portal</title>
+
+<title>Civil Engineering Learning Portal</title>
 
 <style>
 *{box-sizing:border-box}
+
 body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:#f4f6f9;
-  color:#1f2937;
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f5f7fa;
+    color:#1f2937;
+    line-height:1.6;
 }
+
 header{
-  background:#0f3d66;
-  color:white;
-  padding:22px 15px;
-  text-align:center;
+    background:#0f3d66;
+    color:white;
+    padding:22px;
+    text-align:center;
 }
-header h1{margin:0;font-size:26px}
-header p{margin:7px 0 0;opacity:.9}
-.container{max-width:1100px;margin:auto;padding:25px 15px}
-.title{text-align:center;margin-bottom:25px}
-.title p{color:#6b7280}
-.subjects{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:18px;
+
+header h1{
+    margin:0;
+    font-size:27px;
 }
-.card{
-  background:white;
-  border:1px solid #e5e7eb;
-  border-radius:12px;
-  padding:22px;
-  cursor:pointer;
-  transition:.2s;
+
+header p{
+    margin:5px 0 0;
+    opacity:.9;
 }
-.card:hover{
-  transform:translateY(-3px);
-  box-shadow:0 8px 20px rgba(0,0,0,.1);
+
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:25px 15px;
 }
-.code{color:#0f3d66;font-size:14px;font-weight:bold}
-.type{
-  display:inline-block;
-  background:#e8f1f8;
-  color:#0f3d66;
-  padding:5px 10px;
-  border-radius:20px;
-  font-size:12px;
-}
+
 .page{display:none}
-.back{
-  border:0;
-  background:#0f3d66;
-  color:white;
-  padding:10px 16px;
-  border-radius:7px;
-  cursor:pointer;
-  margin-bottom:18px;
+
+.subject-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:18px;
 }
+
+.card{
+    background:white;
+    border-radius:12px;
+    padding:20px;
+    border:1px solid #e5e7eb;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 6px 18px rgba(0,0,0,.1);
+}
+
+.code{
+    color:#0f3d66;
+    font-weight:bold;
+    font-size:14px;
+}
+
+.badge{
+    display:inline-block;
+    background:#e8f1f8;
+    color:#0f3d66;
+    border-radius:20px;
+    padding:4px 10px;
+    font-size:12px;
+}
+
 .topic{
-  background:white;
-  border-radius:12px;
-  padding:22px;
-  border:1px solid #e5e7eb;
-  margin-top:18px;
+    background:white;
+    border-radius:12px;
+    border:1px solid #e5e7eb;
+    padding:22px;
+    margin:18px 0;
 }
-.start{
-  background:#0f3d66;
-  color:white;
-  border:0;
-  padding:12px 20px;
-  border-radius:8px;
-  cursor:pointer;
-  font-weight:bold;
+
+.topic-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:15px;
 }
+
+button{
+    cursor:pointer;
+}
+
+.main-btn{
+    border:0;
+    background:#0f3d66;
+    color:white;
+    padding:11px 16px;
+    border-radius:7px;
+    font-weight:bold;
+}
+
+.secondary-btn{
+    border:1px solid #0f3d66;
+    background:white;
+    color:#0f3d66;
+    padding:10px 15px;
+    border-radius:7px;
+    font-weight:bold;
+}
+
+.back{
+    border:0;
+    background:#374151;
+    color:white;
+    padding:10px 15px;
+    border-radius:7px;
+    margin-bottom:18px;
+}
+
+.lesson{
+    max-width:850px;
+    margin:auto;
+}
+
+.lesson-box{
+    background:white;
+    padding:22px;
+    margin:16px 0;
+    border-radius:12px;
+    border:1px solid #e5e7eb;
+}
+
+.lesson-box h3{
+    color:#0f3d66;
+    margin-top:0;
+}
+
+.definition{
+    background:#eef6fc;
+    border-left:5px solid #0f3d66;
+    padding:14px;
+    margin:12px 0;
+}
+
+.important{
+    background:#fff8e6;
+    border-left:5px solid #d97706;
+    padding:14px;
+    margin:12px 0;
+}
+
+.diagram{
+    background:#f9fafb;
+    border:2px dashed #9ca3af;
+    border-radius:10px;
+    padding:20px;
+    text-align:center;
+    margin:18px 0;
+}
+
+.flow{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:8px;
+    margin:15px 0;
+}
+
+.flow span{
+    background:#e8f1f8;
+    border:1px solid #9dbbd3;
+    padding:9px 12px;
+    border-radius:7px;
+    font-weight:bold;
+}
+
+.question{
+    background:white;
+    padding:18px;
+    margin:12px 0;
+    border-radius:10px;
+    border:1px solid #e5e7eb;
+}
+
 .quizbox{
-  max-width:760px;
-  margin:auto;
-  background:white;
-  padding:25px;
-  border-radius:14px;
-  box-shadow:0 4px 16px rgba(0,0,0,.08);
+    max-width:760px;
+    margin:auto;
+    background:white;
+    padding:25px;
+    border-radius:14px;
+    box-shadow:0 4px 16px rgba(0,0,0,.08);
 }
-.progress{color:#6b7280;font-size:14px;margin-bottom:15px}
+
 .option{
-  display:block;
-  width:100%;
-  text-align:left;
-  margin:10px 0;
-  padding:14px;
-  border:2px solid #e5e7eb;
-  background:white;
-  border-radius:9px;
-  cursor:pointer;
-  font-size:15px;
+    display:block;
+    width:100%;
+    text-align:left;
+    padding:14px;
+    margin:10px 0;
+    background:white;
+    border:2px solid #e5e7eb;
+    border-radius:9px;
 }
-.option.selected{border-color:#0f3d66;background:#eef5fb}
-.option.correct{border-color:#16a34a;background:#ecfdf3}
-.option.wrong{border-color:#dc2626;background:#fef2f2}
+
+.option.selected{
+    border-color:#0f3d66;
+    background:#eef6fc;
+}
+
+.option.correct{
+    border-color:#16a34a;
+    background:#ecfdf3;
+}
+
+.option.wrong{
+    border-color:#dc2626;
+    background:#fef2f2;
+}
+
 .action{
-  margin-top:18px;
-  width:100%;
-  padding:13px;
-  border:0;
-  border-radius:8px;
-  background:#0f3d66;
-  color:white;
-  font-weight:bold;
-  cursor:pointer;
+    width:100%;
+    margin-top:15px;
+    padding:13px;
+    border:0;
+    border-radius:8px;
+    background:#0f3d66;
+    color:white;
+    font-weight:bold;
 }
-.action:disabled{background:#9ca3af;cursor:not-allowed}
+
+.action:disabled{
+    background:#9ca3af;
+}
+
 .feedback{
-  display:none;
-  margin-top:18px;
-  padding:15px;
-  border-radius:9px;
-  line-height:1.6;
+    display:none;
+    padding:15px;
+    border-radius:9px;
+    margin-top:15px;
 }
-.result{text-align:center}
+
+.progress{
+    color:#6b7280;
+    margin-bottom:12px;
+}
+
 .score{
-  font-size:42px;
-  font-weight:bold;
-  color:#0f3d66;
-  margin:15px 0;
+    font-size:45px;
+    color:#0f3d66;
+    font-weight:bold;
 }
+
 .empty{
-  border:2px dashed #d1d5db;
-  padding:35px;
-  text-align:center;
-  color:#6b7280;
-  border-radius:10px;
-  margin-top:20px;
+    background:white;
+    padding:30px;
+    text-align:center;
+    border:2px dashed #d1d5db;
+    border-radius:12px;
+    color:#6b7280;
 }
-footer{text-align:center;padding:30px;color:#6b7280}
+
+footer{
+    text-align:center;
+    color:#6b7280;
+    padding:30px;
+}
+
+@media(max-width:600px){
+    header h1{font-size:22px}
+    .topic-buttons button{width:100%}
+}
 </style>
 </head>
 
 <body>
 
 <header>
-<h1>Civil Engineering MCQ Portal</h1>
-<p>Daily Topic Practice • Revision • Self Assessment</p>
+<h1>Civil Engineering Learning Portal</h1>
+<p>Learn • Revise • Practice • Test Yourself</p>
 </header>
 
 <div class="container">
 
+<!-- HOME -->
+
 <div id="home">
-<div class="title">
-<h2>Select Your Subject</h2>
-<p>Choose a subject to view available topics.</p>
+<h2>Select Subject</h2>
+<p>Select your subject to view the available class topics.</p>
+
+<div class="subject-grid" id="subjects"></div>
 </div>
 
-<div class="subjects" id="subjectList"></div>
-</div>
+
+<!-- SUBJECT -->
 
 <div id="subjectPage" class="page">
-<button class="back" onclick="showHome()">← Back to Subjects</button>
+<button class="back" onclick="showHome()">← Subjects</button>
 <div id="subjectContent"></div>
 </div>
 
+
+<!-- LEARN -->
+
+<div id="learnPage" class="page">
+<button class="back" onclick="returnTopic()">← Back to Topic</button>
+<div class="lesson" id="learnContent"></div>
+</div>
+
+
+<!-- QUESTIONS -->
+
+<div id="questionsPage" class="page">
+<button class="back" onclick="returnTopic()">← Back to Topic</button>
+<div class="lesson" id="questionsContent"></div>
+</div>
+
+
+<!-- PYQ -->
+
+<div id="pyqPage" class="page">
+<button class="back" onclick="returnTopic()">← Back to Topic</button>
+
+<div class="lesson">
+<h2>Previous Year Questions</h2>
+
+<div class="empty">
+<h3>PYQs Not Added Yet</h3>
+<p>Your actual previous-year questions will be added here when you provide them.</p>
+</div>
+
+</div>
+</div>
+
+
+<!-- QUIZ -->
+
 <div id="quizPage" class="page">
-<button class="back" onclick="backToSubject()">← Back to Topic</button>
+<button class="back" onclick="returnTopic()">← Back to Topic</button>
 <div class="quizbox" id="quizBox"></div>
 </div>
 
 </div>
 
-<footer>Civil Engineering MCQ Practice Portal</footer>
+<footer>
+Civil Engineering Learning & MCQ Practice Portal
+</footer>
+
 
 <script>
 
@@ -183,420 +366,1391 @@ const subjects=[
 ["CE2703","Concrete Technology Lab","Laboratory"]
 ];
 
-const egQuestions=[
-{
-q:"Which branch of geology mainly deals with the physical processes and changes affecting the Earth?",
-o:["Mineralogy","Physical Geology","Petrology","Geochemistry"],
-a:1,
-e:"Physical geology studies the physical processes and changes that affect the Earth."
-},
-{
-q:"Physical Geology is also commonly associated with which term?",
-o:["Dynamic Geology","Economic Geology","Historical Geology","Mining Geology"],
-a:0,
-e:"Physical geology is commonly associated with dynamic geology because it considers active geological processes."
-},
-{
-q:"Which of the following is an example of a geological process studied under Physical Geology?",
-o:["Tax calculation","Weathering","Concrete mix design","Steel fabrication"],
-a:1,
-e:"Weathering is a natural geological process affecting rocks and the Earth's surface."
-},
-{
-q:"The scientific study of landforms and the processes that shape them is called:",
-o:["Geomorphology","Mineralogy","Palaeontology","Geochemistry"],
-a:0,
-e:"Geomorphology specifically deals with landforms and the processes responsible for their development."
-},
-{
-q:"Which branch of geology deals primarily with minerals?",
-o:["Petrology","Mineralogy","Historical Geology","Structural Geology"],
-a:1,
-e:"Mineralogy is the scientific study of minerals."
-},
-{
-q:"Mineralogy includes the study of a mineral's:",
-o:["Formation, composition, properties and occurrence","Traffic capacity only","Concrete strength only","Rainfall only"],
-a:0,
-e:"Mineralogy deals with the formation, composition, occurrence, properties, types and uses of minerals."
-},
-{
-q:"Which branch of geology is concerned with rocks?",
-o:["Petrology","Mineralogy","Geophysics","Geohydrology"],
-a:0,
-e:"Petrology is the scientific study of rocks."
-},
-{
-q:"Petrology includes the study of:",
-o:["Origin, texture, structure and composition of rocks","Only fossils","Only groundwater","Only earthquakes"],
-a:0,
-e:"Petrology deals with the origin, occurrence, structure, texture, composition and classification of rocks."
-},
-{
-q:"Which branch studies the deformation and structural features of rocks?",
-o:["Structural Geology","Economic Geology","Mineralogy","Geochemistry"],
-a:0,
-e:"Structural geology deals with rock deformation and geological structures."
-},
-{
-q:"Which of the following is studied in Structural Geology?",
-o:["Folds","Faults","Joints","All of these"],
-a:3,
-e:"Folds, faults and joints are important geological structures studied in structural geology."
-},
-{
-q:"Folds and faults are commonly associated with:",
-o:["Tectonic forces","Concrete curing","Water treatment","Traffic flow"],
-a:0,
-e:"Tectonic forces can deform rock masses and produce structures such as folds and faults."
-},
-{
-q:"Which branch of geology deals with the chronological history of the Earth?",
-o:["Historical Geology","Mining Geology","Mineralogy","Geophysics"],
-a:0,
-e:"Historical geology studies Earth's geological history and the sequence of geological events."
-},
-{
-q:"The study of fossils is known as:",
-o:["Petrology","Palaeontology","Geophysics","Geochemistry"],
-a:1,
-e:"Palaeontology is the scientific study of fossils and ancient life."
-},
-{
-q:"Palaeontology helps us understand:",
-o:["Ancient plant and animal life","Only concrete materials","Only groundwater pressure","Only bridge loads"],
-a:0,
-e:"Fossils provide evidence about organisms that lived in the geological past."
-},
-{
-q:"Which branch deals with economically useful geological materials and mineral deposits?",
-o:["Economic Geology","Physical Geology","Historical Geology","Palaeontology"],
-a:0,
-e:"Economic geology studies geological materials and deposits having economic importance."
-},
-{
-q:"Engineering Geology is best described as:",
-o:["Application of geology to engineering works","Study of stars","Study of machines","Study of computer networks"],
-a:0,
-e:"Engineering geology applies geological knowledge to the planning, design and construction of engineering works."
-},
-{
-q:"Engineering geology is particularly important for:",
-o:["Dams, bridges, tunnels and foundations","Only electronic circuits","Only accounting","Only programming"],
-a:0,
-e:"Geological conditions strongly influence civil engineering structures such as dams, bridges, tunnels and foundations."
-},
-{
-q:"Which branch applies geological knowledge to exploration and mining of mineral deposits?",
-o:["Mining Geology","Historical Geology","Geohydrology","Physical Geology"],
-a:0,
-e:"Mining geology applies geological principles to mineral exploration and mining."
-},
-{
-q:"Mining Geology includes the study of:",
-o:["Characteristics and geometry of ore bodies","Only rainfall","Only river velocity","Only concrete curing"],
-a:0,
-e:"Understanding the nature, occurrence and geometry of ore bodies is important in mining geology."
-},
-{
-q:"Which branch applies physical principles to investigate the Earth?",
-o:["Geophysics","Mineralogy","Petrology","Palaeontology"],
-a:0,
-e:"Geophysics studies the Earth using physical properties and physical principles."
-},
-{
-q:"Geophysical methods can be useful for:",
-o:["Subsurface investigation","Only painting buildings","Only cement mixing","Only brick laying"],
-a:0,
-e:"Geophysical methods are widely used to investigate subsurface geological conditions."
-},
-{
-q:"Geohydrology or Hydrogeology primarily deals with:",
-o:["Groundwater","Fossils","Ore bodies only","Rock texture only"],
-a:0,
-e:"Hydrogeology studies the occurrence, distribution and movement of groundwater."
-},
-{
-q:"Which property describes the amount of void space present in a rock or soil?",
-o:["Porosity","Hardness","Colour","Specific heat"],
-a:0,
-e:"Porosity represents the proportion of void spaces in a geological material."
-},
-{
-q:"Which property indicates the ability of a geological material to transmit water?",
-o:["Permeability","Colour","Hardness","Lustre"],
-a:0,
-e:"Permeability indicates how readily water can move through connected pores or openings."
-},
-{
-q:"Groundwater movement is strongly influenced by:",
-o:["Porosity and permeability","Paint colour","Building height only","Traffic speed"],
-a:0,
-e:"Porosity and permeability are fundamental properties controlling groundwater storage and movement."
-},
-{
-q:"Which branch studies the chemical composition of Earth materials?",
-o:["Geochemistry","Structural Geology","Historical Geology","Geophysics"],
-a:0,
-e:"Geochemistry deals with the chemical composition and distribution of elements in Earth materials."
-},
-{
-q:"Geochemistry includes the study of elements present in:",
-o:["Minerals and rocks","Only steel structures","Only concrete beams","Only vehicles"],
-a:0,
-e:"Geochemistry studies the occurrence and distribution of chemical elements in minerals, rocks and other Earth materials."
-},
-{
-q:"Before constructing a major civil engineering structure, geology helps engineers primarily to:",
-o:["Understand site and foundation conditions","Choose wall paint","Design logos","Prepare attendance"],
-a:0,
-e:"Geological investigation helps assess whether the ground and foundation conditions are suitable for construction."
-},
-{
-q:"Knowledge of geology helps civil engineers select:",
-o:["Suitable construction materials","Only computer software","Only electrical wiring","Only furniture"],
-a:0,
-e:"Geological knowledge helps identify and evaluate natural construction materials such as stone and aggregates."
-},
-{
-q:"Geological investigation is particularly important in tunnel construction because engineers must understand:",
-o:["Rock and structural conditions","Only tunnel colour","Only vehicle registration","Only lighting bills"],
-a:0,
-e:"Rock type, joints, faults, groundwater and other geological conditions affect tunnel stability and construction."
-},
-{
-q:"Which civil engineering works require geological knowledge for foundation assessment?",
-o:["Dams","Bridges","Buildings","All of these"],
-a:3,
-e:"Dams, bridges and buildings all depend on suitable and stable foundation conditions."
-},
-{
-q:"Geology is useful in road construction mainly because it helps engineers understand:",
-o:["Ground and rock conditions along the alignment","Only road signs","Only vehicle colours","Only fuel prices"],
-a:0,
-e:"Geological conditions influence excavation, slope stability, drainage and foundation performance along roads."
-},
-{
-q:"Knowledge of groundwater is important to civil engineering because groundwater can affect:",
-o:["Excavations and foundations","Only building names","Only drawing titles","Only traffic signals"],
-a:0,
-e:"Groundwater conditions can significantly affect excavation stability, seepage and foundation behaviour."
-},
-{
-q:"Erosion refers generally to:",
-o:["Removal and transport of Earth materials","Formation of cement","Painting of structures","Testing of steel"],
-a:0,
-e:"Erosion involves the removal and transport of soil, rock or weathered material by natural agents."
-},
-{
-q:"Deposition occurs when transported geological material is:",
-o:["Laid down or accumulated","Completely evaporated","Converted to steel","Electrically charged"],
-a:0,
-e:"Deposition is the laying down or accumulation of transported sediment."
-},
-{
-q:"Geological maps are useful to civil engineers because they show:",
-o:["Distribution and relationships of geological features","Only road traffic","Only building prices","Only rainfall totals"],
-a:0,
-e:"Geological maps provide information about rock units and geological structures over an area."
-},
-{
-q:"A geological section primarily represents:",
-o:["Subsurface geological relationships along a section line","Only a building elevation","Only a road sign","Only a laboratory table"],
-a:0,
-e:"A geological cross-section helps visualise geological structures and rock units below the ground surface."
-},
-{
-q:"Which geological features can create difficulties for civil engineering structures?",
-o:["Faults, folds and joints","Only clouds","Only sunlight","Only vegetation colour"],
-a:0,
-e:"Faults, folds and joints can affect rock strength, stability, seepage and foundation conditions."
-},
-{
-q:"A preliminary geological survey before construction can help:",
-o:["Identify potential geological problems early","Guarantee zero project cost","Remove the need for engineering design","Eliminate all construction materials"],
-a:0,
-e:"Early geological investigation can identify adverse conditions before detailed design and construction."
-},
-{
-q:"One economic benefit of geological investigation is that it can:",
-o:["Reduce avoidable planning and construction costs","Always make construction free","Eliminate labour completely","Remove all design requirements"],
-a:0,
-e:"Identifying geological problems early can reduce avoidable redesign, delays and unsuitable construction decisions."
+let currentSubject="CE2101";
+let currentTopic=1;
+
+function buildSubjects(){
+
+let html="";
+
+subjects.forEach(s=>{
+
+html+=`
+<div class="card" onclick="openSubject('${s[0]}')">
+<span class="code">${s[0]}</span>
+<h3>${s[1]}</h3>
+<span class="badge">${s[2]}</span>
+</div>
+`;
+
+});
+
+document.getElementById("subjects").innerHTML=html;
+
 }
+
+function hideAll(){
+
+["home","subjectPage","learnPage","questionsPage","pyqPage","quizPage"]
+.forEach(id=>document.getElementById(id).style.display="none");
+
+}
+
+function showHome(){
+
+hideAll();
+document.getElementById("home").style.display="block";
+window.scrollTo(0,0);
+
+}
+
+function openSubject(code){
+
+currentSubject=code;
+
+hideAll();
+
+document.getElementById("subjectPage").style.display="block";
+
+const subject=subjects.find(s=>s[0]===code);
+
+let html=`
+<span class="code">${subject[0]}</span>
+<h2>${subject[1]}</h2>
+`;
+
+if(code==="CE2101"){
+
+html+=`
+
+<div class="topic">
+
+<span class="code">TOPIC 01</span>
+
+<h3>Branches of Geology & Importance in Civil Engineering</h3>
+
+<p>
+Introduction to major branches of geology and their importance in Civil Engineering.
+</p>
+
+<div class="topic-buttons">
+
+<button class="main-btn"
+onclick="openLearn(1)">
+📖 Learn Topic
+</button>
+
+<button class="secondary-btn"
+onclick="openQuestions(1)">
+📝 Topic Questions
+</button>
+
+<button class="secondary-btn"
+onclick="openPYQ(1)">
+🎓 PYQs
+</button>
+
+<button class="secondary-btn"
+onclick="startQuiz(1)">
+✅ Practice MCQs
+</button>
+
+</div>
+
+</div>
+
+
+<div class="topic">
+
+<span class="code">TOPIC 02</span>
+
+<h3>Geological Agents & Weathering of Rocks</h3>
+
+<p>
+Geological agents, exogenous and endogenous agents, weathering and mechanical weathering.
+</p>
+
+<div class="topic-buttons">
+
+<button class="main-btn"
+onclick="openLearn(2)">
+📖 Learn Topic
+</button>
+
+<button class="secondary-btn"
+onclick="openQuestions(2)">
+📝 Topic Questions
+</button>
+
+<button class="secondary-btn"
+onclick="openPYQ(2)">
+🎓 PYQs
+</button>
+
+<button class="secondary-btn"
+onclick="startQuiz(2)">
+✅ Practice MCQs
+</button>
+
+</div>
+
+</div>
+`;
+
+}else{
+
+html+=`
+
+<div class="empty">
+
+<h3>Topics Coming Soon</h3>
+
+<p>
+Your running class notes will be added here week by week.
+</p>
+
+</div>
+`;
+
+}
+
+document.getElementById("subjectContent").innerHTML=html;
+
+window.scrollTo(0,0);
+
+}
+
+
+function returnTopic(){
+openSubject(currentSubject);
+}
+
+
+/* ===============================
+TOPIC 01 LEARNING MATERIAL
+================================ */
+
+function topic1Learn(){
+
+return `
+
+<h2>Topic 01</h2>
+
+<h1>Branches of Geology & Importance in Civil Engineering</h1>
+
+<div class="lesson-box">
+
+<h3>1. Physical Geology</h3>
+
+<div class="definition">
+
+<strong>Definition:</strong>
+
+Physical geology deals with the different physical features of the Earth and the changes occurring on the Earth's surface.
+
+</div>
+
+<p>
+The notes associate Physical Geology with Dynamic Geology and geomorphology.
+</p>
+
+<p>
+It includes the study of features such as:
+</p>
+
+<ul>
+<li>Mountains</li>
+<li>Rivers</li>
+<li>Lakes</li>
+<li>Glaciers</li>
+<li>Volcanoes</li>
+</ul>
+
+<p>
+It also considers natural phenomena and surface-changing processes such as landslides, earthquakes, weathering, wind, glaciers, oceans and groundwater.
+</p>
+
+</div>
+
+
+<div class="lesson-box">
+
+<h3>2. Mineralogy</h3>
+
+<div class="definition">
+
+<strong>Definition:</strong>
+
+Mineralogy deals with the study of minerals.
+
+</div>
+
+<p>The study includes:</p>
+
+<ul>
+<li>Mode of formation</li>
+<li>Composition</li>
+<li>Occurrence</li>
+<li>Types</li>
+<li>Associated properties</li>
+<li>Uses</li>
+</ul>
+
+</div>
+
+
+<div class="lesson-box">
+
+<h3>3. Petrology</h3>
+
+<div class="definition">
+
+<strong>Petro = Rock</strong><br>
+<strong>Logy = Study</strong>
+
+</div>
+
+<p>
+Petrology deals with the study of rocks.
+</p>
+
+<p>
+The Earth's crust is called the lithosphere and is made up of different types of rocks.
+</p>
+
+<p>Petrology deals with:</p>
+
+<ul>
+<li>Formation of rocks</li>
+<li>Structure</li>
+<li>Texture</li>
+<li>Composition</li>
+<li>Occurrence</li>
+<li>Types of rocks</li>
+</ul>
+
+</div>
+
+
+<div class="lesson-box">
+
+<h3>4. Structural Geology</h3>
+
+<div class="definition">
+
+Structural geology deals with deformation and disturbance of rocks under tectonic forces.
+
+</div>
+
+<p>
+These processes result in geological structures such as:
+</p>
+
+<ul>
+<li>Folds</li>
+<li>Faults</li>
+<li>Joints</li>
+<li>Unconformities</li>
+</ul>
+
+<div class="diagram">
+
+<strong>Simple Concept Diagram</strong>
+
+<div class="flow">
+<span>Tectonic Forces</span>
+<span>→</span>
+<span>Rock Deformation</span>
+<span>→</span>
+<span>Folds / Faults / Joints</span>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="lesson-box">
+
+<h3>5. Historical Geology</h3>
+
+<div class="definition">
+
+Historical geology deals with the history of the Earth through geological records.
+
+</div>
+
+<p>
+Investigation of sedimentary rocks can reveal the chronological sequence of:
+</p>
+
+<ul>
+<li>Rock formation</li>
+<li>Evolution</li>
+<li>Migration of plants</li>
+<li>Migration of animals</li>
+<li>Different periods of Earth's history</li>
+</ul>
+
+</div>
+
+
+<div class="lesson-box">
+
+<h3>6. Palaeontology</h3>
+
+<div class="definition">
+
+Palaeontology deals with fossils and the study of ancient life.
+
+</div>
+
+<p>
+Under favourable conditions, remains of plants and animals may become embedded in sediments and preserved partly or completely.
+</p>
+
+<p>
+Such naturally preserved remains of ancient life are called <strong>fossils</strong>.
+</p>
+
+<p>Palaeontology studies:</p>
+
+<ul>
+<li>Formation of fossils</li>
+<li>Types of fossils</li>
+<li>Occurrence of fossils</li>
+</ul>
+
+</div>
+
+
+<div class="lesson-box">
+
+<h3>7. Economic Geology</h3>
+
+<div class="definition">
+
+Economic geology deals with economically valuable geological and mineral deposits.
+
+</div>
+
+<p>
+The notes highlight that the prosperity of a nation can depend considerably on economically useful mineral deposits.
+</p>
+
+<p>
+Example mentioned in the notes: Gulf countries and oil deposits.
+</p>
+
+</div>
+
+
+<div class="lesson-box">
+
+<h3>8. Engineering Geology</h3>
+
+<div class="definition">
+
+Engineering geology deals with the application of geological knowledge in Civil Engineering.
+
+</div>
+
+<p>
+Its purpose is to help in the execution of safe, stable and economical construction.
+</p>
+
+<p>Examples:</p>
+
+<ul>
+<li>Dams</li>
+<li>Bridges</li>
+<li>Tunnels</li>
+</ul>
+
+</div>
+
+
+<div class="lesson-box">
+
+<h3>9. Mining Geology</h3>
+
+<div class="definition">
+
+Mining geology deals with the application of geological knowledge in the field of mining.
+
+</div>
+
+<p>A mining engineer should understand:</p>
+
+<ul>
+<li>Mode of occurrence of ores</li>
+<li>Associated properties</li>
+<li>Depth</li>
+<li>Direction / strike</li>
+<li>Inclination / dip</li>
+<li>Thickness</li>
+<li>Ore bodies</li>
+</ul>
+
+</div>
+
+
+<div class="lesson-box">
+
+<h3>10. Geophysics</h3>
+
+<div class="definition">
+
+Geophysics deals with the physical properties of the Earth.
+
+</div>
+
+<p>
+The notes mention properties such as density and magnetism of the Earth.
+</p>
+
+<p>
+The notes divide it into:
+</p>
+
+<ul>
+<li>Pure Geophysics</li>
+<li>Exploration Geophysics</li>
+</ul>
+
+</div>
+
+
+<div class="lesson-box">
+
+<h3>11. Geohydrology / Hydrogeology</h3>
+
+<div class="definition">
+
+Geohydrology deals with the occurrence, movement, nature, quality and quantity of groundwater in an area.
+
+</div>
+
+<p>Groundwater behaviour is related to:</p>
+
+<ul>
+<li>Porosity</li>
+<li>Permeability</li>
+<li>Structure</li>
+<li>Texture</li>
+<li>Composition</li>
+</ul>
+
+</div>
+
+
+<div class="lesson-box">
+
+<h3>12. Geochemistry</h3>
+
+<div class="definition">
+
+Geochemistry deals with the chemical composition of minerals and rocks.
+
+</div>
+
+<p>
+It also deals with occurrence, distribution, abundance and mobility of chemical constituents.
+</p>
+
+</div>
+
+
+<div class="lesson-box">
+
+<h2>Importance of Geology in Civil Engineering</h2>
+
+<ol>
+
+<li>
+Before construction, proper site selection is important from the point of view of foundation stability.
+</li>
+
+<li>
+Geology provides systematic knowledge of construction materials and their properties.
+</li>
+
+<li>
+Knowledge of the nature of rocks is useful in tunnelling and road construction.
+</li>
+
+<li>
+Foundation problems of dams, bridges and buildings are directly related to the geology of the area.
+</li>
+
+<li>
+Groundwater knowledge is necessary for excavation works, water supply, irrigation and other purposes.
+</li>
+
+<li>
+Knowledge of erosion, transportation and deposition by surface water helps in soil conservation and river control.
+</li>
+
+<li>
+Geological maps and sections help considerably in planning engineering projects.
+</li>
+
+<li>
+Geological features such as faults, folds and joints should be suitably treated to maintain stability of rock structures.
+</li>
+
+<li>
+A preliminary geological survey of the concerned area can reduce unnecessary planning costs.
+</li>
+
+</ol>
+
+<div class="important">
+
+<strong>Exam Important:</strong>
+
+The importance of geology in Civil Engineering is a major descriptive question in your current notes.
+
+</div>
+
+</div>
+
+`;
+
+}
+
+
+/* ===============================
+TOPIC 02 LEARNING MATERIAL
+================================ */
+
+function topic2Learn(){
+
+return `
+
+<h2>Topic 02</h2>
+
+<h1>Geological Agents & Weathering of Rocks</h1>
+
+
+<div class="lesson-box">
+
+<h3>Geological Agents</h3>
+
+<div class="definition">
+
+The natural forces responsible for visible changes on the Earth's surface are called <strong>geological agents</strong>.
+
+</div>
+
+<p>
+Based on their origin, geological agents are grouped into two types:
+</p>
+
+<div class="flow">
+
+<span>Geological Agents</span>
+<span>→</span>
+<span>Exogenous</span>
+
+<span>+</span>
+
+<span>Endogenous</span>
+
+</div>
+
+</div>
+
+
+<div class="lesson-box">
+
+<h3>1. Exogenous Geological Agents</h3>
+
+<p>
+According to the notes, these agents originate on the Earth's surface and generally work slowly and steadily.
+</p>
+
+<p>
+They act on topographical irregularities of the Earth's surface.
+</p>
+
+<h4>Sequence of Geological Work</h4>
+
+<div class="diagram">
+
+<div class="flow">
+
+<span>Erosion</span>
+<span>→</span>
+<span>Transportation</span>
+<span>→</span>
+<span>Deposition</span>
+
+</div>
+
+</div>
+
+<p>
+The notes explain that erosion causes destruction or wearing away of land masses, while deposition fills or reduces depressions such as pits, lakes and valleys.
+</p>
+
+<p>
+Examples mentioned include Himalayan rivers such as the Ganga, Indus and Brahmaputra.
+</p>
+
+</div>
+
+
+<div class="lesson-box">
+
+<h3>2. Endogenous Geological Agents</h3>
+
+<div class="definition">
+
+Endogenous geological agents originate below the Earth's surface.
+
+</div>
+
+<p>
+The notes describe their nature, origin and function as opposite to exogenous geological agents.
+</p>
+
+<p>
+They may act suddenly and create topographical irregularities.
+</p>
+
+<p>Examples written in the notes include:</p>
+
+<ul>
+<li>Volcanoes</li>
+<li>Earthquakes</li>
+<li>Tectonic forces</li>
+<li>Tsunamis</li>
+</ul>
+
+</div>
+
+
+<div class="lesson-box">
+
+<h2>Weathering of Rocks</h2>
+
+<div class="definition">
+
+Weathering is the process by which rocks are broken down and decomposed by the action of external agencies such as wind, rivers, rain, temperature changes and other natural actions.
+
+</div>
+
+<p>The notes classify weathering into three types:</p>
+
+<div class="flow">
+
+<span>Weathering</span>
+<span>→</span>
+<span>Mechanical</span>
+
+<span>+</span>
+
+<span>Chemical</span>
+
+<span>+</span>
+
+<span>Biological</span>
+
+</div>
+
+</div>
+
+
+<div class="lesson-box">
+
+<h3>Mechanical Weathering</h3>
+
+<div class="definition">
+
+Mechanical weathering involves the breakdown of rocks into smaller pieces due to natural forces.
+
+</div>
+
+<p>
+Three types are listed in the current notes:
+</p>
+
+<ol>
+
+<li>Frost Wedging</li>
+
+<li>Expansion and Contraction</li>
+
+<li>Effect of Vegetation</li>
+
+</ol>
+
+<div class="important">
+
+Your current notes continue with a detailed explanation of <strong>Frost Wedging</strong>. Detailed explanations of the other listed processes have not yet been written in these six pages.
+
+</div>
+
+</div>
+
+
+<div class="lesson-box">
+
+<h3>Frost Wedging</h3>
+
+<p>
+Water enters cracks in rocks.
+</p>
+
+<p>
+During freezing, the water freezes and its volume increases.
+</p>
+
+<p>
+The expansion applies pressure to the walls of the cracks.
+</p>
+
+<p>
+Repeated action wedges the cracks farther apart and ultimately contributes to breakdown of the rock.
+</p>
+
+<div class="diagram">
+
+<strong>Frost Wedging — Process</strong>
+
+<div class="flow">
+
+<span>Water enters rock crack</span>
+
+<span>→</span>
+
+<span>Water freezes</span>
+
+<span>→</span>
+
+<span>Volume increases</span>
+
+<span>→</span>
+
+<span>Pressure on crack walls</span>
+
+<span>→</span>
+
+<span>Crack widens</span>
+
+<span>→</span>
+
+<span>Rock breaks</span>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="lesson-box">
+
+<h3>What is still pending in your class notes?</h3>
+
+<p>
+The following headings are present, but their detailed explanations are not yet available in the uploaded pages:
+</p>
+
+<ul>
+
+<li>Expansion and Contraction</li>
+
+<li>Effect of Vegetation</li>
+
+<li>Chemical Weathering</li>
+
+<li>Biological Weathering</li>
+
+</ul>
+
+<p>
+They can be expanded when you upload the next week's notes.
+</p>
+
+</div>
+
+`;
+
+}
+
+
+/* ===============================
+TOPIC QUESTIONS
+================================ */
+
+const topic1Questions=[
+
+"Define Physical Geology.",
+"Write a short note on Mineralogy.",
+"Define Petrology and state what it deals with.",
+"Explain Structural Geology.",
+"What are folds, faults, joints and unconformities?",
+"Write a short note on Historical Geology.",
+"Define Palaeontology. What are fossils?",
+"Explain Economic Geology.",
+"Define Engineering Geology.",
+"Explain the role of Mining Geology.",
+"Write a short note on Geophysics.",
+"Define Geohydrology / Hydrogeology.",
+"Explain Geochemistry.",
+"Explain the importance of geology in Civil Engineering.",
+"Why is geology important for site selection and foundations?",
+"How is geology useful in tunnelling and road construction?",
+"Why is groundwater knowledge important in Civil Engineering?",
+"How are geological maps and sections useful in engineering projects?",
+"Why should faults, folds and joints be considered in engineering works?",
+"What is the importance of a preliminary geological survey?"
+
 ];
 
-let currentSubject=null;
-let current=0;
+
+const topic2Questions=[
+
+"Define geological agents.",
+"Classify geological agents based on their origin.",
+"Explain exogenous geological agents.",
+"Explain endogenous geological agents.",
+"Write the sequence of geological work performed by exogenous agents.",
+"Explain erosion, transportation and deposition.",
+"Give examples of endogenous geological agents.",
+"Define weathering of rocks.",
+"Classify weathering.",
+"Define mechanical weathering.",
+"List the types of mechanical weathering given in the notes.",
+"Explain frost wedging with a neat diagram."
+
+];
+
+
+function openQuestions(topic){
+
+currentTopic=topic;
+
+hideAll();
+
+document.getElementById("questionsPage").style.display="block";
+
+const arr=topic===1 ? topic1Questions : topic2Questions;
+
+let html=`
+
+<h2>Topic ${String(topic).padStart(2,"0")} — Topic Questions</h2>
+
+<p>
+These questions are prepared from your current class-note material.
+</p>
+
+`;
+
+arr.forEach((q,i)=>{
+
+html+=`
+
+<div class="question">
+
+<strong>Q${i+1}.</strong> ${q}
+
+</div>
+
+`;
+
+});
+
+document.getElementById("questionsContent").innerHTML=html;
+
+window.scrollTo(0,0);
+
+}
+
+
+/* ===============================
+LEARN
+================================ */
+
+function openLearn(topic){
+
+currentTopic=topic;
+
+hideAll();
+
+document.getElementById("learnPage").style.display="block";
+
+document.getElementById("learnContent").innerHTML=
+topic===1 ? topic1Learn() : topic2Learn();
+
+window.scrollTo(0,0);
+
+}
+
+
+/* ===============================
+PYQ
+================================ */
+
+function openPYQ(topic){
+
+currentTopic=topic;
+
+hideAll();
+
+document.getElementById("pyqPage").style.display="block";
+
+window.scrollTo(0,0);
+
+}
+
+
+/* ===============================
+MCQs
+================================ */
+
+const topic1MCQ=[
+
+{
+q:"Which branch deals with the study of minerals?",
+o:["Petrology","Mineralogy","Geophysics","Palaeontology"],
+a:1,
+e:"Mineralogy deals with the study of minerals."
+},
+
+{
+q:"Petrology deals with the study of:",
+o:["Minerals","Rocks","Groundwater","Fossils"],
+a:1,
+e:"Petrology deals with the study of rocks."
+},
+
+{
+q:"Which geological structures are associated with Structural Geology?",
+o:["Folds, faults and joints","Minerals only","Groundwater only","Fossils only"],
+a:0,
+e:"The notes list folds, faults, joints and unconformities under Structural Geology."
+},
+
+{
+q:"The study of ancient life and fossils is called:",
+o:["Geophysics","Palaeontology","Geochemistry","Petrology"],
+a:1,
+e:"Palaeontology deals with fossils and ancient life."
+},
+
+{
+q:"Which branch deals with economically valuable mineral deposits?",
+o:["Economic Geology","Physical Geology","Historical Geology","Geohydrology"],
+a:0,
+e:"Economic Geology deals with economically important geological deposits."
+},
+
+{
+q:"Engineering Geology applies geological knowledge mainly to:",
+o:["Civil Engineering works","Computer programming","Electrical circuits","Accounting"],
+a:0,
+e:"Engineering Geology applies geological knowledge in Civil Engineering."
+},
+
+{
+q:"Mining Geology deals with geological knowledge applied to:",
+o:["Agriculture","Mining","Medicine","Electronics"],
+a:1,
+e:"Mining Geology is the application of geological knowledge in mining."
+},
+
+{
+q:"Geohydrology is mainly concerned with:",
+o:["Groundwater","Fossils","Volcanoes only","Road traffic"],
+a:0,
+e:"The notes describe Geohydrology/Hydrogeology as dealing with groundwater."
+},
+
+{
+q:"Geochemistry deals with:",
+o:["Chemical composition of minerals and rocks","Only rock strength","Only fossils","Only groundwater"],
+a:0,
+e:"Geochemistry deals with chemical composition and related distribution of constituents."
+},
+
+{
+q:"Geological maps and sections are useful mainly for:",
+o:["Planning engineering projects","Painting buildings","Traffic counting","Computer design"],
+a:0,
+e:"The notes state that geological maps and sections help considerably in planning engineering projects."
+},
+
+{
+q:"Which structures have foundation problems directly related to geology?",
+o:["Dams, bridges and buildings","Only vehicles","Only machines","Only pipelines"],
+a:0,
+e:"The notes specifically mention dams, bridges and buildings."
+},
+
+{
+q:"Which geological features may require suitable treatment for stability?",
+o:["Faults, folds and joints","Clouds and rainbows","Road signs","Electrical wires"],
+a:0,
+e:"The notes identify faults, folds and joints as geological features that should be suitably treated."
+}
+
+];
+
+
+const topic2MCQ=[
+
+{
+q:"Natural forces responsible for visible changes on the Earth's surface are called:",
+o:["Geological agents","Minerals","Fossils","Foundations"],
+a:0,
+e:"The notes define geological agents as natural forces responsible for visible changes on the Earth's surface."
+},
+
+{
+q:"Geological agents are classified into:",
+o:["Exogenous and endogenous","Physical and chemical only","Solid and liquid","Natural and artificial"],
+a:0,
+e:"Based on origin, the notes divide geological agents into exogenous and endogenous agents."
+},
+
+{
+q:"Exogenous geological agents originate mainly:",
+o:["On the Earth's surface","At the Earth's core only","Inside buildings","Inside machines"],
+a:0,
+e:"The notes describe exogenous agents as originating on the Earth's surface."
+},
+
+{
+q:"Which is the correct sequence given for geological work of exogenous agents?",
+o:[
+"Erosion → Transportation → Deposition",
+"Deposition → Erosion → Transportation",
+"Transportation → Deposition → Erosion",
+"Erosion → Deposition → Transportation"
+],
+a:0,
+e:"The notes give the sequence as erosion followed by transportation and deposition."
+},
+
+{
+q:"Endogenous geological agents originate:",
+o:["Below the Earth's surface","Only in rivers","Only in the atmosphere","Only on roads"],
+a:0,
+e:"The notes state that endogenous agents originate below the Earth's surface."
+},
+
+{
+q:"Which of the following is listed as an endogenous geological agent in the notes?",
+o:["Earthquake","Concrete curing","Brick laying","Traffic flow"],
+a:0,
+e:"Earthquakes are included among the examples of endogenous geological activity."
+},
+
+{
+q:"Weathering of rocks involves:",
+o:["Breakdown and decomposition of rocks","Manufacture of cement","Steel production","Road marking"],
+a:0,
+e:"Weathering is described as breakdown and decomposition of rocks by external agencies."
+},
+
+{
+q:"How many types of weathering are listed in the notes?",
+o:["Two","Three","Four","Five"],
+a:1,
+e:"The notes classify weathering into mechanical, chemical and biological types."
+},
+
+{
+q:"Which of the following is a type of weathering?",
+o:["Mechanical weathering","Electrical weathering","Digital weathering","Artificial loading"],
+a:0,
+e:"Mechanical weathering is one of the three types listed."
+},
+
+{
+q:"Mechanical weathering causes rocks to:",
+o:["Break into smaller pieces","Turn into steel","Become concrete","Disappear instantly"],
+a:0,
+e:"The notes describe mechanical weathering as breakdown of rocks into smaller pieces."
+},
+
+{
+q:"Which process is explained in detail in the current mechanical-weathering notes?",
+o:["Frost wedging","Carbonation","Oxidation","Hydration"],
+a:0,
+e:"The current notes continue with a detailed explanation of frost wedging."
+},
+
+{
+q:"In frost wedging, water first enters:",
+o:["Cracks in rocks","Steel bars","Concrete mixers","Road vehicles"],
+a:0,
+e:"Frost wedging begins when water enters cracks in rocks."
+},
+
+{
+q:"During freezing in frost wedging, the water:",
+o:["Increases in volume","Always disappears","Becomes cement","Decreases to zero volume"],
+a:0,
+e:"The notes state that freezing water increases in volume."
+},
+
+{
+q:"The increase in volume of freezing water causes:",
+o:["Pressure on crack walls","Concrete curing","Fossil formation","Mineral melting"],
+a:0,
+e:"Expansion of freezing water exerts pressure on the walls of rock cracks."
+},
+
+{
+q:"Repeated frost wedging ultimately results in:",
+o:["Breakdown of rock","Formation of steel","Increase in traffic","Cement hydration"],
+a:0,
+e:"Repeated freezing and expansion widens cracks and contributes to breakdown of the rock."
+}
+
+];
+
+
+let quizQuestions=[];
+let quizIndex=0;
 let selected=null;
 let correct=0;
 let answered=false;
 
-function buildSubjects(){
- const box=document.getElementById("subjectList");
- subjects.forEach(s=>{
-   box.innerHTML+=`
-   <div class="card" onclick="openSubject('${s[0]}')">
-     <span class="code">${s[0]}</span>
-     <h3>${s[1]}</h3>
-     <span class="type">${s[2]}</span>
-   </div>`;
- });
+
+function startQuiz(topic){
+
+currentTopic=topic;
+
+quizQuestions=topic===1 ? topic1MCQ : topic2MCQ;
+
+quizIndex=0;
+selected=null;
+correct=0;
+answered=false;
+
+hideAll();
+
+document.getElementById("quizPage").style.display="block";
+
+showQuestion();
+
 }
 
-function hideAll(){
- document.getElementById("home").style.display="none";
- document.getElementById("subjectPage").style.display="none";
- document.getElementById("quizPage").style.display="none";
-}
-
-function showHome(){
- hideAll();
- document.getElementById("home").style.display="block";
- window.scrollTo(0,0);
-}
-
-function openSubject(code){
- currentSubject=code;
- hideAll();
- document.getElementById("subjectPage").style.display="block";
-
- const s=subjects.find(x=>x[0]===code);
-
- let html=`<span class="code">${s[0]}</span><h2>${s[1]}</h2>`;
-
- if(code==="CE2101"){
-   html+=`
-   <div class="topic">
-     <span class="code">TOPIC 01</span>
-     <h3>Introduction to Geology & Importance in Civil Engineering</h3>
-     <p>Branches of Geology • Engineering applications • Geological investigation</p>
-     <p><strong>40 MCQs</strong></p>
-     <button class="start" onclick="startQuiz()">Start Quiz</button>
-   </div>`;
- }else{
-   html+=`
-   <div class="empty">
-     <h3>No Topics Added Yet</h3>
-     <p>Topics will be added from your running class notes.</p>
-   </div>`;
- }
-
- document.getElementById("subjectContent").innerHTML=html;
- window.scrollTo(0,0);
-}
-
-function startQuiz(){
- current=0;
- selected=null;
- correct=0;
- answered=false;
- hideAll();
- document.getElementById("quizPage").style.display="block";
- showQuestion();
-}
 
 function showQuestion(){
- const q=egQuestions[current];
 
- let options="";
- q.o.forEach((op,i)=>{
-   options+=`<button class="option" id="op${i}" onclick="selectOption(${i})">
-   ${String.fromCharCode(65+i)}. ${op}
-   </button>`;
- });
+const q=quizQuestions[quizIndex];
 
- document.getElementById("quizBox").innerHTML=`
- <div class="progress">Question ${current+1} of ${egQuestions.length}</div>
- <h2>${q.q}</h2>
- ${options}
- <button class="action" id="submitBtn" onclick="submitAnswer()" disabled>Submit Answer</button>
- <div class="feedback" id="feedback"></div>
- `;
+let options="";
+
+q.o.forEach((op,i)=>{
+
+options+=`
+
+<button class="option"
+id="op${i}"
+onclick="selectOption(${i})">
+
+${String.fromCharCode(65+i)}. ${op}
+
+</button>
+
+`;
+
+});
+
+document.getElementById("quizBox").innerHTML=`
+
+<div class="progress">
+
+Question ${quizIndex+1} of ${quizQuestions.length}
+
+</div>
+
+<h2>${q.q}</h2>
+
+${options}
+
+<button
+class="action"
+id="submitBtn"
+onclick="submitAnswer()"
+disabled>
+
+Submit Answer
+
+</button>
+
+<div class="feedback" id="feedback"></div>
+
+`;
+
 }
+
 
 function selectOption(i){
- if(answered)return;
 
- selected=i;
+if(answered)return;
 
- document.querySelectorAll(".option").forEach(x=>x.classList.remove("selected"));
+selected=i;
 
- document.getElementById("op"+i).classList.add("selected");
+document.querySelectorAll(".option")
+.forEach(x=>x.classList.remove("selected"));
 
- document.getElementById("submitBtn").disabled=false;
+document.getElementById("op"+i)
+.classList.add("selected");
+
+document.getElementById("submitBtn")
+.disabled=false;
+
 }
+
 
 function submitAnswer(){
- if(selected===null || answered)return;
 
- answered=true;
+if(selected===null || answered)return;
 
- const q=egQuestions[current];
+answered=true;
 
- document.querySelectorAll(".option").forEach(x=>x.disabled=true);
+const q=quizQuestions[quizIndex];
 
- document.getElementById("op"+q.a).classList.add("correct");
+document.querySelectorAll(".option")
+.forEach(x=>x.disabled=true);
 
- const feedback=document.getElementById("feedback");
- feedback.style.display="block";
+document.getElementById("op"+q.a)
+.classList.add("correct");
 
- if(selected===q.a){
-   correct++;
-   feedback.style.background="#ecfdf3";
-   feedback.innerHTML=`<strong>✓ Correct!</strong><br>${q.e}`;
- }else{
-   document.getElementById("op"+selected).classList.add("wrong");
-   feedback.style.background="#fef2f2";
-   feedback.innerHTML=
-   `<strong>✗ Wrong</strong><br>
-   Correct Answer: <strong>${String.fromCharCode(65+q.a)}. ${q.o[q.a]}</strong><br>
-   ${q.e}`;
- }
+const feedback=document.getElementById("feedback");
 
- const btn=document.getElementById("submitBtn");
+feedback.style.display="block";
 
- btn.disabled=false;
- btn.innerText=current===egQuestions.length-1 ? "View Result" : "Next Question";
- btn.onclick=nextQuestion;
+if(selected===q.a){
+
+correct++;
+
+feedback.style.background="#ecfdf3";
+
+feedback.innerHTML=
+`<strong>✓ Correct</strong><br>${q.e}`;
+
+}else{
+
+document.getElementById("op"+selected)
+.classList.add("wrong");
+
+feedback.style.background="#fef2f2";
+
+feedback.innerHTML=
+
+`<strong>✗ Wrong</strong><br>
+
+Correct answer:
+<strong>
+${String.fromCharCode(65+q.a)}. ${q.o[q.a]}
+</strong>
+
+<br>${q.e}`;
+
 }
+
+const btn=document.getElementById("submitBtn");
+
+btn.disabled=false;
+
+btn.innerText=
+quizIndex===quizQuestions.length-1
+? "View Result"
+: "Next Question";
+
+btn.onclick=nextQuestion;
+
+}
+
 
 function nextQuestion(){
- if(current<egQuestions.length-1){
-   current++;
-   selected=null;
-   answered=false;
-   showQuestion();
-   window.scrollTo(0,0);
- }else{
-   showResult();
- }
+
+if(quizIndex<quizQuestions.length-1){
+
+quizIndex++;
+selected=null;
+answered=false;
+
+showQuestion();
+
+window.scrollTo(0,0);
+
+}else{
+
+showResult();
+
 }
+
+}
+
 
 function showResult(){
- const total=egQuestions.length;
- const wrong=total-correct;
- const percentage=Math.round((correct/total)*100);
 
- document.getElementById("quizBox").innerHTML=`
- <div class="result">
-   <h2>Quiz Completed</h2>
-   <div class="score">${percentage}%</div>
+const total=quizQuestions.length;
 
-   <p><strong>Correct:</strong> ${correct}</p>
-   <p><strong>Wrong:</strong> ${wrong}</p>
-   <p><strong>Score:</strong> ${correct} / ${total}</p>
+const wrong=total-correct;
 
-   <button class="action" onclick="startQuiz()">Try Again</button>
-   <button class="action" onclick="backToSubject()">Back to Engineering Geology</button>
- </div>`;
+const percentage=Math.round((correct/total)*100);
+
+document.getElementById("quizBox").innerHTML=`
+
+<div style="text-align:center">
+
+<h2>Quiz Completed</h2>
+
+<div class="score">
+${percentage}%
+</div>
+
+<p>
+<strong>Correct:</strong>
+${correct}
+</p>
+
+<p>
+<strong>Wrong:</strong>
+${wrong}
+</p>
+
+<p>
+<strong>Score:</strong>
+${correct} / ${total}
+</p>
+
+<button
+class="action"
+onclick="startQuiz(${currentTopic})">
+
+Try Again
+
+</button>
+
+<button
+class="action"
+onclick="returnTopic()">
+
+Back to Topics
+
+</button>
+
+</div>
+
+`;
+
 }
 
-function backToSubject(){
- openSubject("CE2101");
-}
 
 buildSubjects();
+
 showHome();
 
 </script>
