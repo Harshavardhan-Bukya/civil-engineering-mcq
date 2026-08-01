@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Civil Engineering MCQ Portal</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+    color: #1f2937;
+}
+
+header {
+    background: #0f3d66;
+    color: white;
+    padding: 22px 15px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 26px;
+}
+
+header p {
+    margin: 7px 0 0;
+    opacity: 0.9;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 25px 15px;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.title h2 {
+    margin-bottom: 7px;
+}
+
+.title p {
+    color: #6b7280;
+}
+
+.subjects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+}
+
+.subject {
+    background: white;
+    border-radius: 12px;
+    padding: 22px;
+    cursor: pointer;
+    border: 1px solid #e5e7eb;
+    transition: 0.2s;
+}
+
+.subject:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.10);
+}
+
+.code {
+    color: #0f3d66;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.subject h3 {
+    margin: 10px 0;
+    line-height: 1.4;
+}
+
+.type {
+    display: inline-block;
+    background: #e8f1f8;
+    color: #0f3d66;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+#subjectPage {
+    display: none;
+}
+
+.back {
+    border: none;
+    background: #0f3d66;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 7px;
+    cursor: pointer;
+    margin-bottom: 18px;
+}
+
+.subject-box {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+}
+
+.empty {
+    margin-top: 25px;
+    border: 2px dashed #d1d5db;
+    padding: 40px 15px;
+    text-align: center;
+    border-radius: 10px;
+    color: #6b7280;
+}
+
+.quiz-info {
+    margin-top: 20px;
+    background: #eef5fb;
+    padding: 18px;
+    border-radius: 10px;
+    line-height: 1.7;
+}
+
+footer {
+    margin-top: 40px;
+    text-align: center;
+    padding: 25px;
+    background: #e5e7eb;
+    color: #6b7280;
+}
+
+@media(max-width:600px) {
+
+    header h1 {
+        font-size: 21px;
+    }
+
+    .container {
+        padding: 18px 12px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h1>Civil Engineering MCQ Portal</h1>
+
+<p>Daily Topic Practice • Revision • Self Assessment</p>
+
+</header>
+
+
+<div class="container">
+
+
+<!-- HOME PAGE -->
+
+<div id="homePage">
+
+<div class="title">
+
+<h2>Select Your Subject</h2>
+
+<p>Select a subject to view topics and practise MCQs.</p>
+
+</div>
+
+
+<div class="subjects">
+
+
+<div class="subject"
+onclick="openSubject('CE2101','Engineering Geology')">
+
+<span class="code">CE2101</span>
+
+<h3>Engineering Geology</h3>
+
+<span class="type">Theory</span>
+
+</div>
+
+
+
+<div class="subject"
+onclick="openSubject('CE2102','Construction Materials and Concrete Technology')">
+
+<span class="code">CE2102</span>
+
+<h3>Construction Materials and Concrete Technology</h3>
+
+<span class="type">Theory</span>
+
+</div>
+
+
+
+<div class="subject"
+onclick="openSubject('CE2103','Mechanics of Materials')">
+
+<span class="code">CE2103</span>
+
+<h3>Mechanics of Materials</h3>
+
+<span class="type">Theory</span>
+
+</div>
+
+
+
+<div class="subject"
+onclick="openSubject('CE2104','Fluid Mechanics')">
+
+<span class="code">CE2104</span>
+
+<h3>Fluid Mechanics</h3>
+
+<span class="type">Theory</span>
+
+</div>
+
+
+
+<div class="subject"
+onclick="openSubject('MA2103','Probability and Statistics')">
+
+<span class="code">MA2103</span>
+
+<h3>Probability and Statistics</h3>
+
+<span class="type">Theory</span>
+
+</div>
+
+
+
+<div class="subject"
+onclick="openSubject('CE2701','Mechanics of Fluids Lab')">
+
+<span class="code">CE2701</span>
+
+<h3>Mechanics of Fluids Lab</h3>
+
+<span class="type">Laboratory</span>
+
+</div>
+
+
+
+<div class="subject"
+onclick="openSubject('CE2702','Materials Testing Lab')">
+
+<span class="code">CE2702</span>
+
+<h3>Materials Testing Lab</h3>
+
+<span class="type">Laboratory</span>
+
+</div>
+
+
+
+<div class="subject"
+onclick="openSubject('CE2703','Concrete Technology Lab')">
+
+<span class="code">CE2703</span>
+
+<h3>Concrete Technology Lab</h3>
+
+<span class="type">Laboratory</span>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<!-- SUBJECT PAGE -->
+
+<div id="subjectPage">
+
+<button class="back" onclick="goHome()">
+
+← Back to Subjects
+
+</button>
+
+
+<div class="subject-box">
+
+<span class="code" id="selectedCode"></span>
+
+<h2 id="selectedSubject"></h2>
+
+
+<div class="empty">
+
+<h3>No Topics Added Yet</h3>
+
+<p>
+Your daily class topics and MCQs will appear here.
+</p>
+
+</div>
+
+
+<div class="quiz-info">
+
+<strong>MCQ Practice System</strong>
+
+<br><br>
+
+Select an answer → Submit Answer
+
+<br>
+
+Correct / Wrong result
+
+<br>
+
+Correct answer and explanation
+
+<br>
+
+Next Question
+
+<br>
+
+Final Correct & Wrong Count
+
+<br>
+
+Final Score and Percentage
+
+</div>
+
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<footer>
+
+Civil Engineering MCQ Practice Portal
+
+</footer>
+
+
+<script>
+
+function openSubject(code, subject) {
+
+    document.getElementById("homePage").style.display = "none";
+
+    document.getElementById("subjectPage").style.display = "block";
+
+    document.getElementById("selectedCode").innerText = code;
+
+    document.getElementById("selectedSubject").innerText = subject;
+
+    window.scrollTo(0,0);
+
+}
+
+
+function goHome() {
+
+    document.getElementById("subjectPage").style.display = "none";
+
+    document.getElementById("homePage").style.display = "block";
+
+    window.scrollTo(0,0);
+
+}
+
+</script>
+
+
+</body>
+</html>
