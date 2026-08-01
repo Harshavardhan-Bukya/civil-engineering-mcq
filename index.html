@@ -3,2599 +3,455 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Civil Engineering Learning Portal</title>
-
+<title>CE2101 Engineering Geology</title>
 <style>
 *{box-sizing:border-box}
-
-body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:#f5f7fa;
-    color:#1f2937;
-    line-height:1.6;
-}
-
-header{
-    background:#0f3d66;
-    color:white;
-    padding:22px;
-    text-align:center;
-}
-
-header h1{
-    margin:0;
-    font-size:27px;
-}
-
-header p{
-    margin:5px 0 0;
-    opacity:.9;
-}
-
-.container{
-    max-width:1100px;
-    margin:auto;
-    padding:25px 15px;
-}
-
+body{margin:0;font-family:Arial,sans-serif;background:#f4f7fb;color:#1f2937;line-height:1.65}
+header{background:#0f3d66;color:#fff;text-align:center;padding:28px 16px}
+header h1{margin:0 0 6px;font-size:30px}
+.container{max-width:1050px;margin:auto;padding:22px}
+.card,.lesson-box,.question-box,.quizbox{background:#fff;border-radius:14px;padding:22px;margin:16px 0;box-shadow:0 3px 14px rgba(0,0,0,.07)}
+.topic{border-left:5px solid #0f3d66}
+.code,.badge{display:inline-block;background:#e8f1f8;color:#0f3d66;padding:5px 10px;border-radius:20px;font-weight:700;font-size:13px}
+button{cursor:pointer}
+.btn,.back,.option,.action{border:0;border-radius:9px;padding:12px 16px;font-weight:700}
+.btn{background:#0f3d66;color:#fff;margin:5px}
+.btn.secondary{background:#e8f1f8;color:#0f3d66}
+.back{background:#e5e7eb;color:#111827;margin-bottom:12px}
 .page{display:none}
-
-.subject-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-    gap:18px;
-}
-
-.card{
-    background:white;
-    border-radius:12px;
-    padding:20px;
-    border:1px solid #e5e7eb;
-    cursor:pointer;
-    transition:.2s;
-}
-
-.card:hover{
-    transform:translateY(-3px);
-    box-shadow:0 6px 18px rgba(0,0,0,.1);
-}
-
-.code{
-    color:#0f3d66;
-    font-weight:bold;
-    font-size:14px;
-}
-
-.badge{
-    display:inline-block;
-    background:#e8f1f8;
-    color:#0f3d66;
-    border-radius:20px;
-    padding:4px 10px;
-    font-size:12px;
-}
-
-.topic{
-    background:white;
-    border-radius:12px;
-    border:1px solid #e5e7eb;
-    padding:22px;
-    margin:18px 0;
-}
-
-.topic-buttons{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-    margin-top:15px;
-}
-
-button{
-    cursor:pointer;
-}
-
-.main-btn{
-    border:0;
-    background:#0f3d66;
-    color:white;
-    padding:11px 16px;
-    border-radius:7px;
-    font-weight:bold;
-}
-
-.secondary-btn{
-    border:1px solid #0f3d66;
-    background:white;
-    color:#0f3d66;
-    padding:10px 15px;
-    border-radius:7px;
-    font-weight:bold;
-}
-
-.back{
-    border:0;
-    background:#374151;
-    color:white;
-    padding:10px 15px;
-    border-radius:7px;
-    margin-bottom:18px;
-}
-
-.lesson{
-    max-width:850px;
-    margin:auto;
-}
-
-.lesson-box{
-    background:white;
-    padding:22px;
-    margin:16px 0;
-    border-radius:12px;
-    border:1px solid #e5e7eb;
-}
-
-.lesson-box h3{
-    color:#0f3d66;
-    margin-top:0;
-}
-
-.definition{
-    background:#eef6fc;
-    border-left:5px solid #0f3d66;
-    padding:14px;
-    margin:12px 0;
-}
-
-.important{
-    background:#fff8e6;
-    border-left:5px solid #d97706;
-    padding:14px;
-    margin:12px 0;
-}
-
-.diagram{
-    background:#f9fafb;
-    border:2px dashed #9ca3af;
-    border-radius:10px;
-    padding:20px;
-    text-align:center;
-    margin:18px 0;
-}
-
-.flow{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:8px;
-    margin:15px 0;
-}
-
-.flow span{
-    background:#e8f1f8;
-    border:1px solid #9dbbd3;
-    padding:9px 12px;
-    border-radius:7px;
-    font-weight:bold;
-}
-
-.question{
-    background:white;
-    padding:18px;
-    margin:12px 0;
-    border-radius:10px;
-    border:1px solid #e5e7eb;
-}
-
-.quizbox{
-    max-width:760px;
-    margin:auto;
-    background:white;
-    padding:25px;
-    border-radius:14px;
-    box-shadow:0 4px 16px rgba(0,0,0,.08);
-}
-
-.option{
-    display:block;
-    width:100%;
-    text-align:left;
-    padding:14px;
-    margin:10px 0;
-    background:white;
-    border:2px solid #e5e7eb;
-    border-radius:9px;
-}
-
-.option.selected{
-    border-color:#0f3d66;
-    background:#eef6fc;
-}
-
-.option.correct{
-    border-color:#16a34a;
-    background:#ecfdf3;
-}
-
-.option.wrong{
-    border-color:#dc2626;
-    background:#fef2f2;
-}
-
-.action{
-    width:100%;
-    margin-top:15px;
-    padding:13px;
-    border:0;
-    border-radius:8px;
-    background:#0f3d66;
-    color:white;
-    font-weight:bold;
-}
-
-.action:disabled{
-    background:#9ca3af;
-}
-
-.feedback{
-    display:none;
-    padding:15px;
-    border-radius:9px;
-    margin-top:15px;
-}
-
-.progress{
-    color:#6b7280;
-    margin-bottom:12px;
-}
-
-.score{
-    font-size:45px;
-    color:#0f3d66;
-    font-weight:bold;
-}
-
-.empty{
-    background:white;
-    padding:30px;
-    text-align:center;
-    border:2px dashed #d1d5db;
-    border-radius:12px;
-    color:#6b7280;
-}
-
-
-.answer-btn{
-    margin-top:12px;
-    border:1px solid #0f3d66;
-    background:#eef6fc;
-    color:#0f3d66;
-    padding:9px 13px;
-    border-radius:7px;
-    font-weight:bold;
-}
-.answer-box{
-    display:none;
-    margin-top:12px;
-    padding:15px;
-    background:#f9fafb;
-    border-left:4px solid #0f3d66;
-    border-radius:7px;
-}
-.important-star{
-    display:inline-block;
-    margin-left:8px;
-    color:#b45309;
-    font-weight:bold;
-}
-
-footer{
-    text-align:center;
-    color:#6b7280;
-    padding:30px;
-}
-
-@media(max-width:600px){
-    header h1{font-size:22px}
-    .topic-buttons button{width:100%}
-}
+.definition{background:#eef6fc;border-left:4px solid #0f3d66;padding:14px;margin:12px 0}
+.important{background:#fff7db;border-left:4px solid #f59e0b;padding:14px;margin:14px 0}
+.diagram{background:#f8fafc;border:1px solid #cbd5e1;padding:18px;border-radius:10px;text-align:center;margin:15px 0}
+.flow{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;align-items:center}
+.flow span{background:#e8f1f8;border:1px solid #9dbbd3;padding:8px 11px;border-radius:7px;font-weight:700}
+.mark-title{background:#0f3d66;color:#fff;padding:10px 14px;border-radius:8px;margin-top:24px}
+.answer{background:#f8fafc;border-left:4px solid #16a34a;padding:13px;margin-top:9px}
+.star{color:#f59e0b;font-weight:800}
+.option{display:block;width:100%;text-align:left;background:#fff;border:2px solid #e5e7eb;margin:9px 0}
+.option.selected{border-color:#0f3d66;background:#eef6fc}
+.option.correct{border-color:#16a34a;background:#ecfdf3}
+.option.wrong{border-color:#dc2626;background:#fef2f2}
+.action{width:100%;background:#0f3d66;color:#fff;margin-top:12px}
+.action:disabled{background:#9ca3af}
+.feedback{display:none;padding:14px;border-radius:9px;margin-top:12px}
+.score{font-size:42px;font-weight:800;color:#0f3d66}
+footer{text-align:center;color:#6b7280;padding:25px}
+@media(max-width:650px){header h1{font-size:23px}.btn{width:100%;margin:5px 0}}
 </style>
 </head>
-
 <body>
-
 <header>
-<h1>Civil Engineering Learning Portal</h1>
-<p>Learn • Revise • Practice • Test Yourself</p>
+<h1>CE2101 — Engineering Geology</h1>
+<p>Learn • Topic Questions • PYQs • Maximum MCQ Practice</p>
 </header>
 
 <div class="container">
-
-<!-- HOME -->
-
 <div id="home">
-<h2>Select Subject</h2>
-<p>Select your subject to view the available class topics.</p>
-
-<div class="subject-grid" id="subjects"></div>
+<div class="card">
+<span class="code">CE2101</span>
+<h2>Engineering Geology</h2>
+<p>Current notes are organised point-to-point into two topics.</p>
 </div>
 
-
-<!-- SUBJECT -->
-
-<div id="subjectPage" class="page">
-<button class="back" onclick="showHome()">← Subjects</button>
-<div id="subjectContent"></div>
+<div class="card topic">
+<span class="badge">TOPIC 01</span>
+<h2>Branches of Geology & Importance in Civil Engineering</h2>
+<button class="btn" onclick="openLearn(1)">📖 Learn Topic</button>
+<button class="btn secondary" onclick="openQuestions(1)">📝 Topic Questions</button>
+<button class="btn secondary" onclick="openPYQ(1)">🎓 PYQs</button>
+<button class="btn secondary" onclick="startQuiz(1)">✅ Practice MCQs</button>
 </div>
 
-
-<!-- LEARN -->
+<div class="card topic">
+<span class="badge">TOPIC 02</span>
+<h2>Geological Agents & Weathering of Rocks</h2>
+<button class="btn" onclick="openLearn(2)">📖 Learn Topic</button>
+<button class="btn secondary" onclick="openQuestions(2)">📝 Topic Questions</button>
+<button class="btn secondary" onclick="openPYQ(2)">🎓 PYQs</button>
+<button class="btn secondary" onclick="startQuiz(2)">✅ Practice MCQs</button>
+</div>
+</div>
 
 <div id="learnPage" class="page">
-<button class="back" onclick="returnTopic()">← Back to Topic</button>
-<div class="lesson" id="learnContent"></div>
+<button class="back" onclick="showHome()">← Back</button>
+<div id="learnContent"></div>
 </div>
-
-
-<!-- QUESTIONS -->
 
 <div id="questionsPage" class="page">
-<button class="back" onclick="returnTopic()">← Back to Topic</button>
-<div class="lesson" id="questionsContent"></div>
+<button class="back" onclick="showHome()">← Back</button>
+<div id="questionsContent"></div>
 </div>
-
-
-<!-- PYQ -->
 
 <div id="pyqPage" class="page">
-<button class="back" onclick="returnTopic()">← Back to Topic</button>
-
-<div class="lesson">
+<button class="back" onclick="showHome()">← Back</button>
+<div class="card">
 <h2>Previous Year Questions</h2>
-
-<div class="empty">
-<h3>PYQs Not Added Yet</h3>
-<p>Your actual previous-year questions will be added here when you provide them.</p>
-</div>
-
+<p>PYQs are not present in the current six-page Engineering Geology notes. They will be added here only when actual PYQs are supplied.</p>
 </div>
 </div>
-
-
-<!-- QUIZ -->
 
 <div id="quizPage" class="page">
-<button class="back" onclick="returnTopic()">← Back to Topic</button>
+<button class="back" onclick="showHome()">← Back</button>
 <div class="quizbox" id="quizBox"></div>
 </div>
-
 </div>
 
-<footer>
-Civil Engineering Learning & MCQ Practice Portal
-</footer>
-
+<footer>Engineering Geology — Notes preserved point-to-point</footer>
 
 <script>
-
-const subjects=[
-["CE2101","Engineering Geology","Theory"],
-["CE2102","Construction Materials and Concrete Technology","Theory"],
-["CE2103","Mechanics of Materials","Theory"],
-["CE2104","Fluid Mechanics","Theory"],
-["MA2103","Probability and Statistics","Theory"],
-["CE2701","Mechanics of Fluids Lab","Laboratory"],
-["CE2702","Materials Testing Lab","Laboratory"],
-["CE2703","Concrete Technology Lab","Laboratory"]
-];
-
-let currentSubject="CE2101";
-let currentTopic=1;
-
-function buildSubjects(){
-
-let html="";
-
-subjects.forEach(s=>{
-
-html+=`
-<div class="card" onclick="openSubject('${s[0]}')">
-<span class="code">${s[0]}</span>
-<h3>${s[1]}</h3>
-<span class="badge">${s[2]}</span>
-</div>
-`;
-
-});
-
-document.getElementById("subjects").innerHTML=html;
-
-}
-
 function hideAll(){
-
-["home","subjectPage","learnPage","questionsPage","pyqPage","quizPage"]
-.forEach(id=>document.getElementById(id).style.display="none");
-
+["home","learnPage","questionsPage","pyqPage","quizPage"].forEach(id=>document.getElementById(id).style.display="none");
 }
-
-function showHome(){
-
-hideAll();
-document.getElementById("home").style.display="block";
-window.scrollTo(0,0);
-
-}
-
-function openSubject(code){
-
-currentSubject=code;
-
-hideAll();
-
-document.getElementById("subjectPage").style.display="block";
-
-const subject=subjects.find(s=>s[0]===code);
-
-let html=`
-<span class="code">${subject[0]}</span>
-<h2>${subject[1]}</h2>
-`;
-
-if(code==="CE2101"){
-
-html+=`
-
-<div class="topic">
-
-<span class="code">TOPIC 01</span>
-
-<h3>Branches of Geology & Importance in Civil Engineering</h3>
-
-<p>
-Introduction to major branches of geology and their importance in Civil Engineering.
-</p>
-
-<div class="topic-buttons">
-
-<button class="main-btn"
-onclick="openLearn(1)">
-📖 Learn Topic
-</button>
-
-<button class="secondary-btn"
-onclick="openQuestions(1)">
-📝 Topic Questions
-</button>
-
-<button class="secondary-btn"
-onclick="openPYQ(1)">
-🎓 PYQs
-</button>
-
-<button class="secondary-btn"
-onclick="startQuiz(1)">
-✅ Practice MCQs
-</button>
-
-</div>
-
-</div>
-
-
-<div class="topic">
-
-<span class="code">TOPIC 02</span>
-
-<h3>Geological Agents & Weathering of Rocks</h3>
-
-<p>
-Geological agents, exogenous and endogenous agents, weathering and mechanical weathering.
-</p>
-
-<div class="topic-buttons">
-
-<button class="main-btn"
-onclick="openLearn(2)">
-📖 Learn Topic
-</button>
-
-<button class="secondary-btn"
-onclick="openQuestions(2)">
-📝 Topic Questions
-</button>
-
-<button class="secondary-btn"
-onclick="openPYQ(2)">
-🎓 PYQs
-</button>
-
-<button class="secondary-btn"
-onclick="startQuiz(2)">
-✅ Practice MCQs
-</button>
-
-</div>
-
-</div>
-`;
-
-}else if(code==="CE2104"){
-
-html+=`
-
-<div class="topic">
-
-<span class="code">FLUID MECHANICS — WEEK 01</span>
-
-<h3>Introduction & Properties of Fluids</h3>
-
-<p>
-Fundamentals of Fluid Mechanics and fluid properties from the current Week 01 class notes.
-</p>
-
-<div class="topic-buttons">
-
-<button class="main-btn"
-onclick="openFMLearn()">
-📖 Learn Topic
-</button>
-
-<button class="secondary-btn"
-onclick="openFMQuestions()">
-📝 Topic Questions
-</button>
-
-<button class="secondary-btn"
-onclick="openFMPYQ()">
-🎓 PYQs
-</button>
-
-<button class="secondary-btn"
-onclick="startFMQuiz()">
-✅ Practice MCQs
-</button>
-
-</div>
-
-</div>
-
-`;
-
-}else{
-
-html+=`
-
-<div class="empty">
-
-<h3>Topics Coming Soon</h3>
-
-<p>
-Your running class notes will be added here week by week.
-</p>
-
-</div>
-`;
-
-}
-
-document.getElementById("subjectContent").innerHTML=html;
-
-window.scrollTo(0,0);
-
-}
-
-
-function returnTopic(){
-openSubject(currentSubject);
-}
-
-
-/* ===============================
-TOPIC 01 LEARNING MATERIAL
-================================ */
+function showHome(){hideAll();document.getElementById("home").style.display="block";window.scrollTo(0,0)}
+function openPYQ(){hideAll();document.getElementById("pyqPage").style.display="block";window.scrollTo(0,0)}
 
 function topic1Learn(){
-
 return `
+<div class="card"><span class="code">TOPIC 01</span><h1>Branches of Geology & Importance in Civil Engineering</h1></div>
 
-<h2>Topic 01</h2>
-
-<h1>Branches of Geology & Importance in Civil Engineering</h1>
-
-<div class="lesson-box">
-
-<h3>1. Physical Geology</h3>
-
-<div class="definition">
-
-<strong>Definition:</strong>
-
-Physical geology deals with the different physical features of the Earth and the changes occurring on the Earth's surface.
-
+<div class="lesson-box"><h3>1. Physical Geology</h3>
+<div class="definition"><strong>Physical Geology</strong>, also called <strong>Dynamic Geology</strong> or <strong>Geomorphology</strong>, deals with the different physical features of the Earth and changes occurring on the Earth's surface.</div>
+<p><strong>Physical features:</strong></p><ul><li>Mountains</li><li>Rivers</li><li>Lakes</li><li>Glaciers</li><li>Volcanoes</li></ul>
+<p>It also deals with changes occurring on the Earth's surface such as the formation or disappearance of rivers, springs and lakes.</p>
+<p><strong>Natural phenomena mentioned:</strong> slides, landslides, earthquakes and weathering.</p>
+<p><strong>Geological work/processes mentioned:</strong> wind, glaciers, oceans and groundwater, which play a role in constantly moulding the Earth's surface.</p>
 </div>
 
-<p>
-The notes associate Physical Geology with Dynamic Geology and geomorphology.
-</p>
-
-<p>
-It includes the study of features such as:
-</p>
-
-<ul>
-<li>Mountains</li>
-<li>Rivers</li>
-<li>Lakes</li>
-<li>Glaciers</li>
-<li>Volcanoes</li>
-</ul>
-
-<p>
-It also considers natural phenomena and surface-changing processes such as landslides, earthquakes, weathering, wind, glaciers, oceans and groundwater.
-</p>
-
+<div class="lesson-box"><h3>2. Mineralogy</h3>
+<div class="definition"><strong>Mineralogy</strong> deals with the study of minerals.</div>
+<p>It deals with the detailed:</p><ul><li>Mode of formation</li><li>Composition</li><li>Occurrence</li><li>Types</li><li>Associated properties</li><li>Uses</li></ul>
 </div>
 
-
-<div class="lesson-box">
-
-<h3>2. Mineralogy</h3>
-
-<div class="definition">
-
-<strong>Definition:</strong>
-
-Mineralogy deals with the study of minerals.
-
+<div class="lesson-box"><h3>3. Petrology</h3>
+<div class="definition"><strong>Petro = Rock</strong><br><strong>Logy = Study</strong><br><br><strong>Petrology</strong> deals with the study of rocks.</div>
+<p>The Earth's crust is called the <strong>lithosphere</strong> and is made of different types of rocks.</p>
+<p>Petrology deals with:</p><ul><li>Formation of rocks</li><li>Structure</li><li>Texture</li><li>Composition</li><li>Occurrence</li><li>Types of rocks</li></ul>
 </div>
 
-<p>The study includes:</p>
-
-<ul>
-<li>Mode of formation</li>
-<li>Composition</li>
-<li>Occurrence</li>
-<li>Types</li>
-<li>Associated properties</li>
-<li>Uses</li>
-</ul>
-
+<div class="lesson-box"><h3>4. Structural Geology</h3>
+<div class="definition"><strong>Structural Geology</strong> deals with rocks forming the Earth's crust and the deformations, disturbances and distortions they undergo under the influence of tectonic plate forces.</div>
+<p>This results in geological structures such as:</p><ul><li>Folds</li><li>Faults</li><li>Joints</li><li>Unconformities</li></ul>
+<div class="diagram"><div class="flow"><span>Tectonic plate forces</span><span>→</span><span>Deformation / disturbance</span><span>→</span><span>Folds • Faults • Joints • Unconformities</span></div></div>
 </div>
 
-
-<div class="lesson-box">
-
-<h3>3. Petrology</h3>
-
-<div class="definition">
-
-<strong>Petro = Rock</strong><br>
-<strong>Logy = Study</strong>
-
+<div class="lesson-box"><h3>5. Historical Geology</h3>
+<div class="definition"><strong>Historical Geology</strong> studies the Earth's history through geological records, especially sedimentary rocks.</div>
+<p>The Earth's surface has suitable conditions for deposition of sediments at different places. Therefore sedimentary rocks represent periods of Earth's history.</p>
+<p>Proper investigation of these rocks reveals the chronological sequence of:</p><ul><li>Formation of rocks</li><li>Evolution</li><li>Migration of plants</li><li>Migration of animals</li><li>Life during different periods of Earth's history</li></ul>
 </div>
 
-<p>
-Petrology deals with the study of rocks.
-</p>
-
-<p>
-The Earth's crust is called the lithosphere and is made up of different types of rocks.
-</p>
-
-<p>Petrology deals with:</p>
-
-<ul>
-<li>Formation of rocks</li>
-<li>Structure</li>
-<li>Texture</li>
-<li>Composition</li>
-<li>Occurrence</li>
-<li>Types of rocks</li>
-</ul>
-
+<div class="lesson-box"><h3>6. Palaeontology</h3>
+<div class="definition"><strong>Palaeontology</strong> deals with fossils and ancient life.</div>
+<p>Under favourable conditions, animal and plant life gets embedded in sediments and may be preserved partly or completely.</p>
+<p>Such naturally preserved remnants of ancient life in rocks are known as <strong>fossils</strong>.</p>
+<p>Palaeontology studies details of:</p><ul><li>Formation of fossils</li><li>Types of fossils</li><li>Occurrence of fossils</li></ul>
 </div>
 
-
-<div class="lesson-box">
-
-<h3>4. Structural Geology</h3>
-
-<div class="definition">
-
-Structural geology deals with deformation and disturbance of rocks under tectonic forces.
-
+<div class="lesson-box"><h3>7. Economic Geology</h3>
+<div class="definition"><strong>Economic Geology</strong> deals with economically valuable mineral deposits.</div>
+<p>The prosperity of a nation depends to a large extent on rich reserves of economical mineral deposits.</p>
+<p><strong>Example from notes:</strong> Gulf countries — rich in oil deposits.</p>
 </div>
 
-<p>
-These processes result in geological structures such as:
-</p>
-
-<ul>
-<li>Folds</li>
-<li>Faults</li>
-<li>Joints</li>
-<li>Unconformities</li>
-</ul>
-
-<div class="diagram">
-
-<strong>Simple Concept Diagram</strong>
-
-<div class="flow">
-<span>Tectonic Forces</span>
-<span>→</span>
-<span>Rock Deformation</span>
-<span>→</span>
-<span>Folds / Faults / Joints</span>
+<div class="lesson-box"><h3>8. Engineering Geology</h3>
+<div class="definition"><strong>Engineering Geology</strong> deals with the application of geological knowledge in Civil Engineering for the execution of safe, stable and economic construction.</div>
+<p><strong>Examples:</strong></p><ul><li>Dams</li><li>Bridges</li><li>Tunnels</li></ul>
 </div>
 
+<div class="lesson-box"><h3>9. Mining Geology</h3>
+<div class="definition"><strong>Mining Geology</strong> deals with the application of geological knowledge in the field of mining.</div>
+<p>A mining engineer should know the mode of occurrence of ores and their associated properties.</p>
+<p>Other physical parameters to know are:</p><ul><li>Depth</li><li>Direction / Strike</li><li>Inclination / Dip</li><li>Thickness</li><li>Ore bodies</li></ul>
 </div>
 
+<div class="lesson-box"><h3>10. Geophysics</h3>
+<div class="definition"><strong>Geophysics</strong> deals with the Earth's crust and physical properties of the Earth such as density and magnetism.</div>
+<p>It is subdivided into:</p><ul><li>Pure Geophysics</li><li>Exploration Geophysics</li></ul>
+<p>The notes also mention general aspects of the Earth as a whole and the study of the upper layer of the Earth's crust.</p>
 </div>
 
-
-<div class="lesson-box">
-
-<h3>5. Historical Geology</h3>
-
-<div class="definition">
-
-Historical geology deals with the history of the Earth through geological records.
-
+<div class="lesson-box"><h3>11. Geohydrology / Hydrogeology</h3>
+<div class="definition"><strong>Geohydrology</strong>, also called <strong>Hydrogeology</strong>, deals with the occurrence, movement, nature, quality and quantity of groundwater in an area.</div>
+<p>This branch also deals with the existence and movement of groundwater, directly related to:</p><ul><li>Porosity</li><li>Permeability</li><li>Structure</li><li>Texture</li><li>Composition</li></ul>
 </div>
 
-<p>
-Investigation of sedimentary rocks can reveal the chronological sequence of:
-</p>
-
-<ul>
-<li>Rock formation</li>
-<li>Evolution</li>
-<li>Migration of plants</li>
-<li>Migration of animals</li>
-<li>Different periods of Earth's history</li>
-</ul>
-
+<div class="lesson-box"><h3>12. Geochemistry</h3>
+<div class="definition"><strong>Geochemistry</strong> deals with the chemical composition of minerals and rocks.</div>
+<p>It also deals with:</p><ul><li>Occurrence</li><li>Distribution</li><li>Abundance</li><li>Mobility</li></ul>
 </div>
 
-
-<div class="lesson-box">
-
-<h3>6. Palaeontology</h3>
-
-<div class="definition">
-
-Palaeontology deals with fossils and the study of ancient life.
-
-</div>
-
-<p>
-Under favourable conditions, remains of plants and animals may become embedded in sediments and preserved partly or completely.
-</p>
-
-<p>
-Such naturally preserved remains of ancient life are called <strong>fossils</strong>.
-</p>
-
-<p>Palaeontology studies:</p>
-
-<ul>
-<li>Formation of fossils</li>
-<li>Types of fossils</li>
-<li>Occurrence of fossils</li>
-</ul>
-
-</div>
-
-
-<div class="lesson-box">
-
-<h3>7. Economic Geology</h3>
-
-<div class="definition">
-
-Economic geology deals with economically valuable geological and mineral deposits.
-
-</div>
-
-<p>
-The notes highlight that the prosperity of a nation can depend considerably on economically useful mineral deposits.
-</p>
-
-<p>
-Example mentioned in the notes: Gulf countries and oil deposits.
-</p>
-
-</div>
-
-
-<div class="lesson-box">
-
-<h3>8. Engineering Geology</h3>
-
-<div class="definition">
-
-Engineering geology deals with the application of geological knowledge in Civil Engineering.
-
-</div>
-
-<p>
-Its purpose is to help in the execution of safe, stable and economical construction.
-</p>
-
-<p>Examples:</p>
-
-<ul>
-<li>Dams</li>
-<li>Bridges</li>
-<li>Tunnels</li>
-</ul>
-
-</div>
-
-
-<div class="lesson-box">
-
-<h3>9. Mining Geology</h3>
-
-<div class="definition">
-
-Mining geology deals with the application of geological knowledge in the field of mining.
-
-</div>
-
-<p>A mining engineer should understand:</p>
-
-<ul>
-<li>Mode of occurrence of ores</li>
-<li>Associated properties</li>
-<li>Depth</li>
-<li>Direction / strike</li>
-<li>Inclination / dip</li>
-<li>Thickness</li>
-<li>Ore bodies</li>
-</ul>
-
-</div>
-
-
-<div class="lesson-box">
-
-<h3>10. Geophysics</h3>
-
-<div class="definition">
-
-Geophysics deals with the physical properties of the Earth.
-
-</div>
-
-<p>
-The notes mention properties such as density and magnetism of the Earth.
-</p>
-
-<p>
-The notes divide it into:
-</p>
-
-<ul>
-<li>Pure Geophysics</li>
-<li>Exploration Geophysics</li>
-</ul>
-
-</div>
-
-
-<div class="lesson-box">
-
-<h3>11. Geohydrology / Hydrogeology</h3>
-
-<div class="definition">
-
-Geohydrology deals with the occurrence, movement, nature, quality and quantity of groundwater in an area.
-
-</div>
-
-<p>Groundwater behaviour is related to:</p>
-
-<ul>
-<li>Porosity</li>
-<li>Permeability</li>
-<li>Structure</li>
-<li>Texture</li>
-<li>Composition</li>
-</ul>
-
-</div>
-
-
-<div class="lesson-box">
-
-<h3>12. Geochemistry</h3>
-
-<div class="definition">
-
-Geochemistry deals with the chemical composition of minerals and rocks.
-
-</div>
-
-<p>
-It also deals with occurrence, distribution, abundance and mobility of chemical constituents.
-</p>
-
-</div>
-
-
-<div class="lesson-box">
-
-<h2>Importance of Geology in Civil Engineering</h2>
-
+<div class="lesson-box"><h2>⭐ Importance of Geology in Civil Engineering</h2>
 <ol>
-
-<li>
-Before construction, proper site selection is important from the point of view of foundation stability.
-</li>
-
-<li>
-Geology provides systematic knowledge of construction materials and their properties.
-</li>
-
-<li>
-Knowledge of the nature of rocks is useful in tunnelling and road construction.
-</li>
-
-<li>
-Foundation problems of dams, bridges and buildings are directly related to the geology of the area.
-</li>
-
-<li>
-Groundwater knowledge is necessary for excavation works, water supply, irrigation and other purposes.
-</li>
-
-<li>
-Knowledge of erosion, transportation and deposition by surface water helps in soil conservation and river control.
-</li>
-
-<li>
-Geological maps and sections help considerably in planning engineering projects.
-</li>
-
-<li>
-Geological features such as faults, folds and joints should be suitably treated to maintain stability of rock structures.
-</li>
-
-<li>
-A preliminary geological survey of the concerned area can reduce unnecessary planning costs.
-</li>
-
+<li>Before construction, site selection is important from the point of view of stability of foundation.</li>
+<li>Geology provides systematic knowledge of construction materials and their properties.</li>
+<li>Knowledge about the nature of rocks is useful in tunnelling and construction of roads.</li>
+<li>Foundation problems of dams, bridges and buildings are directly related to the geology of that area.</li>
+<li>Knowledge of groundwater is necessary in connection with excavation works, water supply, irrigation and other purposes.</li>
+<li>Knowledge of erosion, transportation and deposition by surface water helps in soil conservation and river control.</li>
+<li>Geological maps and sections help considerably in planning many engineering projects.</li>
+<li>If geological features such as faults, folds and joints are found, they have to be suitably treated to maintain the stability of rock structures.</li>
+<li>Pre-geological survey of the area concerned reduces the cost of planning work.</li>
 </ol>
-
-<div class="important">
-
-<strong>Exam Important:</strong>
-
-The importance of geology in Civil Engineering is a major descriptive question in your current notes.
-
-</div>
-
-</div>
-
-`;
-
+<div class="important"><strong>⭐ Exam Important:</strong> This is a major descriptive area in the supplied notes.</div>
+</div>`;
 }
-
-
-/* ===============================
-TOPIC 02 LEARNING MATERIAL
-================================ */
 
 function topic2Learn(){
-
 return `
+<div class="card"><span class="code">TOPIC 02</span><h1>Geological Agents & Weathering of Rocks</h1></div>
 
-<h2>Topic 02</h2>
-
-<h1>Geological Agents & Weathering of Rocks</h1>
-
-
-<div class="lesson-box">
-
-<h3>Geological Agents</h3>
-
-<div class="definition">
-
-The natural forces responsible for visible changes on the Earth's surface are called <strong>geological agents</strong>.
-
-</div>
-
-<p>
-Based on their origin, geological agents are grouped into two types:
-</p>
-
-<div class="flow">
-
-<span>Geological Agents</span>
-<span>→</span>
-<span>Exogenous</span>
-
-<span>+</span>
-
-<span>Endogenous</span>
-
-</div>
-
-</div>
-
-
-<div class="lesson-box">
-
-<h3>1. Exogenous Geological Agents</h3>
-
-<p>
-According to the notes, these agents originate on the Earth's surface and generally work slowly and steadily.
-</p>
-
-<p>
-They act on topographical irregularities of the Earth's surface.
-</p>
-
-<h4>Sequence of Geological Work</h4>
-
-<div class="diagram">
-
-<div class="flow">
-
-<span>Erosion</span>
-<span>→</span>
-<span>Transportation</span>
-<span>→</span>
-<span>Deposition</span>
-
-</div>
-
-</div>
-
-<p>
-The notes explain that erosion causes destruction or wearing away of land masses, while deposition fills or reduces depressions such as pits, lakes and valleys.
-</p>
-
-<p>
-Examples mentioned include Himalayan rivers such as the Ganga, Indus and Brahmaputra.
-</p>
-
-</div>
-
-
-<div class="lesson-box">
-
-<h3>2. Endogenous Geological Agents</h3>
-
-<div class="definition">
-
-Endogenous geological agents originate below the Earth's surface.
-
-</div>
-
-<p>
-The notes describe their nature, origin and function as opposite to exogenous geological agents.
-</p>
-
-<p>
-They may act suddenly and create topographical irregularities.
-</p>
-
-<p>Examples written in the notes include:</p>
-
-<ul>
-<li>Volcanoes</li>
-<li>Earthquakes</li>
-<li>Tectonic forces</li>
-<li>Tsunamis</li>
-</ul>
-
-</div>
-
-
-<div class="lesson-box">
-
-<h2>Weathering of Rocks</h2>
-
-<div class="definition">
-
-Weathering is the process by which rocks are broken down and decomposed by the action of external agencies such as wind, rivers, rain, temperature changes and other natural actions.
-
-</div>
-
-<p>The notes classify weathering into three types:</p>
-
-<div class="flow">
-
-<span>Weathering</span>
-<span>→</span>
-<span>Mechanical</span>
-
-<span>+</span>
-
-<span>Chemical</span>
-
-<span>+</span>
-
-<span>Biological</span>
-
-</div>
-
-</div>
-
-
-<div class="lesson-box">
-
-<h3>Mechanical Weathering</h3>
-
-<div class="definition">
-
-Mechanical weathering involves the breakdown of rocks into smaller pieces due to natural forces.
-
-</div>
-
-<p>
-Three types are listed in the current notes:
-</p>
-
-<ol>
-
-<li>Frost Wedging</li>
-
-<li>Expansion and Contraction</li>
-
-<li>Effect of Vegetation</li>
-
-</ol>
-
-<div class="important">
-
-Your current notes continue with a detailed explanation of <strong>Frost Wedging</strong>. Detailed explanations of the other listed processes have not yet been written in these six pages.
-
-</div>
-
-</div>
-
-
-<div class="lesson-box">
-
-<h3>Frost Wedging</h3>
-
-<p>
-Water enters cracks in rocks.
-</p>
-
-<p>
-During freezing, the water freezes and its volume increases.
-</p>
-
-<p>
-The expansion applies pressure to the walls of the cracks.
-</p>
-
-<p>
-Repeated action wedges the cracks farther apart and ultimately contributes to breakdown of the rock.
-</p>
-
-<div class="diagram">
-
-<strong>Frost Wedging — Process</strong>
-
-<div class="flow">
-
-<span>Water enters rock crack</span>
-
-<span>→</span>
-
-<span>Water freezes</span>
-
-<span>→</span>
-
-<span>Volume increases</span>
-
-<span>→</span>
-
-<span>Pressure on crack walls</span>
-
-<span>→</span>
-
-<span>Crack widens</span>
-
-<span>→</span>
-
-<span>Rock breaks</span>
-
-</div>
-
-</div>
-
-</div>
-
-
-<div class="lesson-box">
-
-<h3>What is still pending in your class notes?</h3>
-
-<p>
-The following headings are present, but their detailed explanations are not yet available in the uploaded pages:
-</p>
-
-<ul>
-
-<li>Expansion and Contraction</li>
-
-<li>Effect of Vegetation</li>
-
-<li>Chemical Weathering</li>
-
-<li>Biological Weathering</li>
-
-</ul>
-
-<p>
-They can be expanded when you upload the next week's notes.
-</p>
-
-</div>
-
-`;
-
-}
-/* ===============================
-FLUID MECHANICS — WEEK 01
-LEARNING MATERIAL
-================================ */
-
-function openFMLearn(){
-
-currentSubject="CE2104";
-
-hideAll();
-document.getElementById("learnPage").style.display="block";
-
-document.getElementById("learnContent").innerHTML=`
-
-<h2>CE2104 — Fluid Mechanics</h2>
-<h1>Week 01 — Introduction & Properties of Fluids</h1>
-
-<div class="lesson-box">
-
-<h3>1. Fluid Mechanics</h3>
-
-<div class="definition">
-<strong>Fluid Mechanics</strong> is the branch of science which deals with the behaviour of fluids at rest and in motion.
-</div>
-
-<p>The subject is broadly divided into:</p>
-
-<div class="flow">
-<span>Fluid Mechanics</span>
-<span>→</span>
-<span>Fluid Statics</span>
-<span>+</span>
-<span>Fluid Kinematics</span>
-<span>+</span>
-<span>Fluid Dynamics</span>
-</div>
-
-<p><strong>Fluid Statics:</strong> Study of fluids at rest.</p>
-
-<p><strong>Fluid Kinematics:</strong> Study of fluids in motion without considering the forces causing the motion.</p>
-
-<p><strong>Fluid Dynamics:</strong> Study of fluids in motion considering the forces responsible for the motion.</p>
-
-</div>
-
-
-<div class="lesson-box">
-
-<h3>2. Load, Stress and Pressure</h3>
-
-<div class="definition">
-<strong>Load:</strong> An external force acting on a body.
-</div>
-
-<div class="definition">
-<strong>Stress:</strong> Internal resisting force developed per unit area of a body.
-</div>
-
-<p><strong>Formula:</strong></p>
-
-<div class="diagram">
-σ = F / A
-</div>
-
-<p>
-σ = Stress<br>
-F = Force<br>
-A = Area
-</p>
-
-<p><strong>SI Unit:</strong> N/m² or Pascal (Pa)</p>
-
-<div class="definition">
-<strong>Pressure:</strong> Normal force acting per unit area of a fluid.
-</div>
-
-<div class="diagram">
-P = F / A
-</div>
-
-<p><strong>SI Unit:</strong> Pascal (Pa) or N/m²</p>
-
-</div>
-
-
-<div class="lesson-box">
-
-<h3>3. Solid and Fluid</h3>
-
-<p>
-A solid can resist shear stress without continuously deforming.
-</p>
-
-<p>
-A fluid continuously deforms when subjected to shear stress.
-</p>
-
-<div class="important">
-Liquids and gases are treated as fluids because they cannot permanently resist shear stress.
-</div>
-
-</div>
-
-
-<div class="lesson-box">
-
-<h3>4. Density</h3>
-
-<div class="definition">
-<strong>Density (ρ)</strong> is the mass of fluid per unit volume.
-</div>
-
-<div class="diagram">
-ρ = m / V
-</div>
-
-<p>
-ρ = Density<br>
-m = Mass<br>
-V = Volume
-</p>
-
-<p><strong>SI Unit:</strong> kg/m³</p>
-
-<div class="important">
-For water, the commonly used density is approximately <strong>1000 kg/m³</strong>.
-</div>
-
-</div>
-
-
-<div class="lesson-box">
-
-<h3>5. Specific Volume</h3>
-
-<div class="definition">
-<strong>Specific Volume</strong> is the volume occupied by unit mass of a fluid.
-</div>
-
-<div class="diagram">
-v = V / m = 1 / ρ
-</div>
-
-<p><strong>SI Unit:</strong> m³/kg</p>
-
-<p>
-Specific volume is the reciprocal of density.
-</p>
-
-</div>
-
-
-<div class="lesson-box">
-
-<h3>6. Specific Weight</h3>
-
-<div class="definition">
-<strong>Specific Weight (γ)</strong> is the weight of fluid per unit volume.
-</div>
-
-<div class="diagram">
-γ = W / V
-<br><br>
-γ = ρg
-</div>
-
-<p>
-γ = Specific weight<br>
-ρ = Density<br>
-g = Acceleration due to gravity
-</p>
-
-<p><strong>SI Unit:</strong> N/m³</p>
-
-<div class="important">
-For water:
-<br>
-γ ≈ 9810 N/m³
-<br>
-or
-<br>
-9.81 kN/m³
-</div>
-
-</div>
-
-
-<div class="lesson-box">
-
-<h3>7. Specific Gravity</h3>
-
-<div class="definition">
-<strong>Specific Gravity (S.G.)</strong> is the ratio of the density of a fluid to the density of a standard fluid.
-</div>
-
-<p>For liquids, water is normally taken as the standard fluid.</p>
-
-<div class="diagram">
-S.G. = Density of liquid / Density of water
-</div>
-
-<p>Therefore:</p>
-
-<div class="diagram">
-S.G. = ρ / 1000
-</div>
-
-<p>
-Specific gravity has <strong>no unit</strong> because it is a ratio.
-</p>
-
-</div>
-
-
-<div class="lesson-box">
-
-<h3>8. Useful Unit Conversions</h3>
-
-<table style="width:100%;border-collapse:collapse">
-
-<tr>
-<th style="border:1px solid #ddd;padding:10px">Conversion</th>
-<th style="border:1px solid #ddd;padding:10px">Value</th>
-</tr>
-
-<tr>
-<td style="border:1px solid #ddd;padding:10px">1 kN</td>
-<td style="border:1px solid #ddd;padding:10px">1000 N</td>
-</tr>
-
-<tr>
-<td style="border:1px solid #ddd;padding:10px">1 kPa</td>
-<td style="border:1px solid #ddd;padding:10px">1000 Pa</td>
-</tr>
-
-<tr>
-<td style="border:1px solid #ddd;padding:10px">1 MPa</td>
-<td style="border:1px solid #ddd;padding:10px">10⁶ Pa</td>
-</tr>
-
-<tr>
-<td style="border:1px solid #ddd;padding:10px">1 litre</td>
-<td style="border:1px solid #ddd;padding:10px">10⁻³ m³</td>
-</tr>
-
-<tr>
-<td style="border:1px solid #ddd;padding:10px">1 cm³</td>
-<td style="border:1px solid #ddd;padding:10px">10⁻⁶ m³</td>
-</tr>
-
-</table>
-
-</div>
-
-
-<div class="lesson-box">
-
-<h3>9. Viscosity</h3>
-
-<div class="definition">
-<strong>Viscosity</strong> is the property of a fluid by virtue of which it offers resistance to the relative motion between adjacent layers of the fluid.
-</div>
-
-<p>
-Viscosity represents the internal resistance or internal friction of a fluid.
-</p>
-
-<div class="diagram">
-
-<strong>Concept of Fluid Layers</strong>
-
-<div class="flow">
-<span>Slow-moving layer</span>
-<span>↔</span>
-<span>Intermediate layer</span>
-<span>↔</span>
-<span>Fast-moving layer</span>
-</div>
-
-</div>
-
-</div>
-
-
-<div class="lesson-box">
-
-<h3>10. Newton's Law of Viscosity</h3>
-
-<p>
-According to Newton's law of viscosity, shear stress is directly proportional to the velocity gradient.
-</p>
-
-<div class="diagram">
-τ ∝ du/dy
-<br><br>
-τ = μ (du/dy)
-</div>
-
-<p>
-τ = Shear stress<br>
-μ = Dynamic viscosity<br>
-du/dy = Velocity gradient
-</p>
-
-</div>
-
-
-<div class="lesson-box">
-
-<h3>11. Dynamic Viscosity</h3>
-
-<div class="definition">
-<strong>Dynamic Viscosity (μ)</strong> represents the resistance offered by a fluid to shear deformation.
-</div>
-
-<div class="diagram">
-μ = τ / (du/dy)
-</div>
-
-<p><strong>SI Unit:</strong> Pa·s or N·s/m²</p>
-
-</div>
-
-
-<div class="lesson-box">
-
-<h3>12. Kinematic Viscosity</h3>
-
-<div class="definition">
-<strong>Kinematic Viscosity (ν)</strong> is the ratio of dynamic viscosity to density.
-</div>
-
-<div class="diagram">
-ν = μ / ρ
-</div>
-
-<p>
-ν = Kinematic viscosity<br>
-μ = Dynamic viscosity<br>
-ρ = Density
-</p>
-
-<p><strong>SI Unit:</strong> m²/s</p>
-
-</div>
-
-
-<div class="lesson-box">
-
-<h3>13. Velocity Gradient</h3>
-
-<div class="definition">
-The rate of change of velocity with respect to distance perpendicular to the direction of flow is called the <strong>velocity gradient</strong>.
-</div>
-
-<div class="diagram">
-Velocity Gradient = du/dy
-</div>
-
-</div>
-
-
-<div class="lesson-box">
-
-<h3>14. Surface Tension</h3>
-
-<div class="definition">
-<strong>Surface Tension (σ)</strong> is the tensile force acting on the surface of a liquid per unit length.
-</div>
-
-<div class="diagram">
-σ = Force / Length
-</div>
-
-<p><strong>SI Unit:</strong> N/m</p>
-
-<p>
-Surface tension occurs because molecules at the free surface experience an unbalanced molecular attraction.
-</p>
-
-</div>
-
-
-<div class="lesson-box">
-
-<h3>15. Pressure Inside a Liquid Droplet</h3>
-
-<div class="diagram">
-ΔP = 4σ / d
-</div>
-
-<p>
-ΔP = Excess pressure<br>
-σ = Surface tension<br>
-d = Diameter of droplet
-</p>
-
-</div>
-
-
-<div class="lesson-box">
-
-<h3>16. Pressure Inside a Soap Bubble</h3>
-
-<p>
-A soap bubble has two liquid surfaces.
-</p>
-
-<div class="diagram">
-ΔP = 8σ / d
-</div>
-
-</div>
-
-
-<div class="lesson-box">
-
-<h3>17. Capillarity</h3>
-
-<div class="definition">
-<strong>Capillarity</strong> is the phenomenon of rise or fall of a liquid in a small-diameter tube due to surface tension.
-</div>
-
-<p>
-Water generally shows <strong>capillary rise</strong>, while mercury generally shows <strong>capillary depression</strong>.
-</p>
-
-<div class="diagram">
-
-<strong>Capillary Action</strong>
-
-<div class="flow">
-<span>Small Tube</span>
-<span>→</span>
-<span>Surface Tension</span>
-<span>→</span>
-<span>Rise / Fall of Liquid</span>
-</div>
-
+<div class="lesson-box"><h3>Geological Agents</h3>
+<div class="definition">The natural forces responsible for visible changes on the Earth's surface are called <strong>geological agents</strong>.</div>
+<p>Based on their origin, these natural forces are grouped into two types:</p>
+<ol><li>Exogenous geological agents</li><li>Endogenous geological agents</li></ol>
+<div class="diagram"><div class="flow"><span>Geological Agents</span><span>→</span><span>Exogenous</span><span>+</span><span>Endogenous</span></div></div>
 </div>
 
-<div class="diagram">
-h = 4σ cosθ / (ρgd)
+<div class="lesson-box"><h3>1. Exogenous Geological Agents</h3>
+<div class="definition">Exogenous geological agents originate on the Earth's surface, work slowly but steadily, and erase topographical irregularities.</div>
+<p>The geological work is systematic and starts with <strong>erosion</strong>, followed by <strong>transportation</strong> and then <strong>deposition</strong>.</p>
+<div class="diagram"><div class="flow"><span>Erosion</span><span>→</span><span>Transportation</span><span>→</span><span>Deposition</span></div></div>
+<p>The erosion process causes the destruction/wearing of land masses such as hills.</p>
+<p>The deposition process causes the disappearance/filling of depressed land masses such as pits, lakes and valleys.</p>
+<p><strong>Example in notes:</strong> Himalayan rivers — Ganga, Indus and Brahmaputra.</p>
+<p>The notes also state that they physically transport about <strong>1 million tons of sediments daily</strong>.</p>
 </div>
-
-<p>
-h = Capillary rise or fall<br>
-σ = Surface tension<br>
-θ = Angle of contact<br>
-ρ = Density of liquid<br>
-g = Acceleration due to gravity<br>
-d = Diameter of tube
-</p>
 
+<div class="lesson-box"><h3>2. Endogenous Geological Agents</h3>
+<div class="definition">The nature, origin and function of endogenous geological agents are opposite to exogenous geological agents.</div>
+<p>They originate below the Earth's surface, work suddenly and create topographic irregularities.</p>
+<p><strong>Examples listed in the notes:</strong></p><ul><li>Volcanoes</li><li>Earthquakes</li><li>Groundwater</li><li>Tectonic forces</li><li>Tsunamis</li></ul>
 </div>
-
-
-<div class="lesson-box">
-
-<h3>Formula Revision</h3>
-
-<p><strong>Density:</strong> ρ = m/V</p>
-
-<p><strong>Specific Volume:</strong> v = 1/ρ</p>
-
-<p><strong>Specific Weight:</strong> γ = ρg</p>
-
-<p><strong>Specific Gravity:</strong> S.G. = ρ/ρwater</p>
-
-<p><strong>Newton's Law of Viscosity:</strong> τ = μ(du/dy)</p>
-
-<p><strong>Kinematic Viscosity:</strong> ν = μ/ρ</p>
 
-<p><strong>Liquid Droplet:</strong> ΔP = 4σ/d</p>
-
-<p><strong>Soap Bubble:</strong> ΔP = 8σ/d</p>
-
-<p><strong>Capillary Rise/Fall:</strong> h = 4σcosθ/(ρgd)</p>
-
+<div class="lesson-box"><h2>Weathering of Rocks</h2>
+<div class="definition"><strong>Weathering of rocks</strong> is the process by which rocks are broken down and decomposed by the action of external agencies such as wind, rivers, rain, temperature and changes.</div>
+<p>Weathering is classified into three types:</p><ol><li>Mechanical</li><li>Chemical</li><li>Biological</li></ol>
+<div class="diagram"><div class="flow"><span>Weathering</span><span>→</span><span>Mechanical</span><span>+</span><span>Chemical</span><span>+</span><span>Biological</span></div></div>
 </div>
-
-
-<div class="important">
-
-<strong>Week 01 Boundary:</strong>
 
-This page represents the current Fluid Mechanics material. Future weekly notes will be appended after this material without replacing Week 01.
-
+<div class="lesson-box"><h3>Mechanical Weathering</h3>
+<div class="definition">Mechanical weathering involves the breakdown of rocks into smaller pieces due to natural forces such as waterfalls and landslides.</div>
+<p>Three types are listed:</p><ol><li>Frost Wedging</li><li>Expansion and Contraction</li><li>Effects of Vegetation</li></ol>
+<div class="important"><strong>Note boundary:</strong> In the supplied pages, only Frost Wedging is explained in detail. Expansion and Contraction, Effects of Vegetation, Chemical Weathering and Biological Weathering are only listed, so no extra explanation has been invented.</div>
 </div>
-
-`;
-
-window.scrollTo(0,0);
-
-}
-
-/* ===============================
-TOPIC QUESTIONS
-================================ */
-
-const topic1Questions=[
 
-"Define Physical Geology.",
-"Write a short note on Mineralogy.",
-"Define Petrology and state what it deals with.",
-"Explain Structural Geology.",
-"What are folds, faults, joints and unconformities?",
-"Write a short note on Historical Geology.",
-"Define Palaeontology. What are fossils?",
-"Explain Economic Geology.",
-"Define Engineering Geology.",
-"Explain the role of Mining Geology.",
-"Write a short note on Geophysics.",
-"Define Geohydrology / Hydrogeology.",
-"Explain Geochemistry.",
-"Explain the importance of geology in Civil Engineering.",
-"Why is geology important for site selection and foundations?",
-"How is geology useful in tunnelling and road construction?",
-"Why is groundwater knowledge important in Civil Engineering?",
-"How are geological maps and sections useful in engineering projects?",
-"Why should faults, folds and joints be considered in engineering works?",
-"What is the importance of a preliminary geological survey?"
-
-];
-
-
-const topic2Questions=[
-
-"Define geological agents.",
-"Classify geological agents based on their origin.",
-"Explain exogenous geological agents.",
-"Explain endogenous geological agents.",
-"Write the sequence of geological work performed by exogenous agents.",
-"Explain erosion, transportation and deposition.",
-"Give examples of endogenous geological agents.",
-"Define weathering of rocks.",
-"Classify weathering.",
-"Define mechanical weathering.",
-"List the types of mechanical weathering given in the notes.",
-"Explain frost wedging with a neat diagram."
-
-];
-
-    /* ===============================
-FLUID MECHANICS — WEEK 01
-TOPIC QUESTIONS
-================================ */
-
-const fmWeek1Questions=[
-
-"Define Fluid Mechanics.",
-"Classify Fluid Mechanics into its main branches.",
-"Define Fluid Statics.",
-"Define Fluid Kinematics.",
-"Define Fluid Dynamics.",
-"Differentiate between Fluid Kinematics and Fluid Dynamics.",
-
-"Define load.",
-"Define stress.",
-"Write the expression for stress and mention its SI unit.",
-"Define pressure.",
-"Write the expression for pressure and mention its SI unit.",
-"Differentiate between stress and pressure.",
-
-"Explain the difference between a solid and a fluid.",
-"Why do fluids continuously deform under shear stress?",
-
-"Define density.",
-"Write the formula and SI unit of density.",
-"Define specific volume.",
-"Show the relationship between specific volume and density.",
-"Define specific weight.",
-"Derive the relation γ = ρg.",
-"Define specific gravity.",
-"Why does specific gravity have no unit?",
-"Write the relationship between specific gravity and density.",
-
-"Define viscosity.",
-"Explain the physical significance of viscosity.",
-"State Newton's law of viscosity.",
-"Write and explain τ = μ(du/dy).",
-"Define dynamic viscosity.",
-"Write the SI unit of dynamic viscosity.",
-"Define kinematic viscosity.",
-"Write the relation between dynamic viscosity and kinematic viscosity.",
-"Write the SI unit of kinematic viscosity.",
-"Define velocity gradient.",
-
-"Define surface tension.",
-"Write the SI unit of surface tension.",
-"Explain the cause of surface tension.",
-"Write the expression for excess pressure inside a liquid droplet.",
-"Write the expression for excess pressure inside a soap bubble.",
-"Why is the excess pressure in a soap bubble different from that in a liquid droplet?",
-
-"Define capillarity.",
-"Explain capillary rise.",
-"Explain capillary depression.",
-"Write the expression for capillary rise or fall.",
-"Explain the terms in h = 4σcosθ/(ρgd).",
-"Why does water rise in a capillary tube?",
-"Why does mercury show capillary depression?",
-
-"Convert 1 kN into N.",
-"Convert 1 kPa into Pa.",
-"Convert 1 MPa into Pa.",
-"Convert 1 litre into cubic metres.",
-"Convert 1 cm³ into cubic metres.",
-
-"Write all important formulas from the current Fluid Mechanics Week 01 notes."
-
-];
-
-    /* ===============================
-FLUID MECHANICS — WEEK 01
-OPEN TOPIC QUESTIONS
-================================ */
-
-
-
-/* ===============================
-TOPIC QUESTION ANSWERS
-================================ */
-const topic1QA=[
-{q:"Define Physical Geology.",a:"Physical Geology deals with the different physical features of the Earth and the changes occurring on the Earth"s surface. It includes features such as mountains, rivers, lakes, glaciers and volcanoes, and processes such as landslides, earthquakes and weathering.",important:false},
-{q:"Write a short note on Mineralogy.",a:"Mineralogy deals with the study of minerals, including their mode of formation, composition, occurrence, types, associated properties and uses.",important:false},
-{q:"Define Petrology and state what it deals with.",a:"Petrology is the study of rocks. It deals with their formation, structure, texture, composition, occurrence and types.",important:true},
-{q:"Explain Structural Geology.",a:"Structural Geology deals with deformation and disturbance of rocks under tectonic forces. Such deformation produces structures such as folds, faults, joints and unconformities.",important:false},
-{q:"What are folds, faults, joints and unconformities?",a:"The current uploaded material lists folds, faults, joints and unconformities as structures studied in Structural Geology, but it does not yet give separate detailed definitions for each.",important:false},
-{q:"Write a short note on Historical Geology.",a:"Historical Geology deals with the history of the Earth through geological records. Sedimentary rocks can reveal the chronological sequence of rock formation, evolution and migration of plants and animals during different periods.",important:false},
-{q:"Define Palaeontology. What are fossils?",a:"Palaeontology deals with fossils and ancient life. Fossils are naturally preserved remains of ancient plants and animals that became embedded in sediments under favourable conditions.",important:false},
-{q:"Explain Economic Geology.",a:"Economic Geology deals with economically valuable geological and mineral deposits. The notes mention oil deposits of Gulf countries as an example of economically important deposits.",important:true},
-{q:"Define Engineering Geology.",a:"Engineering Geology is the application of geological knowledge in Civil Engineering to help execute safe, stable and economical works such as dams, bridges and tunnels.",important:false},
-{q:"Explain the role of Mining Geology.",a:"Mining Geology applies geological knowledge to mining. A mining engineer should understand the occurrence and properties of ores, including depth, direction or strike, inclination or dip, thickness and ore bodies.",important:false},
-{q:"Write a short note on Geophysics.",a:"Geophysics deals with physical properties of the Earth, such as density and magnetism. The notes divide it into Pure Geophysics and Exploration Geophysics.",important:false},
-{q:"Define Geohydrology / Hydrogeology.",a:"Geohydrology or Hydrogeology deals with the occurrence, movement, nature, quality and quantity of groundwater. Groundwater behaviour is related to porosity, permeability, structure, texture and composition.",important:false},
-{q:"Explain Geochemistry.",a:"Geochemistry deals with the chemical composition of minerals and rocks and with the occurrence, distribution, abundance and mobility of chemical constituents.",important:true},
-{q:"Explain the importance of geology in Civil Engineering.",a:"Geology is important in Civil Engineering for site selection and foundation stability; knowledge of construction materials and rocks; tunnelling and roads; foundations of dams, bridges and buildings; groundwater; erosion, transportation and deposition; geological maps and sections; treatment of faults, folds and joints; and preliminary geological surveys.",important:true},
-{q:"Why is geology important for site selection and foundations?",a:"Before construction, proper site selection is required from the viewpoint of foundation stability. Foundation problems of dams, bridges and buildings are directly related to the geology of the area.",important:true},
-{q:"How is geology useful in tunnelling and road construction?",a:"Knowledge of the nature of rocks is useful in tunnelling and road construction.",important:true},
-{q:"Why is groundwater knowledge important in Civil Engineering?",a:"Groundwater knowledge is necessary for excavation works, water supply, irrigation and other purposes.",important:true},
-{q:"How are geological maps and sections useful in engineering projects?",a:"Geological maps and sections help considerably in planning engineering projects.",important:true},
-{q:"Why should faults, folds and joints be considered in engineering works?",a:"Faults, folds and joints should be suitably treated to maintain the stability of rock structures.",important:true},
-{q:"What is the importance of a preliminary geological survey?",a:"A preliminary geological survey of the concerned area can reduce unnecessary planning costs.",important:true}
-];
-const topic2QA=[
-{q:"Define geological agents.",a:"Natural forces responsible for visible changes on the Earth"s surface are called geological agents.",important:true},
-{q:"Classify geological agents based on their origin.",a:"Based on origin, geological agents are classified into Exogenous Geological Agents and Endogenous Geological Agents.",important:true},
-{q:"Explain exogenous geological agents.",a:"Exogenous geological agents originate on the Earth"s surface and generally work slowly and steadily. They act on topographical irregularities through processes such as erosion, transportation and deposition.",important:true},
-{q:"Explain endogenous geological agents.",a:"Endogenous geological agents originate below the Earth"s surface. They may act suddenly and create topographical irregularities. The notes list volcanoes, earthquakes, tectonic forces and tsunamis.",important:true},
-{q:"Write the sequence of geological work performed by exogenous agents.",a:"Erosion → Transportation → Deposition.",important:true},
-{q:"Explain erosion, transportation and deposition.",a:"Erosion causes destruction or wearing away of land masses. The eroded material is transported and later deposited, helping to fill or reduce depressions such as pits, lakes and valleys.",important:false},
-{q:"Give examples of endogenous geological agents.",a:"Examples listed in the notes are volcanoes, earthquakes, tectonic forces and tsunamis.",important:false},
-{q:"Define weathering of rocks.",a:"Weathering is the process by which rocks are broken down and decomposed by external agencies such as wind, rivers, rain, temperature changes and other natural actions.",important:true},
-{q:"Classify weathering.",a:"Weathering is classified into Mechanical Weathering, Chemical Weathering and Biological Weathering.",important:true},
-{q:"Define mechanical weathering.",a:"Mechanical weathering is the breakdown of rocks into smaller pieces due to natural forces.",important:false},
-{q:"List the types of mechanical weathering given in the notes.",a:"The current notes list Frost Wedging, Expansion and Contraction, and Effect of Vegetation.",important:false},
-{q:"Explain frost wedging with a neat diagram.",a:"Frost wedging occurs when water enters cracks in rocks and freezes. Freezing increases the water volume, which exerts pressure on the crack walls. Repeated action widens the crack and ultimately contributes to rock breakdown. Process: Water enters crack → freezes → volume increases → pressure develops → crack widens → rock breaks.",important:true}
-];
-const fmWeek1QA=[
-{q:"Define Fluid Mechanics.",a:"Fluid Mechanics is the branch of science which deals with the behaviour of fluids at rest and in motion.",important:true},
-{q:"Classify Fluid Mechanics into its main branches.",a:"Fluid Mechanics is broadly divided into Fluid Statics, Fluid Kinematics and Fluid Dynamics.",important:true},
-{q:"Define Fluid Statics.",a:"Fluid Statics is the study of fluids at rest.",important:false},
-{q:"Define Fluid Kinematics.",a:"Fluid Kinematics is the study of fluids in motion without considering the forces causing the motion.",important:false},
-{q:"Define Fluid Dynamics.",a:"Fluid Dynamics is the study of fluids in motion while considering the forces responsible for the motion.",important:false},
-{q:"Differentiate between Fluid Kinematics and Fluid Dynamics.",a:"Fluid Kinematics studies motion without considering the forces causing it, whereas Fluid Dynamics studies motion while considering those forces.",important:true},
-{q:"Define load.",a:"Load is an external force acting on a body.",important:false},
-{q:"Define stress.",a:"Stress is the internal resisting force developed per unit area of a body.",important:false},
-{q:"Write the expression for stress and mention its SI unit.",a:"σ = F/A, where F is force and A is area. SI unit: N/m² or Pascal (Pa).",important:true},
-{q:"Define pressure.",a:"Pressure is the normal force acting per unit area of a fluid.",important:false},
-{q:"Write the expression for pressure and mention its SI unit.",a:"P = F/A. SI unit: Pascal (Pa) or N/m².",important:false},
-{q:"Differentiate between stress and pressure.",a:"Stress is an internal resisting force per unit area of a body, while pressure is normal force per unit area of a fluid.",important:true},
-{q:"Explain the difference between a solid and a fluid.",a:"A solid can resist shear stress without continuously deforming, whereas a fluid continuously deforms when subjected to shear stress.",important:true},
-{q:"Why do fluids continuously deform under shear stress?",a:"Fluids cannot permanently resist shear stress; therefore, when shear stress acts, they continue to deform.",important:false},
-{q:"Define density.",a:"Density (ρ) is the mass of fluid per unit volume.",important:false},
-{q:"Write the formula and SI unit of density.",a:"ρ = m/V. SI unit: kg/m³.",important:true},
-{q:"Define specific volume.",a:"Specific volume is the volume occupied by unit mass of a fluid.",important:false},
-{q:"Show the relationship between specific volume and density.",a:"v = V/m = 1/ρ. Thus specific volume is the reciprocal of density.",important:true},
-{q:"Define specific weight.",a:"Specific weight (γ) is the weight of fluid per unit volume.",important:false},
-{q:"Derive the relation γ = ρg.",a:"γ = W/V. Since W = mg and ρ = m/V, γ = mg/V = ρg.",important:true},
-{q:"Define specific gravity.",a:"Specific Gravity is the ratio of the density of a fluid to the density of a standard fluid. For liquids, water is normally the standard.",important:false},
-{q:"Why does specific gravity have no unit?",a:"Specific gravity has no unit because it is a ratio of two quantities having the same unit.",important:false},
-{q:"Write the relationship between specific gravity and density.",a:"S.G. = ρ/ρwater. For liquids with water as standard, S.G. = ρ/1000 when density is in kg/m³.",important:true},
-{q:"Define viscosity.",a:"Viscosity is the property of a fluid by which it offers resistance to relative motion between adjacent layers.",important:true},
-{q:"Explain the physical significance of viscosity.",a:"Viscosity represents the internal resistance or internal friction of a fluid.",important:false},
-{q:"State Newton"s law of viscosity.",a:"According to Newton"s law of viscosity, shear stress is directly proportional to velocity gradient: τ ∝ du/dy.",important:true},
-{q:"Write and explain τ = μ(du/dy).",a:"τ = μ(du/dy), where τ is shear stress, μ is dynamic viscosity and du/dy is velocity gradient.",important:true},
-{q:"Define dynamic viscosity.",a:"Dynamic viscosity (μ) represents the resistance offered by a fluid to shear deformation.",important:false},
-{q:"Write the SI unit of dynamic viscosity.",a:"SI unit of dynamic viscosity: Pa·s or N·s/m².",important:false},
-{q:"Define kinematic viscosity.",a:"Kinematic viscosity (ν) is the ratio of dynamic viscosity to density.",important:true},
-{q:"Write the relation between dynamic viscosity and kinematic viscosity.",a:"ν = μ/ρ.",important:true},
-{q:"Write the SI unit of kinematic viscosity.",a:"SI unit of kinematic viscosity: m²/s.",important:false},
-{q:"Define velocity gradient.",a:"Velocity gradient is the rate of change of velocity with respect to distance perpendicular to the direction of flow; it is represented by du/dy.",important:true},
-{q:"Define surface tension.",a:"Surface tension (σ) is the tensile force acting on the surface of a liquid per unit length.",important:true},
-{q:"Write the SI unit of surface tension.",a:"SI unit of surface tension: N/m.",important:false},
-{q:"Explain the cause of surface tension.",a:"Surface tension occurs because molecules at the free surface experience unbalanced molecular attraction.",important:false},
-{q:"Write the expression for excess pressure inside a liquid droplet.",a:"For a liquid droplet: ΔP = 4σ/d.",important:true},
-{q:"Write the expression for excess pressure inside a soap bubble.",a:"For a soap bubble: ΔP = 8σ/d.",important:true},
-{q:"Why is the excess pressure in a soap bubble different from that in a liquid droplet?",a:"A soap bubble has two liquid surfaces, so its excess-pressure expression is ΔP = 8σ/d, compared with ΔP = 4σ/d for a liquid droplet.",important:true},
-{q:"Define capillarity.",a:"Capillarity is the rise or fall of a liquid in a small-diameter tube due to surface tension.",important:true},
-{q:"Explain capillary rise.",a:"The current material states that water generally shows capillary rise in a small-diameter tube due to surface tension.",important:false},
-{q:"Explain capillary depression.",a:"The current material states that mercury generally shows capillary depression in a small-diameter tube due to surface tension.",important:false},
-{q:"Write the expression for capillary rise or fall.",a:"h = 4σcosθ/(ρgd).",important:true},
-{q:"Explain the terms in h = 4σcosθ/(ρgd).",a:"In h = 4σcosθ/(ρgd): h is capillary rise/fall, σ surface tension, θ angle of contact, ρ liquid density, g acceleration due to gravity and d tube diameter.",important:true},
-{q:"Why does water rise in a capillary tube?",a:"The current material states that water generally shows capillary rise due to capillary action/surface tension; it does not provide a more detailed explanation.",important:false},
-{q:"Why does mercury show capillary depression?",a:"The current material states that mercury generally shows capillary depression due to capillary action/surface tension; it does not provide a more detailed explanation.",important:false},
-{q:"Convert 1 kN into N.",a:"1 kN = 1000 N.",important:false},
-{q:"Convert 1 kPa into Pa.",a:"1 kPa = 1000 Pa.",important:false},
-{q:"Convert 1 MPa into Pa.",a:"1 MPa = 10⁶ Pa.",important:false},
-{q:"Convert 1 litre into cubic metres.",a:"1 litre = 10⁻³ m³.",important:false},
-{q:"Convert 1 cm³ into cubic metres.",a:"1 cm³ = 10⁻⁶ m³.",important:false},
-{q:"Write all important formulas from the current Fluid Mechanics Week 01 notes.",a:"Density: ρ=m/V; Specific Volume: v=1/ρ; Specific Weight: γ=ρg; Specific Gravity: S.G.=ρ/ρwater; Newton"s Law of Viscosity: τ=μ(du/dy); Kinematic Viscosity: ν=μ/ρ; Liquid Droplet: ΔP=4σ/d; Soap Bubble: ΔP=8σ/d; Capillary Rise/Fall: h=4σcosθ/(ρgd).",important:true}
-];
-
-function toggleAnswer(id,btn){
-const box=document.getElementById(id);
-if(box.style.display==="block"){
-    box.style.display="none";
-    btn.innerText="Show Answer";
-}else{
-    box.style.display="block";
-    btn.innerText="Hide Answer";
-}
-}
-
-function renderQA(arr,prefix){
-let html="";
-arr.forEach((item,i)=>{
-html+=`
-<div class="question">
-<strong>Q${i+1}.</strong> ${item.q}
-${item.important ? '<span class="important-star">⭐ Important</span>' : ''}
-<br>
-<button class="answer-btn" onclick="toggleAnswer('${prefix}${i}',this)">Show Answer</button>
-<div class="answer-box" id="${prefix}${i}">
-<strong>Answer:</strong><br>${item.a}
-</div>
+<div class="lesson-box"><h3>⭐ Frost Wedging</h3>
+<p>Water present in cracks of rocks freezes during the night and melts during the daytime.</p>
+<p>Freezing of water involves an increase in volume.</p>
+<p>Because of this increase in volume, the walls of cracks are wedged apart and ultimately result in breakdown of the rock.</p>
+<div class="diagram"><strong>Frost Wedging — Process</strong><div class="flow"><span>Water in rock cracks</span><span>→</span><span>Freezes at night</span><span>→</span><span>Volume increases</span><span>→</span><span>Crack walls wedge apart</span><span>→</span><span>Rock breakdown</span></div></div>
 </div>`;
-});
-return html;
 }
-
-function openFMQuestions(){
-currentSubject="CE2104";
-hideAll();
-document.getElementById("questionsPage").style.display="block";
-document.getElementById("questionsContent").innerHTML=`
-<h2>CE2104 — Fluid Mechanics</h2>
-<h1>Week 01 — Topic Questions & Answers</h1>
-<p>⭐ marks important questions. Click <strong>Show Answer</strong> to study the answer.</p>
-${renderQA(fmWeek1QA,"fmqa")}
-`;
-window.scrollTo(0,0);
-}
-
-/* ===============================
-FLUID MECHANICS — WEEK 01
-PYQs
-================================ */
-
-function openFMPYQ(){
-
-currentSubject="CE2104";
-
-hideAll();
-
-document.getElementById("questionsPage").style.display="block";
-
-document.getElementById("questionsContent").innerHTML=`
-
-<h2>CE2104 — Fluid Mechanics</h2>
-<h1>Week 01 — Previous Year Questions (PYQs)</h1>
-
-<div class="lesson-box">
-
-<h3>🎓 PYQs</h3>
-
-<p>
-Fluid Mechanics previous year questions have not been uploaded yet.
-</p>
-
-<div class="important">
-When PYQs are provided, questions related to the topics covered up to this week will be added here.
-</div>
-
-</div>
-
-`;
-
-window.scrollTo(0,0);
-
-}
-
-
-function openQuestions(topic){
-currentTopic=topic;
-hideAll();
-document.getElementById("questionsPage").style.display="block";
-const arr=topic===1 ? topic1QA : topic2QA;
-document.getElementById("questionsContent").innerHTML=`
-<h2>Topic ${String(topic).padStart(2,"0")} — Topic Questions & Answers</h2>
-<p>⭐ marks important questions. Click <strong>Show Answer</strong> to study the answer.</p>
-${renderQA(arr,"eg"+topic+"qa")}
-`;
-window.scrollTo(0,0);
-}
-
-
-/* ===============================
-LEARN
-================================ */
 
 function openLearn(topic){
-
-currentTopic=topic;
-
-hideAll();
-
-document.getElementById("learnPage").style.display="block";
-
-document.getElementById("learnContent").innerHTML=
-topic===1 ? topic1Learn() : topic2Learn();
-
-window.scrollTo(0,0);
-
-}
-
-
-/* ===============================
-PYQ
-================================ */
-
-function openPYQ(topic){
-
-currentTopic=topic;
-
-hideAll();
-
-document.getElementById("pyqPage").style.display="block";
-
-window.scrollTo(0,0);
-
-}
-
-
-/* ===============================
-MCQs
-================================ */
-
-const topic1MCQ=[
-
-{
-q:"Which branch deals with the study of minerals?",
-o:["Petrology","Mineralogy","Geophysics","Palaeontology"],
-a:1,
-e:"Mineralogy deals with the study of minerals."
-},
-
-{
-q:"Petrology deals with the study of:",
-o:["Minerals","Rocks","Groundwater","Fossils"],
-a:1,
-e:"Petrology deals with the study of rocks."
-},
-
-{
-q:"Which geological structures are associated with Structural Geology?",
-o:["Folds, faults and joints","Minerals only","Groundwater only","Fossils only"],
-a:0,
-e:"The notes list folds, faults, joints and unconformities under Structural Geology."
-},
-
-{
-q:"The study of ancient life and fossils is called:",
-o:["Geophysics","Palaeontology","Geochemistry","Petrology"],
-a:1,
-e:"Palaeontology deals with fossils and ancient life."
-},
-
-{
-q:"Which branch deals with economically valuable mineral deposits?",
-o:["Economic Geology","Physical Geology","Historical Geology","Geohydrology"],
-a:0,
-e:"Economic Geology deals with economically important geological deposits."
-},
-
-{
-q:"Engineering Geology applies geological knowledge mainly to:",
-o:["Civil Engineering works","Computer programming","Electrical circuits","Accounting"],
-a:0,
-e:"Engineering Geology applies geological knowledge in Civil Engineering."
-},
-
-{
-q:"Mining Geology deals with geological knowledge applied to:",
-o:["Agriculture","Mining","Medicine","Electronics"],
-a:1,
-e:"Mining Geology is the application of geological knowledge in mining."
-},
-
-{
-q:"Geohydrology is mainly concerned with:",
-o:["Groundwater","Fossils","Volcanoes only","Road traffic"],
-a:0,
-e:"The notes describe Geohydrology/Hydrogeology as dealing with groundwater."
-},
-
-{
-q:"Geochemistry deals with:",
-o:["Chemical composition of minerals and rocks","Only rock strength","Only fossils","Only groundwater"],
-a:0,
-e:"Geochemistry deals with chemical composition and related distribution of constituents."
-},
-
-{
-q:"Geological maps and sections are useful mainly for:",
-o:["Planning engineering projects","Painting buildings","Traffic counting","Computer design"],
-a:0,
-e:"The notes state that geological maps and sections help considerably in planning engineering projects."
-},
-
-{
-q:"Which structures have foundation problems directly related to geology?",
-o:["Dams, bridges and buildings","Only vehicles","Only machines","Only pipelines"],
-a:0,
-e:"The notes specifically mention dams, bridges and buildings."
-},
-
-{
-q:"Which geological features may require suitable treatment for stability?",
-o:["Faults, folds and joints","Clouds and rainbows","Road signs","Electrical wires"],
-a:0,
-e:"The notes identify faults, folds and joints as geological features that should be suitably treated."
-}
-
-];
-
-
-const topic2MCQ=[
-
-{
-q:"Natural forces responsible for visible changes on the Earth's surface are called:",
-o:["Geological agents","Minerals","Fossils","Foundations"],
-a:0,
-e:"The notes define geological agents as natural forces responsible for visible changes on the Earth's surface."
-},
-
-{
-q:"Geological agents are classified into:",
-o:["Exogenous and endogenous","Physical and chemical only","Solid and liquid","Natural and artificial"],
-a:0,
-e:"Based on origin, the notes divide geological agents into exogenous and endogenous agents."
-},
-
-{
-q:"Exogenous geological agents originate mainly:",
-o:["On the Earth's surface","At the Earth's core only","Inside buildings","Inside machines"],
-a:0,
-e:"The notes describe exogenous agents as originating on the Earth's surface."
-},
-
-{
-q:"Which is the correct sequence given for geological work of exogenous agents?",
-o:[
-"Erosion → Transportation → Deposition",
-"Deposition → Erosion → Transportation",
-"Transportation → Deposition → Erosion",
-"Erosion → Deposition → Transportation"
-],
-a:0,
-e:"The notes give the sequence as erosion followed by transportation and deposition."
-},
-
-{
-q:"Endogenous geological agents originate:",
-o:["Below the Earth's surface","Only in rivers","Only in the atmosphere","Only on roads"],
-a:0,
-e:"The notes state that endogenous agents originate below the Earth's surface."
-},
-
-{
-q:"Which of the following is listed as an endogenous geological agent in the notes?",
-o:["Earthquake","Concrete curing","Brick laying","Traffic flow"],
-a:0,
-e:"Earthquakes are included among the examples of endogenous geological activity."
-},
-
-{
-q:"Weathering of rocks involves:",
-o:["Breakdown and decomposition of rocks","Manufacture of cement","Steel production","Road marking"],
-a:0,
-e:"Weathering is described as breakdown and decomposition of rocks by external agencies."
-},
-
-{
-q:"How many types of weathering are listed in the notes?",
-o:["Two","Three","Four","Five"],
-a:1,
-e:"The notes classify weathering into mechanical, chemical and biological types."
-},
-
-{
-q:"Which of the following is a type of weathering?",
-o:["Mechanical weathering","Electrical weathering","Digital weathering","Artificial loading"],
-a:0,
-e:"Mechanical weathering is one of the three types listed."
-},
-
-{
-q:"Mechanical weathering causes rocks to:",
-o:["Break into smaller pieces","Turn into steel","Become concrete","Disappear instantly"],
-a:0,
-e:"The notes describe mechanical weathering as breakdown of rocks into smaller pieces."
-},
-
-{
-q:"Which process is explained in detail in the current mechanical-weathering notes?",
-o:["Frost wedging","Carbonation","Oxidation","Hydration"],
-a:0,
-e:"The current notes continue with a detailed explanation of frost wedging."
-},
-
-{
-q:"In frost wedging, water first enters:",
-o:["Cracks in rocks","Steel bars","Concrete mixers","Road vehicles"],
-a:0,
-e:"Frost wedging begins when water enters cracks in rocks."
-},
-
-{
-q:"During freezing in frost wedging, the water:",
-o:["Increases in volume","Always disappears","Becomes cement","Decreases to zero volume"],
-a:0,
-e:"The notes state that freezing water increases in volume."
-},
-
-{
-q:"The increase in volume of freezing water causes:",
-o:["Pressure on crack walls","Concrete curing","Fossil formation","Mineral melting"],
-a:0,
-e:"Expansion of freezing water exerts pressure on the walls of rock cracks."
-},
-
-{
-q:"Repeated frost wedging ultimately results in:",
-o:["Breakdown of rock","Formation of steel","Increase in traffic","Cement hydration"],
-a:0,
-e:"Repeated freezing and expansion widens cracks and contributes to breakdown of the rock."
-}
-
-];
-
-
-/* ===============================
-FLUID MECHANICS — WEEK 01 MCQs
-================================ */
-const fmWeek1MCQ=[
-{q:"Fluid Mechanics deals with:",o:["Solids only","Fluids at rest and in motion","Rocks only","Concrete only"],a:1,e:"Fluid Mechanics deals with fluids at rest and in motion."},
-{q:"The study of fluids at rest is called:",o:["Fluid Statics","Fluid Kinematics","Fluid Dynamics","Hydrology"],a:0,e:"Fluid Statics is the study of fluids at rest."},
-{q:"Fluid Kinematics studies fluid motion:",o:["Without considering the forces causing motion","Only at rest","Considering only temperature","Considering only pressure"],a:0,e:"Fluid Kinematics studies motion without considering the forces causing it."},
-{q:"Fluid Dynamics studies fluid motion:",o:["Without forces","Considering the forces responsible for motion","Only at rest","Without velocity"],a:1,e:"Fluid Dynamics considers the forces responsible for fluid motion."},
-{q:"Stress is given by:",o:["σ=A/F","σ=F/A","σ=F×A","σ=V/m"],a:1,e:"Stress is force per unit area: σ=F/A."},
-{q:"The SI unit of pressure is:",o:["kg","m³","Pascal","N·m"],a:2,e:"Pressure is measured in Pascal (Pa), equal to N/m²."},
-{q:"A fluid subjected to shear stress:",o:["Never deforms","Continuously deforms","Becomes solid immediately","Has zero mass"],a:1,e:"A fluid continuously deforms under shear stress."},
-{q:"Density is:",o:["Volume per unit mass","Mass per unit volume","Weight per unit mass","Force per unit length"],a:1,e:"Density is mass per unit volume: ρ=m/V."},
-{q:"The SI unit of density is:",o:["kg/m³","N/m³","m³/kg","N/m"],a:0,e:"Density is measured in kg/m³."},
-{q:"Specific volume is:",o:["ρg","1/ρ","ρ/1000","F/A"],a:1,e:"Specific volume is the reciprocal of density: v=1/ρ."},
-{q:"Specific weight is:",o:["γ=ρg","γ=ρ/g","γ=g/ρ","γ=m/V"],a:0,e:"Specific weight is γ=ρg."},
-{q:"Specific gravity has:",o:["Unit N/m³","Unit kg/m³","No unit","Unit Pa"],a:2,e:"Specific gravity is a ratio and therefore dimensionless."},
-{q:"For density 800 kg/m³, specific gravity is:",o:["0.8","8","80","800"],a:0,e:"S.G.=800/1000=0.8."},
-{q:"Viscosity is resistance to:",o:["Relative motion between adjacent fluid layers","Gravity only","Mass only","Volume only"],a:0,e:"Viscosity is internal resistance to relative motion between adjacent layers."},
-{q:"Newton's law of viscosity is:",o:["τ=μ(du/dy)","τ=ρg","τ=F/A only","τ=μρ"],a:0,e:"Newton's law of viscosity is τ=μ(du/dy)."},
-{q:"The SI unit of dynamic viscosity is:",o:["m²/s","Pa·s","kg/m³","N/m"],a:1,e:"Dynamic viscosity is measured in Pa·s or N·s/m²."},
-{q:"Kinematic viscosity is:",o:["ν=μρ","ν=μ/ρ","ν=ρ/μ","ν=ρg"],a:1,e:"Kinematic viscosity is ν=μ/ρ."},
-{q:"The SI unit of kinematic viscosity is:",o:["Pa·s","m²/s","N/m","kg/m³"],a:1,e:"Kinematic viscosity is measured in m²/s."},
-{q:"Velocity gradient is represented by:",o:["du/dy","ρg","F/A","m/V"],a:0,e:"Velocity gradient is du/dy."},
-{q:"Surface tension is force per unit:",o:["Area","Volume","Length","Mass"],a:2,e:"Surface tension is force per unit length."},
-{q:"The SI unit of surface tension is:",o:["N/m","N/m²","kg/m³","m²/s"],a:0,e:"Surface tension is measured in N/m."},
-{q:"Excess pressure inside a liquid droplet is:",o:["2σ/d","4σ/d","8σ/d","σd"],a:1,e:"For a liquid droplet, ΔP=4σ/d."},
-{q:"Excess pressure inside a soap bubble is:",o:["2σ/d","4σ/d","8σ/d","16σ/d"],a:2,e:"For a soap bubble, ΔP=8σ/d."},
-{q:"Capillarity is rise or fall of liquid in:",o:["A small-diameter tube","A solid bar","A vacuum only","A concrete cube"],a:0,e:"Capillarity occurs in a small-diameter tube due to surface tension."},
-{q:"Water generally shows:",o:["Capillary depression","Capillary rise","No surface tension","Zero density"],a:1,e:"Water generally shows capillary rise."},
-{q:"Mercury generally shows:",o:["Capillary rise","Capillary depression","Zero viscosity","Zero pressure"],a:1,e:"Mercury generally shows capillary depression."},
-{q:"1 kN equals:",o:["10 N","100 N","1000 N","10000 N"],a:2,e:"1 kN=1000 N."},
-{q:"1 MPa equals:",o:["10³ Pa","10⁴ Pa","10⁵ Pa","10⁶ Pa"],a:3,e:"1 MPa=10⁶ Pa."},
-{q:"1 litre equals:",o:["10⁻¹ m³","10⁻² m³","10⁻³ m³","10⁻⁶ m³"],a:2,e:"1 litre=10⁻³ m³."},
-{q:"1 cm³ equals:",o:["10⁻³ m³","10⁻⁴ m³","10⁻⁵ m³","10⁻⁶ m³"],a:3,e:"1 cm³=10⁻⁶ m³."}
-];
-
-let quizMode="geology";
-
-function startFMQuiz(){
-currentSubject="CE2104";
-quizMode="fluid";
-quizQuestions=fmWeek1MCQ;
-quizIndex=0;
-selected=null;
-correct=0;
-answered=false;
-hideAll();
-document.getElementById("quizPage").style.display="block";
-showQuestion();
+hideAll();document.getElementById("learnPage").style.display="block";
+document.getElementById("learnContent").innerHTML=topic===1?topic1Learn():topic2Learn();
 window.scrollTo(0,0);
 }
 
-function restartCurrentQuiz(){
-if(quizMode==="fluid"){startFMQuiz();}
-else{startQuiz(currentTopic);}
+const topic1Questions = [
+{m:1,q:"Define Mineralogy.",a:"Mineralogy deals with the study of minerals."},
+{m:1,q:"What is the lithosphere?",a:"The Earth's crust is called the lithosphere."},
+{m:1,q:"What are fossils?",a:"Fossils are naturally preserved remnants of ancient life found in rocks."},
+{m:1,q:"What is Hydrogeology also called?",a:"Hydrogeology is also called Geohydrology."},
+
+{m:2,q:"Define Petrology and state the meaning of Petro and Logy.",a:"Petrology deals with the study of rocks. Petro means rock and Logy means study."},
+{m:2,q:"Define Engineering Geology.",a:"Engineering Geology deals with the application of geological knowledge in Civil Engineering for the execution of safe, stable and economic construction."},
+{m:2,q:"Define Geochemistry and mention what it studies.",a:"Geochemistry deals with the chemical composition of minerals and rocks. It also deals with occurrence, distribution, abundance and mobility of chemical constituents."},
+
+{m:3,q:"Write the scope of Mineralogy.",a:"Mineralogy studies minerals with reference to their mode of formation, composition, occurrence, types, associated properties and uses."},
+{m:3,q:"What geological structures are studied in Structural Geology?",a:"Structural Geology studies deformations and disturbances of rocks under tectonic plate forces, resulting in folds, faults, joints and unconformities."},
+
+{m:4,q:"Explain Economic Geology with the example given in the notes.",a:"Economic Geology deals with economically valuable mineral deposits. The prosperity of a nation depends to a large extent on rich reserves of economical mineral deposits. The notes give Gulf countries, which are rich in oil deposits, as an example."},
+{m:4,q:"Explain Geophysics and its subdivision.",a:"Geophysics deals with the Earth's crust and physical properties of the Earth such as density and magnetism. It is subdivided into Pure Geophysics and Exploration Geophysics. The notes also mention general aspects of the Earth and study of the upper layer of the Earth's crust."},
+
+{m:5,q:"Explain Petrology and list the aspects of rocks studied under it.",a:"Petrology is the study of rocks. The Earth's crust is called the lithosphere and is made of different types of rocks. Petrology deals with formation, structure, texture, composition, occurrence and types of rocks."},
+{m:5,q:"Explain Palaeontology.",a:"Palaeontology deals with fossils and ancient life. Under favourable conditions, plant and animal life gets embedded in sediments and may be preserved partly or completely. Such naturally preserved remnants are called fossils. It studies formation, types and occurrence of fossils."},
+
+{m:6,q:"Explain Physical Geology.",a:"Physical Geology, also called Dynamic Geology or Geomorphology, deals with physical features of the Earth and changes on its surface. It includes mountains, rivers, lakes, glaciers and volcanoes; formation or disappearance of rivers, springs and lakes; natural phenomena such as slides, landslides, earthquakes and weathering; and geological work of wind, glaciers, oceans and groundwater in moulding the Earth's surface."},
+{m:6,q:"Explain Mining Geology and the parameters a mining engineer should know.",a:"Mining Geology applies geological knowledge to mining. A mining engineer should know the mode of occurrence of ores and their associated properties. Important physical parameters include depth, direction or strike, inclination or dip, thickness and ore bodies."},
+
+{m:8,q:"Explain Historical Geology and how sedimentary rocks reveal Earth's history.",a:"Historical Geology studies Earth's history through geological records. The Earth's surface has suitable conditions for deposition of sediments at different places, producing sedimentary rocks that represent periods of Earth's history. Proper investigation reveals the chronological sequence of rock formation, evolution, migration of plants and animals, and life during different periods of Earth's history."},
+
+{m:10,q:"Explain Geohydrology/Hydrogeology and the factors related to groundwater.",a:"Geohydrology, also called Hydrogeology, deals with occurrence, movement, nature, quality and quantity of groundwater in an area. It also deals with the existence and movement of groundwater. The notes relate groundwater behaviour to porosity, permeability, structure, texture and composition."},
+
+{m:12,q:"⭐ Explain the importance of Geology in Civil Engineering.",a:"1) Site selection is important for foundation stability. 2) Geology gives systematic knowledge of construction materials and their properties. 3) Nature of rocks is useful in tunnelling and road construction. 4) Foundation problems of dams, bridges and buildings are related to local geology. 5) Groundwater knowledge is necessary for excavation, water supply, irrigation and other purposes. 6) Erosion, transportation and deposition knowledge helps soil conservation and river control. 7) Geological maps and sections help in planning engineering projects. 8) Faults, folds and joints must be suitably treated to maintain rock-structure stability. 9) A pre-geological survey reduces planning cost."}
+];
+
+const topic2Questions = [
+{m:1,q:"Define Geological Agents.",a:"Geological agents are natural forces responsible for visible changes on the Earth's surface."},
+{m:1,q:"Name the two types of Geological Agents.",a:"Exogenous geological agents and endogenous geological agents."},
+{m:1,q:"Name the three types of weathering.",a:"Mechanical weathering, Chemical weathering and Biological weathering."},
+
+{m:2,q:"Define Mechanical Weathering.",a:"Mechanical weathering is the breakdown of rocks into smaller pieces due to natural forces such as waterfalls and landslides."},
+{m:2,q:"List the three mechanical-weathering types given in the notes.",a:"Frost Wedging, Expansion and Contraction, and Effects of Vegetation."},
+
+{m:3,q:"Write the sequence of geological work performed by exogenous agents.",a:"The systematic sequence is: Erosion → Transportation → Deposition."},
+
+{m:4,q:"Explain Endogenous Geological Agents with examples.",a:"Endogenous geological agents have nature, origin and function opposite to exogenous agents. They originate below the Earth's surface, work suddenly and create topographic irregularities. Examples listed are volcanoes, earthquakes, groundwater, tectonic forces and tsunamis."},
+
+{m:5,q:"Explain Weathering of Rocks and classify it.",a:"Weathering of rocks is the process by which rocks are broken down and decomposed by external agencies such as wind, rivers, rain, temperature and changes. It is classified into Mechanical, Chemical and Biological weathering."},
+
+{m:6,q:"⭐ Explain Frost Wedging with a process diagram.",a:"Water present in cracks of rocks freezes during the night and melts during the daytime. Freezing increases the volume of water. This increase wedges the walls of cracks apart and ultimately causes rock breakdown. Process: Water in cracks → freezes at night → volume increases → crack walls wedge apart → rock breaks down."},
+
+{m:8,q:"Explain Exogenous Geological Agents and their systematic geological work.",a:"Exogenous geological agents originate on the Earth's surface, work slowly but steadily, and erase topographical irregularities. Their geological work is systematic: erosion → transportation → deposition. Erosion destroys or wears land masses such as hills, while deposition fills depressed land masses such as pits, lakes and valleys. The notes cite Himalayan rivers such as Ganga, Indus and Brahmaputra and state that they physically transport about 1 million tons of sediments daily."}
+];
+
+function openQuestions(topic){
+hideAll();document.getElementById("questionsPage").style.display="block";
+const arr=topic===1?topic1Questions:topic2Questions;
+let html=`<div class="card"><h1>Topic ${topic} — Marks-wise Questions & Answers</h1><p>Each question/content is used only once. No repeated question-answer content across mark categories.</p></div>`;
+[1,2,3,4,5,6,8,10,12].forEach(mark=>{
+const qs=arr.filter(x=>x.m===mark);
+if(!qs.length)return;
+html+=`<h2 class="mark-title">${mark} Mark${mark>1?"s":""}</h2>`;
+qs.forEach((x,i)=>{html+=`<div class="question-box"><strong>Q${i+1}. ${x.q}</strong><div class="answer"><strong>Answer:</strong> ${x.a}</div></div>`});
+});
+document.getElementById("questionsContent").innerHTML=html;window.scrollTo(0,0);
 }
 
-let quizQuestions=[];
-let quizIndex=0;
-let selected=null;
-let correct=0;
-let answered=false;
+const topic1MCQ = [
+["Physical Geology is also called:",["Dynamic Geology / Geomorphology","Economic Geology","Mining Geology","Geochemistry"],0,"The notes call Physical Geology Dynamic Geology or Geomorphology."],
+["Physical Geology mainly deals with:",["Physical features and surface changes of Earth","Only minerals","Only fossils","Only groundwater"],0,"It deals with physical features and changes on Earth's surface."],
+["Which is listed as a physical feature?",["Mountain","Ore body only","Concrete","Steel"],0,"Mountains are listed under Physical Geology."],
+["Which is listed under Physical Geology?",["Rivers","Cement hydration","Reinforcement","Bitumen"],0,"Rivers are included among Earth's physical features."],
+["Which natural phenomenon is mentioned under Physical Geology?",["Landslide","Curing","Welding","Compaction"],0,"Landslides are listed in the notes."],
+["Mineralogy deals with:",["Minerals","Rocks only","Groundwater only","Fossils only"],0,"Mineralogy is the study of minerals."],
+["Which is studied in Mineralogy?",["Mode of formation","Traffic flow","Beam bending","Concrete mix"],0,"Mode of formation is listed under Mineralogy."],
+["Which is NOT among the listed Mineralogy aspects?",["Uses","Composition","Occurrence","Fluid pressure"],3,"Uses, composition and occurrence are listed; fluid pressure is not."],
+["Petro means:",["Rock","Study","Water","Earth"],0,"The notes write Petro = Rock."],
+["Logy means:",["Study","Rock","Mineral","Fossil"],0,"The notes write Logy = Study."],
+["Petrology deals with:",["Rocks","Minerals only","Groundwater","Earthquakes only"],0,"Petrology is the study of rocks."],
+["The Earth's crust is called:",["Lithosphere","Hydrosphere","Atmosphere","Biosphere"],0,"The notes call the Earth's crust the lithosphere."],
+["Which is studied in Petrology?",["Texture of rocks","Traffic volume","Concrete slump","Steel grade"],0,"Texture is one of the listed aspects."],
+["Structural Geology deals with deformation under:",["Tectonic plate forces","Traffic forces","Wind load only","Machine vibration"],0,"The notes link deformation to tectonic plate forces."],
+["Which structure is listed under Structural Geology?",["Fold","Capillary","Beam","Column"],0,"Folds are listed."],
+["Which structure is listed under Structural Geology?",["Fault","Reservoir only","Pavement","Slab"],0,"Faults are listed."],
+["Which structure is listed under Structural Geology?",["Joint","Nozzle","Pipe","Turbine"],0,"Joints are listed."],
+["Which is also listed under Structural Geology?",["Unconformity","Viscosity","Porosity only","Specific gravity"],0,"Unconformities are listed."],
+["Historical Geology primarily uses geological records such as:",["Sedimentary rocks","Steel bars","Cement bags","Timber"],0,"The notes discuss sedimentary rocks as records of Earth's history."],
+["Investigation of sedimentary rocks can reveal:",["Chronological sequence","Only density","Only colour","Only pressure"],0,"The notes mention chronological sequence."],
+["Historical Geology includes migration of:",["Plants and animals","Vehicles","Machines","Buildings"],0,"Migration of plants and animals is listed."],
+["Palaeontology deals with:",["Fossils and ancient life","Groundwater only","Roads","Concrete"],0,"Palaeontology deals with fossils."],
+["Fossils are preserved remnants of:",["Ancient life","Modern machines","Concrete","Soil only"],0,"The notes define fossils as preserved remnants of ancient life."],
+["Palaeontology studies fossil:",["Formation, types and occurrence","Only colour","Only weight","Only cost"],0,"These three aspects are listed."],
+["Economic Geology deals with:",["Economically valuable mineral deposits","Only earthquakes","Only groundwater","Only roads"],0,"Economic Geology concerns economical mineral deposits."],
+["The example given for Economic Geology is:",["Gulf countries rich in oil deposits","Himalayan snow","Concrete dams","Steel bridges"],0,"The notes cite Gulf countries and oil deposits."],
+["Engineering Geology applies geological knowledge to:",["Civil Engineering","Computer Science","Medicine","Accounting"],0,"It applies geology in Civil Engineering."],
+["Engineering Geology aims at construction that is:",["Safe, stable and economic","Only decorative","Temporary only","Unplanned"],0,"These three terms appear in the notes."],
+["Which is an example under Engineering Geology?",["Dam","Computer","Motor","Battery"],0,"Dams are listed."],
+["Which is an example under Engineering Geology?",["Bridge","Printer","Engine","Circuit"],0,"Bridges are listed."],
+["Which is an example under Engineering Geology?",["Tunnel","Laptop","Pump only","Cable"],0,"Tunnels are listed."],
+["Mining Geology applies geology to:",["Mining","Medicine","Agriculture only","Programming"],0,"It applies geological knowledge in mining."],
+["A mining engineer should know mode of occurrence of:",["Ores","Clouds","Traffic","Cement"],0,"Mode of occurrence of ores is mentioned."],
+["Strike refers to a listed parameter of:",["Ore occurrence","Concrete curing","Fluid flow","Traffic"],0,"Direction/strike is listed."],
+["Dip is written with:",["Inclination","Density","Porosity","Viscosity"],0,"The notes pair inclination with dip."],
+["Which parameter is listed for ore bodies?",["Thickness","Temperature only","Velocity","Discharge"],0,"Thickness is listed."],
+["Geophysics deals with physical properties such as:",["Density and magnetism","Slump and compaction","Stress and strain only","pH only"],0,"Density and magnetism are mentioned."],
+["Geophysics is subdivided into:",["Pure and Exploration Geophysics","Static and Dynamic Geology","Chemical and Biological","Theory and Lab"],0,"The notes list Pure and Exploration Geophysics."],
+["Geohydrology is also called:",["Hydrogeology","Petrology","Mineralogy","Palaeontology"],0,"The notes state this synonym."],
+["Geohydrology deals mainly with:",["Groundwater","Fossils","Oil only","Roads"],0,"It deals with groundwater."],
+["Which groundwater characteristic is listed?",["Quality","Traffic speed","Slump","Yield stress"],0,"Quality is listed."],
+["Which groundwater factor is listed?",["Porosity","Elastic modulus","Bending moment","Camber"],0,"Porosity is listed."],
+["Which groundwater factor is listed?",["Permeability","Reynolds number","Torque","Voltage"],0,"Permeability is listed."],
+["Geochemistry deals with:",["Chemical composition of minerals and rocks","Only rock shape","Only fossils","Only water level"],0,"This is its definition in the notes."],
+["Which is included in Geochemistry?",["Distribution","Traffic count","Beam slope","Discharge"],0,"Distribution is listed."],
+["Which is included in Geochemistry?",["Abundance","Curing","Welding","Compaction"],0,"Abundance is listed."],
+["Which is included in Geochemistry?",["Mobility","Deflection only","Shear force","Velocity gradient"],0,"Mobility is listed."],
+["Before construction, geology is important for:",["Site selection and foundation stability","Painting","Electrical wiring","Furniture"],0,"Point 1 concerns site selection and foundation stability."],
+["Geology gives knowledge of:",["Construction materials and their properties","Only salaries","Only traffic rules","Only software"],0,"This is importance point 2."],
+["Knowledge of rock nature is useful in:",["Tunnelling and road construction","Accounting","Programming","Medicine"],0,"This is importance point 3."],
+["Foundation problems of dams, bridges and buildings are related to:",["Geology of the area","Paint colour","Vehicle type","Weather forecast only"],0,"This is importance point 4."],
+["Groundwater knowledge is needed for:",["Excavation, water supply and irrigation","Only painting","Only welding","Only traffic"],0,"This is importance point 5."],
+["Erosion, transportation and deposition knowledge helps:",["Soil conservation and river control","Computer design","Steel welding","Brick painting"],0,"This is importance point 6."],
+["Geological maps and sections help in:",["Planning engineering projects","Cooking","Programming","Vehicle repair"],0,"This is importance point 7."],
+["Faults, folds and joints should be treated to maintain:",["Stability of rock structures","Colour of rocks","Traffic speed","Water taste"],0,"This is importance point 8."],
+["A pre-geological survey can reduce:",["Cost of planning work","Rock density","Groundwater quantity","Earth's magnetism"],0,"This is importance point 9."]
+].map(x=>({q:x[0],o:x[1],a:x[2],e:x[3]}));
 
+const topic2MCQ = [
+["Natural forces responsible for visible changes on Earth's surface are called:",["Geological agents","Fossils","Minerals","Foundations"],0,"This is the definition in the notes."],
+["Geological agents are grouped based on their:",["Origin","Colour","Cost","Size"],0,"The notes classify them based on origin."],
+["The two geological-agent groups are:",["Exogenous and Endogenous","Physical and Chemical","Solid and Liquid","Pure and Applied"],0,"These are the two groups."],
+["Exogenous agents originate:",["On Earth's surface","Below Earth's surface","Only in oceans","Only in buildings"],0,"The notes place their origin on Earth's surface."],
+["Exogenous agents generally work:",["Slowly but steadily","Only suddenly","Never","Only at night"],0,"The notes say slowly but steadily."],
+["Exogenous agents tend to:",["Erase topographical irregularities","Create concrete","Form steel","Stop rivers"],0,"This wording is in the notes."],
+["The first stage of exogenous geological work is:",["Erosion","Deposition","Transportation","Weathering only"],0,"The sequence starts with erosion."],
+["Erosion is followed by:",["Transportation","Deposition directly only","Mining","Fossilisation"],0,"Transportation follows erosion."],
+["Transportation is followed by:",["Deposition","Erosion","Mining","Tectonics"],0,"Deposition is the third stage."],
+["Correct sequence is:",["Erosion → Transportation → Deposition","Deposition → Transportation → Erosion","Transportation → Erosion → Deposition","Erosion → Deposition → Transportation"],0,"This is the sequence in the notes."],
+["Erosion causes destruction/wearing of land masses such as:",["Hills","Concrete slabs","Steel bars","Pipes"],0,"Hills are the example in the notes."],
+["Deposition fills depressed land masses such as:",["Pits, lakes and valleys","Mountains only","Buildings","Bridges"],0,"These examples are given."],
+["Which river is cited as a Himalayan-river example?",["Ganga","Thames","Nile only","Amazon only"],0,"Ganga is listed."],
+["Which other river is listed?",["Indus","Danube","Mississippi","Volga"],0,"Indus is listed."],
+["Which other river is listed?",["Brahmaputra","Seine","Rhine","Murray"],0,"Brahmaputra is listed."],
+["The notes state Himalayan rivers physically transport about:",["1 million tons of sediments daily","1 kg daily","10 tons yearly","100 kg monthly"],0,"This quantity is written on page 4."],
+["Endogenous agents originate:",["Below Earth's surface","Only on Earth's surface","Only in rivers","Only in air"],0,"The notes place them below Earth's surface."],
+["Endogenous agents generally work:",["Suddenly","Only slowly","Never","Only steadily"],0,"The notes say they work suddenly."],
+["Endogenous agents tend to:",["Create topographic irregularities","Erase all irregularities","Make concrete","Stop tectonics"],0,"This is stated in the notes."],
+["Which is listed as an endogenous example?",["Volcanoes","Cement","Steel","Brick"],0,"Volcanoes are listed."],
+["Which is listed as an endogenous example?",["Earthquakes","Curing","Compaction","Welding"],0,"Earthquakes are listed."],
+["Which is listed in the notes among endogenous examples?",["Groundwater","Paint","Bitumen","Timber"],0,"Groundwater appears in the handwritten list."],
+["Which is listed as an endogenous example?",["Tectonic forces","Traffic forces","Wind load only","Machine load"],0,"Tectonic forces are listed."],
+["Which is listed as an endogenous example?",["Tsunamis","Slump","Capillarity","Viscosity"],0,"Tsunamis are listed."],
+["Weathering involves rocks being:",["Broken down and decomposed","Turned into steel","Painted","Melted by machines"],0,"This is the definition in the notes."],
+["Which external agency is mentioned for weathering?",["Wind","Electricity only","Concrete","Steel"],0,"Wind is mentioned."],
+["Which external agency is mentioned for weathering?",["Rivers","Computers","Vehicles","Cement"],0,"Rivers are mentioned."],
+["Which external agency is mentioned for weathering?",["Rain","Welding","Painting","Traffic"],0,"Rain is mentioned."],
+["Weathering is classified into how many types?",["Three","Two","Four","Five"],0,"The notes list three."],
+["Which is a weathering type?",["Mechanical","Electrical","Digital","Artificial"],0,"Mechanical weathering is listed."],
+["Which is a weathering type?",["Chemical","Traffic","Structural only","Hydraulic only"],0,"Chemical weathering is listed."],
+["Which is a weathering type?",["Biological","Electronic","Thermal only","Computer"],0,"Biological weathering is listed."],
+["Mechanical weathering breaks rocks into:",["Smaller pieces","Steel bars","Concrete cubes","Water"],0,"This is the definition."],
+["A natural force/example mentioned under mechanical weathering is:",["Waterfalls","Electric motor","Cement mixer","Traffic light"],0,"Waterfalls are mentioned."],
+["Another natural force/example mentioned is:",["Landslides","Welding","Curing","Painting"],0,"Landslides are mentioned."],
+["How many mechanical-weathering types are listed?",["Three","One","Five","Seven"],0,"Three are listed."],
+["Which mechanical-weathering type is listed?",["Frost Wedging","Hydraulic jump","Cavitation","Sedimentation tank"],0,"Frost Wedging is listed."],
+["Which mechanical-weathering type is listed?",["Expansion and Contraction","Filtration","Aeration","Chlorination"],0,"It is listed."],
+["Which mechanical-weathering type is listed?",["Effects of Vegetation","Specific gravity","Viscosity","Capillarity"],0,"It is listed."],
+["In Frost Wedging, water is present in:",["Cracks of rocks","Steel bars","Concrete mixers","Road signs"],0,"The notes refer to water in rock cracks."],
+["Water in rock cracks freezes during:",["Night","Day only","Summer only","Noon"],0,"The notes say during the night."],
+["The frozen water melts during:",["Daytime","Night only","Never","Winter only"],0,"The notes say during daytime."],
+["Freezing of water causes its volume to:",["Increase","Become zero","Always decrease","Remain irrelevant"],0,"The notes explicitly say volume increases."],
+["The increase in volume causes crack walls to:",["Wedge apart","Join permanently","Melt","Disappear"],0,"The crack walls are wedged apart."],
+["The ultimate result of repeated frost wedging is:",["Breakdown of rock","Formation of steel","Concrete curing","Fossil formation"],0,"The notes state it ultimately results in rock breakdown."]
+].map(x=>({q:x[0],o:x[1],a:x[2],e:x[3]}));
+
+let quizQuestions=[],quizIndex=0,selected=null,correct=0,answered=false;
 
 function startQuiz(topic){
-
-currentTopic=topic;
-quizMode="geology";
-
-quizQuestions=topic===1 ? topic1MCQ : topic2MCQ;
-
-quizIndex=0;
-selected=null;
-correct=0;
-answered=false;
-
-hideAll();
-
-document.getElementById("quizPage").style.display="block";
-
-showQuestion();
-
+quizQuestions=topic===1?topic1MCQ:topic2MCQ;quizIndex=0;selected=null;correct=0;answered=false;
+hideAll();document.getElementById("quizPage").style.display="block";showQuestion();window.scrollTo(0,0);
 }
-
-
 function showQuestion(){
-
-const q=quizQuestions[quizIndex];
-
-let options="";
-
-q.o.forEach((op,i)=>{
-
-options+=`
-
-<button class="option"
-id="op${i}"
-onclick="selectOption(${i})">
-
-${String.fromCharCode(65+i)}. ${op}
-
-</button>
-
-`;
-
-});
-
-document.getElementById("quizBox").innerHTML=`
-
-<div class="progress">
-
-Question ${quizIndex+1} of ${quizQuestions.length}
-
-</div>
-
-<h2>${q.q}</h2>
-
-${options}
-
-<button
-class="action"
-id="submitBtn"
-onclick="submitAnswer()"
-disabled>
-
-Submit Answer
-
-</button>
-
-<div class="feedback" id="feedback"></div>
-
-`;
-
+const q=quizQuestions[quizIndex];let options="";
+q.o.forEach((op,i)=>options+=`<button class="option" id="op${i}" onclick="selectOption(${i})">${String.fromCharCode(65+i)}. ${op}</button>`);
+document.getElementById("quizBox").innerHTML=`<p>Question ${quizIndex+1} of ${quizQuestions.length}</p><h2>${q.q}</h2>${options}<button class="action" id="submitBtn" onclick="submitAnswer()" disabled>Submit Answer</button><div class="feedback" id="feedback"></div>`;
 }
-
-
 function selectOption(i){
-
-if(answered)return;
-
-selected=i;
-
-document.querySelectorAll(".option")
-.forEach(x=>x.classList.remove("selected"));
-
-document.getElementById("op"+i)
-.classList.add("selected");
-
-document.getElementById("submitBtn")
-.disabled=false;
-
+if(answered)return;selected=i;
+document.querySelectorAll(".option").forEach(x=>x.classList.remove("selected"));
+document.getElementById("op"+i).classList.add("selected");document.getElementById("submitBtn").disabled=false;
 }
-
-
 function submitAnswer(){
-
-if(selected===null || answered)return;
-
-answered=true;
-
-const q=quizQuestions[quizIndex];
-
-document.querySelectorAll(".option")
-.forEach(x=>x.disabled=true);
-
-document.getElementById("op"+q.a)
-.classList.add("correct");
-
-const feedback=document.getElementById("feedback");
-
-feedback.style.display="block";
-
-if(selected===q.a){
-
-correct++;
-
-feedback.style.background="#ecfdf3";
-
-feedback.innerHTML=
-`<strong>✓ Correct</strong><br>${q.e}`;
-
-}else{
-
-document.getElementById("op"+selected)
-.classList.add("wrong");
-
-feedback.style.background="#fef2f2";
-
-feedback.innerHTML=
-
-`<strong>✗ Wrong</strong><br>
-
-Correct answer:
-<strong>
-${String.fromCharCode(65+q.a)}. ${q.o[q.a]}
-</strong>
-
-<br>${q.e}`;
-
+if(selected===null||answered)return;answered=true;const q=quizQuestions[quizIndex];
+document.querySelectorAll(".option").forEach(x=>x.disabled=true);
+document.getElementById("op"+q.a).classList.add("correct");
+const f=document.getElementById("feedback");f.style.display="block";
+if(selected===q.a){correct++;f.style.background="#ecfdf3";f.innerHTML=`<strong>✓ Correct</strong><br>${q.e}`;}
+else{document.getElementById("op"+selected).classList.add("wrong");f.style.background="#fef2f2";f.innerHTML=`<strong>✗ Wrong</strong><br>Correct answer: <strong>${String.fromCharCode(65+q.a)}. ${q.o[q.a]}</strong><br>${q.e}`;}
+document.getElementById("submitBtn").textContent=quizIndex===quizQuestions.length-1?"Show Result":"Next Question";
+document.getElementById("submitBtn").disabled=false;document.getElementById("submitBtn").onclick=nextQuestion;
 }
-
-const btn=document.getElementById("submitBtn");
-
-btn.disabled=false;
-
-btn.innerText=
-quizIndex===quizQuestions.length-1
-? "View Result"
-: "Next Question";
-
-btn.onclick=nextQuestion;
-
-}
-
-
 function nextQuestion(){
-
-if(quizIndex<quizQuestions.length-1){
-
-quizIndex++;
-selected=null;
-answered=false;
-
-showQuestion();
-
-window.scrollTo(0,0);
-
-}else{
-
-showResult();
-
+if(quizIndex===quizQuestions.length-1){showResult();return}
+quizIndex++;selected=null;answered=false;showQuestion();window.scrollTo(0,0);
 }
-
-}
-
-
 function showResult(){
-
-const total=quizQuestions.length;
-
-const wrong=total-correct;
-
-const percentage=Math.round((correct/total)*100);
-
-document.getElementById("quizBox").innerHTML=`
-
-<div style="text-align:center">
-
-<h2>Quiz Completed</h2>
-
-<div class="score">
-${percentage}%
-</div>
-
-<p>
-<strong>Correct:</strong>
-${correct}
-</p>
-
-<p>
-<strong>Wrong:</strong>
-${wrong}
-</p>
-
-<p>
-<strong>Score:</strong>
-${correct} / ${total}
-</p>
-
-<button
-class="action"
-onclick="restartCurrentQuiz()">
-
-Try Again
-
-</button>
-
-<button
-class="action"
-onclick="returnTopic()">
-
-Back to Topics
-
-</button>
-
-</div>
-
-`;
-
+const pct=Math.round(correct/quizQuestions.length*100);
+document.getElementById("quizBox").innerHTML=`<h2>Quiz Completed</h2><div class="score">${correct}/${quizQuestions.length}</div><h3>${pct}%</h3><button class="action" onclick="showHome()">Back to Topics</button>`;
 }
-
-
-buildSubjects();
-
 showHome();
-
 </script>
-
 </body>
 </html>
